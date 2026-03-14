@@ -7,10 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-/* SEMUA CSS SAMA PERSIS DENGAN KODE ANDA SEBELUMNYA */
-/* ══════════════════════════════════════
-   BASE & VARIABLES
-══════════════════════════════════════ */
+/* ========== CSS SAMA PERSIS DENGAN SEBELUMNYA ========== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --cream:#F8F0DC;--ivory:#FDF6E8;--paper:#EFE3C2;
@@ -24,16 +21,10 @@
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--ink);font-family:var(--ff-b);overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(180,140,80,.05) 27px,rgba(180,140,80,.05) 28px);pointer-events:none;z-index:0;}
-
-/* ══ CORNERS ══ */
 .corner{position:fixed;width:26px;height:26px;border-color:var(--gold);border-style:solid;z-index:9001;opacity:.45;pointer-events:none;}
 .c-tl{top:8px;left:8px;border-width:2px 0 0 2px;}.c-tr{top:8px;right:8px;border-width:2px 2px 0 0;}
 .c-bl{bottom:8px;left:8px;border-width:0 0 2px 2px;}.c-br{bottom:8px;right:8px;border-width:0 2px 2px 0;}
-
-/* ══ PARTICLES ══ */
 #pcanvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;}
-
-/* ══ LOADER ══ */
 #loader{position:fixed;inset:0;background:var(--dark);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .8s .2s,transform .8s .2s;}
 #loader.gone{opacity:0;pointer-events:none;transform:translateY(-100%);}
 .ld-logo{font-family:var(--ff-s);font-size:2.2rem;font-style:italic;color:var(--cream);}
@@ -41,21 +32,7 @@ body::before{content:'';position:fixed;inset:0;background-image:repeating-linear
 .ld-wrap{width:220px;height:2px;background:rgba(245,223,188,.1);}
 .ld-fill{height:100%;background:var(--gold);width:0;transition:width .9s cubic-bezier(.4,0,.2,1);}
 .ld-sub{font-family:var(--ff-m);font-size:.58rem;color:var(--sepia);letter-spacing:.2em;text-transform:uppercase;opacity:.5;}
-
-/* ══ STATUS BAR ══ */
-#cloud-status{
-  position:fixed;top:1rem;left:50%;transform:translateX(-50%);
-  font-family:var(--ff-m);font-size:.6rem;letter-spacing:.1em;
-  padding:.4rem 1.2rem;z-index:9998;transition:opacity .6s;
-  pointer-events:none;white-space:nowrap;border-radius:2px;
-  background:rgba(44,26,14,.88);color:var(--warm);border:1px solid rgba(184,137,42,.3);
-}
-#cloud-status.hidden{opacity:0;}
-
-/* ══ SCROLL PROGRESS ══ */
 #sprg{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rust),var(--gold),var(--sepia));transform-origin:left;transform:scaleX(0);z-index:9999;transition:transform .1s linear;}
-
-/* ══ HEADER ══ */
 header{position:relative;text-align:center;padding:6rem 2rem 4.5rem;background:var(--ivory);border-bottom:2px solid var(--warm);overflow:hidden;z-index:2;}
 .hdr-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff-s);font-size:18vw;font-weight:900;color:var(--sepia);opacity:.04;white-space:nowrap;user-select:none;pointer-events:none;line-height:1;}
 .stamp{position:absolute;top:2rem;right:2.5rem;width:76px;height:76px;border:2px solid var(--rust);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--rust);opacity:.28;transform:rotate(7deg);text-align:center;}
@@ -72,19 +49,13 @@ header h1 em{font-style:italic;color:var(--rust);}
 .hdr-sub{font-family:var(--ff-b);font-size:1.05rem;font-style:italic;color:var(--brown);opacity:.75;}
 .hdr-q{font-family:var(--ff-m);font-size:.63rem;color:var(--sepia);letter-spacing:.07em;opacity:.58;margin-top:1.2rem;}
 .hdr-q::before{content:'— ';}
-
-/* ══ NAV ══ */
 nav{background:var(--dark);padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:1.8rem;position:sticky;top:0;z-index:500;border-bottom:2px solid var(--gold);flex-wrap:wrap;}
 nav a{font-family:var(--ff-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:var(--warm);text-decoration:none;opacity:.52;transition:opacity .3s,color .3s;position:relative;padding-bottom:2px;}
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
 nav a:hover{opacity:1;color:var(--gold);}
 nav a:hover::after{width:100%;}
-
-/* ══ INFO BAR ══ */
 #infobar{background:linear-gradient(90deg,rgba(184,137,42,.12),rgba(91,107,71,.12));border-bottom:1px solid rgba(184,137,42,.2);padding:.55rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;font-family:var(--ff-m);font-size:.6rem;letter-spacing:.1em;color:var(--brown);flex-wrap:wrap;position:relative;z-index:2;}
 .ib-i{display:flex;align-items:center;gap:.4rem;opacity:.7;}
-
-/* ══ DIVIDER ══ */
 .divider{text-align:center;padding:3rem 0 1.8rem;position:relative;}
 .divider::before,.divider::after{content:'';position:absolute;top:50%;width:calc(50% - 90px);height:1px;background:linear-gradient(to right,transparent,var(--sepia));opacity:.28;}
 .divider::before{left:0;}.divider::after{right:0;background:linear-gradient(to left,transparent,var(--sepia));}
@@ -93,12 +64,8 @@ nav a:hover::after{width:100%;}
 .sec-intro h2{font-family:var(--ff-s);font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--dark);line-height:1.1;}
 .sec-intro h2 em{font-style:italic;color:var(--rust);}
 .sec-intro p{font-style:italic;color:var(--brown);font-size:.95rem;margin-top:.4rem;opacity:.7;}
-
-/* ══ FAMILY GRID ══ */
 #keluarga{padding:0 2rem 5rem;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
 .family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:2.8rem;}
-
-/* ══ CARD ══ */
 .card{background:var(--ivory);border:1px solid rgba(185,137,42,.22);position:relative;overflow:visible;transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;}
 .card:hover{box-shadow:5px 18px 42px rgba(44,26,14,.18);}
 .tape{position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-1.5deg);width:58px;height:24px;background:rgba(210,190,135,.5);border:1px solid rgba(185,137,42,.18);z-index:2;}
@@ -106,37 +73,16 @@ nav a:hover::after{width:100%;}
 .card:nth-child(2) .tape{transform:translateX(-50%) rotate(1.9deg);}
 .card:nth-child(3) .tape{transform:translateX(-50%) rotate(-2.4deg);}
 .card:nth-child(4) .tape{transform:translateX(-50%) rotate(1.2deg);}
-
-/* photo zone */
-.photo-zone{position:relative;margin:1.8rem 1.4rem 0;aspect-ratio:3/3.4;background:var(--paper);border:1px solid rgba(185,137,42,.18);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;cursor:pointer;transition:background .3s;}
-.photo-zone:hover{background:var(--warm);}
-.photo-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;filter:sepia(.15) contrast(1.04);transition:filter .5s;}
-.photo-zone img.loaded{display:block;}
+.photo-zone{position:relative;margin:1.8rem 1.4rem 0;aspect-ratio:3/3.4;background:var(--paper);border:1px solid rgba(185,137,42,.18);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;}
+.photo-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.15) contrast(1.04);transition:filter .5s;}
 .photo-zone img:hover{filter:sepia(0) contrast(1);}
 .ph-p{display:flex;flex-direction:column;align-items:center;gap:.45rem;pointer-events:none;}
 .ph-p.gone{display:none;}
 .ph-ic{font-size:2.2rem;opacity:.28;line-height:1;}
 .ph-tx{font-family:var(--ff-m);font-size:.57rem;text-transform:uppercase;letter-spacing:.13em;color:var(--brown);opacity:.4;text-align:center;line-height:1.5;}
-/* upload overlay */
-.upload-ov{position:absolute;inset:0;background:rgba(44,26,14,.82);display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;}
-.upload-ov.show{display:flex;}
-.upload-pct{font-family:var(--ff-s);font-size:2.2rem;font-weight:900;color:var(--gold);}
-.upload-lbl{font-family:var(--ff-m);font-size:.55rem;color:var(--warm);letter-spacing:.12em;text-transform:uppercase;opacity:.7;}
-.upload-bar{width:80%;height:3px;background:rgba(255,255,255,.12);border-radius:2px;}
-.upload-bar-fill{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width .15s;}
-/* cloud badge - diubah jadi local badge */
-.cloud-bdg{position:absolute;top:.5rem;left:.5rem;font-family:var(--ff-m);font-size:.48rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(90,107,71,.88);color:#c8f0b0;padding:.18rem .55rem;border-radius:2px;opacity:0;transition:opacity .3s;pointer-events:none;}
-.cloud-bdg::before{content:'💾';margin-right:3px;}
-.photo-zone.has-photo .cloud-bdg{opacity:1;}
-.ph-badge{position:absolute;bottom:.55rem;right:.55rem;font-family:var(--ff-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.09em;background:rgba(44,26,14,.52);color:var(--warm);padding:.22rem .5rem;border-radius:2px;opacity:0;transition:opacity .3s;}
-.photo-zone:hover .ph-badge{opacity:1;}
-.photo-zone.has-photo .ph-badge{opacity:1;background:rgba(90,107,71,.75);}
 .pco{position:absolute;width:13px;height:13px;border-color:var(--sepia);border-style:solid;opacity:.38;pointer-events:none;}
 .pco.tl{top:4px;left:4px;border-width:1px 0 0 1px;}.pco.tr{top:4px;right:4px;border-width:1px 1px 0 0;}
 .pco.bl{bottom:4px;left:4px;border-width:0 0 1px 1px;}.pco.br{bottom:4px;right:4px;border-width:0 1px 1px 0;}
-.photo-input{display:none;}
-
-/* card body */
 .card-body{padding:1.1rem 1.4rem .8rem;}
 .card-role{font-family:var(--ff-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem;}
 .card-role::before{content:'';display:inline-block;width:14px;height:1px;background:var(--gold);}
@@ -148,17 +94,9 @@ nav a:hover::after{width:100%;}
 .card-bday{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--ff-m);font-size:.55rem;color:var(--rust);letter-spacing:.09em;background:rgba(155,58,30,.08);padding:.18rem .55rem;border:1px solid rgba(155,58,30,.18);border-radius:2px;}
 .card-bday::before{content:'🎂';font-size:.68rem;}
 .card-age{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--ff-m);font-size:.52rem;color:var(--gold);background:rgba(184,137,42,.1);padding:.18rem .5rem;border:1px solid rgba(184,137,42,.2);border-radius:2px;}
-/* editable */
-.ew{position:relative;}
-.ew:hover .eh{opacity:1;}
-.eh{position:absolute;top:-20px;right:0;font-family:var(--ff-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;background:var(--dark);color:var(--gold);padding:.18rem .5rem;border-radius:2px;opacity:0;transition:opacity .25s;white-space:nowrap;pointer-events:none;z-index:10;}
-.eh::after{content:' ✏';}
-.editable{font-size:.85rem;color:var(--brown);line-height:1.78;font-style:italic;border-top:1px dashed rgba(185,137,42,.22);padding-top:.8rem;margin-bottom:.5rem;cursor:text;outline:none;border-bottom:1px dashed transparent;transition:border-color .2s,background .2s,padding .2s;border-radius:2px;}
-.editable:hover{background:rgba(184,137,42,.05);border-bottom-color:rgba(184,137,42,.25);}
-.editable:focus{background:rgba(253,246,232,.9);border-bottom-color:var(--gold);border-top-color:var(--gold);padding:.55rem .5rem .8rem;font-style:normal;color:var(--ink);}
+.editable{font-size:.85rem;color:var(--brown);line-height:1.78;font-style:italic;border-top:1px dashed rgba(185,137,42,.22);padding-top:.8rem;margin-bottom:.5rem;}
 .card-traits{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem;margin-bottom:.9rem;}
 .trait{font-family:var(--ff-m);font-size:.52rem;letter-spacing:.07em;color:var(--brown);background:var(--paper);padding:.2rem .5rem;border:1px solid rgba(185,137,42,.18);border-radius:2px;opacity:.78;}
-/* WA btn */
 .card-actions{display:flex;flex-direction:column;gap:.5rem;padding:.9rem 1.4rem;border-top:1px dashed rgba(185,137,42,.22);}
 .wa-btn{display:flex;align-items:center;gap:.7rem;background:var(--wa);color:#fff;text-decoration:none;padding:.6rem 1rem;border-radius:3px;font-family:var(--ff-m);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
 .wa-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
@@ -167,88 +105,27 @@ nav a:hover::after{width:100%;}
 .wa-btn svg{width:16px;height:16px;flex-shrink:0;}
 .wa-num{font-size:.52rem;opacity:.75;margin-left:auto;}
 .wa-btn.disabled{background:rgba(180,140,80,.25);color:var(--brown);cursor:not-allowed;pointer-events:none;}
-/* fun fact */
 .fun-fact{background:var(--dark);padding:.7rem 1.4rem;display:flex;align-items:flex-start;gap:.45rem;border-top:2px solid var(--gold);}
 .ff-ic{font-size:.75rem;line-height:1.6;flex-shrink:0;}
-.ff-tx{font-family:var(--ff-m);font-size:.56rem;color:var(--warm);line-height:1.72;letter-spacing:.02em;opacity:.85;cursor:text;outline:none;border-bottom:1px dashed transparent;transition:border-color .2s;}
-.ff-tx:focus{border-bottom-color:var(--gold);opacity:1;}
-
-/* ══ STATS BAR ══ */
+.ff-tx{font-family:var(--ff-m);font-size:.56rem;color:var(--warm);line-height:1.72;letter-spacing:.02em;opacity:.85;}
 #stats-bar{background:var(--dark);padding:2.5rem 4rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;border-top:1px solid rgba(184,137,42,.18);border-bottom:2px solid var(--gold);position:relative;z-index:2;}
 .stat-num{font-family:var(--ff-s);font-size:2.8rem;font-weight:900;font-style:italic;color:var(--gold);line-height:1;margin-bottom:.3rem;}
 .stat-label{font-family:var(--ff-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.18em;color:var(--warm);opacity:.5;}
-
-/* ══ MUSIC SECTION ══ */
 #music-section{padding:5rem 2rem;background:var(--dark);position:relative;overflow:hidden;z-index:2;}
 #music-section::before{content:'♪';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24rem;color:var(--gold);opacity:.03;pointer-events:none;line-height:1;}
 .ms-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.2rem;text-align:center;}
 .ms-title{font-family:var(--ff-s);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--cream);text-align:center;margin-bottom:.4rem;}
 .ms-title em{font-style:italic;color:var(--sepia);}
 .ms-sub{font-family:var(--ff-b);font-size:.95rem;font-style:italic;color:var(--warm);opacity:.55;text-align:center;margin-bottom:3rem;}
-/* playlist */
 .playlist{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem;}
-.song-card{display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.18);padding:1rem 1.4rem;cursor:pointer;transition:background .25s,border-color .25s,transform .2s;position:relative;overflow:hidden;}
-.song-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
-.song-card:hover::before,.song-card.playing::before{transform:scaleY(1);}
-.song-card:hover{background:rgba(184,137,42,.08);border-color:rgba(184,137,42,.35);transform:translateX(4px);}
-.song-card.playing{background:rgba(184,137,42,.12);border-color:rgba(184,137,42,.4);}
-.song-num{font-family:var(--ff-m);font-size:.7rem;color:var(--sepia);opacity:.4;width:22px;text-align:center;flex-shrink:0;}
-.song-card.playing .song-num{opacity:0;}
-.song-wave{display:none;align-items:flex-end;gap:2px;height:18px;width:22px;flex-shrink:0;}
-.song-card.playing .song-wave{display:flex;}
-.sw-b{width:3px;background:var(--gold);border-radius:2px;}
-.song-card.playing .sw-b:nth-child(1){animation:sw .7s ease-in-out infinite;}
-.song-card.playing .sw-b:nth-child(2){animation:sw .7s ease-in-out infinite .18s;}
-.song-card.playing .sw-b:nth-child(3){animation:sw .7s ease-in-out infinite .36s;}
-.song-card.playing .sw-b:nth-child(4){animation:sw .7s ease-in-out infinite .54s;}
-@keyframes sw{0%,100%{height:4px;}50%{height:16px;}}
+.song-card{display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.18);padding:1rem 1.4rem;}
 .song-disc{width:44px;height:44px;border-radius:50%;background:var(--brown);border:2px solid rgba(184,137,42,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;overflow:hidden;}
 .song-disc::after{content:'';position:absolute;width:10px;height:10px;background:var(--dark);border-radius:50%;border:1px solid rgba(184,137,42,.3);}
-.song-card.playing .song-disc{animation:spinDisc 4s linear infinite;}
-@keyframes spinDisc{to{transform:rotate(360deg);}}
 .song-info{flex:1;min-width:0;}
 .song-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:.2rem;}
 .song-artist{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.song-actions{display:flex;align-items:center;gap:.5rem;}
-.song-del{background:none;border:none;cursor:pointer;font-size:.85rem;opacity:.3;transition:opacity .2s;padding:.2rem;}
-.song-del:hover{opacity:.8;}
+.song-num{font-family:var(--ff-m);font-size:.7rem;color:var(--sepia);opacity:.4;width:22px;}
 .song-tag-lbl{font-family:var(--ff-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;background:rgba(184,137,42,.15);color:var(--gold);border:1px solid rgba(184,137,42,.25);}
-/* upload music area */
-.music-upload-area{max-width:780px;margin:2rem auto 0;border:1.5px dashed rgba(184,137,42,.3);padding:1.5rem 2rem;text-align:center;transition:border-color .3s,background .3s;cursor:pointer;}
-.music-upload-area:hover{border-color:var(--gold);background:rgba(184,137,42,.06);}
-.mua-icon{font-size:1.8rem;margin-bottom:.5rem;display:block;line-height:1;}
-.mua-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.25rem;}
-.mua-sub{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.mua-note{font-family:var(--ff-m);font-size:.52rem;color:var(--sepia);opacity:.4;margin-top:.5rem;}
-/* upload progress for music */
-#music-upload-prog{max-width:780px;margin:.8rem auto 0;display:none;}
-#music-upload-prog.show{display:block;}
-.mup-bar-wrap{height:3px;background:rgba(255,255,255,.08);border-radius:2px;}
-.mup-bar-fill{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width .2s;}
-.mup-label{font-family:var(--ff-m);font-size:.55rem;color:var(--sepia);margin-top:.4rem;text-align:center;letter-spacing:.08em;}
-/* player controls */
-.player-controls{max-width:780px;margin:1.5rem auto 0;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.2);padding:1.2rem 1.5rem;display:none;}
-.player-controls.show{display:block;}
-.pc-now{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
-.pc-thumb{width:42px;height:42px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:animation .3s;}
-.pc-thumb.spin{animation:spinDisc 4s linear infinite;}
-.pc-info{flex:1;min-width:0;}
-.pc-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.pc-artist{font-family:var(--ff-m);font-size:.55rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.pc-btns{display:flex;align-items:center;gap:.8rem;}
-.pc-btn{background:none;border:1px solid rgba(184,137,42,.3);color:var(--gold);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;}
-.pc-btn:hover{background:rgba(184,137,42,.2);transform:scale(1.1);}
-.pc-btn.main{width:46px;height:46px;font-size:1.3rem;background:rgba(184,137,42,.15);}
-.pc-prog-wrap{margin-top:.8rem;}
-.pc-prog-bar{width:100%;height:4px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative;}
-.pc-prog-fill{height:100%;background:var(--gold);border-radius:2px;width:0;}
-.pc-times{display:flex;justify-content:space-between;margin-top:.35rem;}
-.pc-time{font-family:var(--ff-m);font-size:.5rem;color:var(--sepia);opacity:.5;}
-.pc-vol-row{display:flex;align-items:center;gap:.7rem;margin-top:.8rem;}
-.pc-vol-lbl{font-family:var(--ff-m);font-size:.52rem;color:var(--warm);opacity:.45;white-space:nowrap;}
-input[type=range]{accent-color:var(--gold);}
-
-/* ══ MOTTO ══ */
 #motto{background:var(--paper);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;z-index:2;border-top:1px solid var(--warm);}
 #motto::before{content:'"';position:absolute;top:-3rem;left:50%;transform:translateX(-50%);font-family:var(--ff-s);font-size:24rem;color:var(--dark);opacity:.04;font-style:italic;pointer-events:none;line-height:1;}
 .motto-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.4rem;}
@@ -258,8 +135,6 @@ input[type=range]{accent-color:var(--gold);}
 .cities{display:flex;align-items:center;justify-content:center;gap:1.3rem;margin-top:3rem;flex-wrap:wrap;}
 .city{font-family:var(--ff-m);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dark);border:1px solid rgba(44,26,14,.18);padding:.38rem .95rem;opacity:.45;}
 .city-dot{color:var(--sepia);opacity:.28;font-size:.75rem;}
-
-/* ══ COUNTDOWN ══ */
 #countdown-section{padding:4rem 2rem;background:var(--ivory);text-align:center;border-top:1px solid var(--warm);border-bottom:1px solid var(--warm);position:relative;z-index:2;}
 .cd-title{font-family:var(--ff-s);font-size:1.5rem;font-weight:700;color:var(--dark);margin-bottom:.3rem;}
 .cd-title em{font-style:italic;color:var(--rust);}
@@ -274,8 +149,6 @@ input[type=range]{accent-color:var(--gold);}
 .cd-unit{font-family:var(--ff-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.15em;color:var(--sepia);opacity:.6;margin-top:.2rem;}
 .cd-colon{font-family:var(--ff-s);font-size:2.5rem;font-weight:900;color:var(--sepia);opacity:.3;line-height:1;align-self:flex-start;padding-top:1.2rem;}
 .cd-msg{font-family:var(--ff-b);font-size:1rem;font-style:italic;color:var(--brown);margin-top:1.5rem;opacity:.75;}
-
-/* ══ MOMEN ══ */
 #momen{padding:0 2rem 6rem;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
 .moments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
 .mc{background:var(--ivory);border:1px solid rgba(185,137,42,.16);padding:1.5rem;position:relative;transition:transform .3s;}
@@ -285,8 +158,6 @@ input[type=range]{accent-color:var(--gold);}
 .mc h3{font-family:var(--ff-s);font-size:1.08rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;line-height:1.2;}
 .mc p{font-size:.86rem;color:var(--brown);line-height:1.74;font-style:italic;}
 .mc-tag{display:inline-block;margin-top:.9rem;font-family:var(--ff-m);font-size:.53rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:1px;opacity:.65;}
-
-/* ══ DOWNLOAD ══ */
 #download-section{padding:5rem 2rem;background:var(--dark);text-align:center;position:relative;overflow:hidden;z-index:2;}
 #download-section::before{content:'⬇';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:20rem;color:var(--gold);opacity:.03;pointer-events:none;line-height:1;}
 .dl-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.2rem;}
@@ -299,16 +170,12 @@ input[type=range]{accent-color:var(--gold);}
 .dl-card:hover::before{transform:scaleX(1);}
 .dl-card:hover{transform:translateY(-5px);background:rgba(184,137,42,.08);border-color:rgba(184,137,42,.4);}
 .dl-icon{font-size:2.8rem;margin-bottom:1rem;display:block;line-height:1;animation:floatIc 3s ease-in-out infinite;}
-.dl-card:nth-child(2) .dl-icon{animation-delay:.5s;}
-.dl-card:nth-child(3) .dl-icon{animation-delay:1s;}
 @keyframes floatIc{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 .dl-name{font-family:var(--ff-s);font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:.3rem;}
 .dl-desc{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);letter-spacing:.08em;opacity:.55;margin-bottom:1.2rem;}
 .dl-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--ff-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;background:var(--gold);color:var(--dark);padding:.55rem 1.2rem;border-radius:2px;text-decoration:none;transition:background .2s;font-weight:700;}
 .dl-btn:hover{background:var(--warm);}
 .dl-note{margin-top:3rem;font-family:var(--ff-m);font-size:.58rem;color:var(--sepia);opacity:.4;letter-spacing:.08em;}
-
-/* ══ FLOAT WA ══ */
 #float-wa{position:fixed;bottom:1.5rem;right:1.5rem;z-index:8000;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;}
 .fwa-toggle{width:50px;height:50px;background:var(--wa);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
 .fwa-toggle:hover{transform:scale(1.12);}
@@ -320,31 +187,19 @@ input[type=range]{accent-color:var(--gold);}
 .fwa-btn:hover{transform:scale(1.1);}
 .wa-pulse{position:absolute;width:50px;height:50px;border-radius:50%;border:2px solid var(--wa);animation:wap 2s ease-out infinite;pointer-events:none;}
 @keyframes wap{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.8);opacity:0;}}
-
-/* ══ BACK TOP ══ */
 #back-top{position:fixed;bottom:5.5rem;right:1.5rem;z-index:8001;width:38px;height:38px;background:var(--dark);border:1px solid rgba(184,137,42,.4);color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;}
 #back-top.show{opacity:1;transform:translateY(0);}
 #back-top:hover{background:rgba(184,137,42,.15);}
-
-/* ══ TOAST ══ */
 #toast{position:fixed;top:1.5rem;right:1.5rem;background:var(--dark);color:var(--warm);font-family:var(--ff-m);font-size:.66rem;letter-spacing:.07em;padding:.8rem 1.5rem;border-left:3px solid var(--gold);z-index:9999;transform:translateY(-80px);opacity:0;pointer-events:none;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .3s;max-width:300px;}
 #toast.show{transform:translateY(0);opacity:1;}
-.edit-banner{display:none;position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);background:var(--dark);color:var(--warm);font-family:var(--ff-m);font-size:.62rem;letter-spacing:.07em;padding:.65rem 1.6rem;border:1px solid var(--gold);z-index:9999;white-space:nowrap;pointer-events:none;}
-.edit-banner.show{display:block;}
-
-/* ══ FOOTER ══ */
 footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2rem;text-align:center;position:relative;z-index:2;}
 .ft-name{font-family:var(--ff-s);font-size:1.55rem;font-weight:700;font-style:italic;color:var(--dark);margin-bottom:.25rem;}
 .ft-sub{font-family:var(--ff-m);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sepia);opacity:.5;margin-bottom:1rem;}
 .ft-orn{font-size:1rem;color:var(--sepia);letter-spacing:.8em;opacity:.38;}
 .ft-note{margin-top:.9rem;font-family:var(--ff-m);font-size:.52rem;color:var(--brown);opacity:.3;letter-spacing:.07em;}
-
-/* ══ REVEAL ══ */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .78s ease,transform .78s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .d1{transition-delay:.12s;}.d2{transition-delay:.24s;}.d3{transition-delay:.36s;}
-
-/* ══ RESPONSIVE ══ */
 @media(max-width:720px){
   .family-grid{grid-template-columns:1fr 1fr;gap:1.8rem;}
   .moments-grid{grid-template-columns:1fr;}
@@ -354,7 +209,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   #stats-bar{grid-template-columns:repeat(2,1fr);padding:2rem 1.5rem;}
   .dl-grid{grid-template-columns:1fr;}
 }
-@media(max-width:480px){.family-grid{grid-template-columns:1fr;max-width:310px;margin:0 auto;}}
+@media(max-width:480px){.family-grid{grid-template-columns:1fr;max-width:310px;margin:0 auto;}
 </style>
 </head>
 <body>
@@ -363,8 +218,6 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 <div class="corner c-tl"></div><div class="corner c-tr"></div>
 <div class="corner c-bl"></div><div class="corner c-br"></div>
 <div id="toast"></div>
-<div class="edit-banner" id="edit-banner">✏ Mode Edit — Klik teks untuk mengubahnya</div>
-<div id="cloud-status" class="info hidden">💾 Penyimpanan Lokal</div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -374,37 +227,28 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 </div>
 
 <canvas id="pcanvas"></canvas>
-<audio id="audio-el" style="display:none"></audio>
 
 <!-- FLOATING WA -->
 <div id="float-wa">
   <div class="fwa-list" id="fwa-list">
     <div class="fwa-item"><span class="fwa-label">Bapak 👨</span>
-      <a class="fwa-btn" href="https://wa.me/6285311360759" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
+      <a class="fwa-btn" href="https://wa.me/6285311360759" target="_blank">💬</a>
     </div>
     <div class="fwa-item"><span class="fwa-label">Ibu 👩</span>
-      <a class="fwa-btn" href="https://wa.me/6282122483362" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
+      <a class="fwa-btn" href="https://wa.me/6282122483362" target="_blank">💬</a>
     </div>
     <div class="fwa-item"><span class="fwa-label">Saya 🧑</span>
-      <a class="fwa-btn" href="https://wa.me/6282111095385" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
+      <a class="fwa-btn" href="https://wa.me/6282111095385" target="_blank">💬</a>
     </div>
   </div>
   <div style="position:relative;">
     <div class="wa-pulse"></div>
-    <button class="fwa-toggle" onclick="toggleFWA()">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </button>
+    <button class="fwa-toggle" onclick="toggleFWA()">💬</button>
   </div>
 </div>
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<!-- ═══ HEADER ═══ -->
+<!-- HEADER -->
 <header>
   <div class="hdr-bg">Keluarga</div>
   <div class="postmark"><div class="pm-c">Sragen<br>—<br>Jogja<br>—<br>Indonesia</div></div>
@@ -419,41 +263,36 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 
 <nav>
   <a href="#keluarga">Anggota</a>
-  <a href="#music-section">Musik</a>
   <a href="#countdown-section">Ulang Tahun</a>
   <a href="#motto">Motto</a>
   <a href="#momen">Momen</a>
-  <a href="#download-section">Unduh App</a>
+  <a href="#download-section">Chat via WA</a>
 </nav>
 
 <div id="infobar">
   <div class="ib-i"><span>📅</span><span id="ib-date"></span></div>
   <div class="ib-i"><span>🕐</span><span id="ib-clk"></span></div>
-  <div class="ib-i"><span>💾</span><span>Penyimpanan Lokal</span></div>
+  <div class="ib-i"><span>💬</span><span>WhatsApp Web</span></div>
   <div class="ib-i"><span>📍</span><span>Sragen, Jawa Tengah</span></div>
 </div>
 
-<!-- ═══ KELUARGA ═══ -->
+<!-- KELUARGA -->
 <section id="keluarga">
   <div class="divider"><div class="div-in">✦ &nbsp; Anggota Keluarga &nbsp; ✦</div></div>
   <div class="sec-intro">
     <h2>Empat <em>Jiwa</em>, Satu Rumah</h2>
-    <p>Foto & teks tersimpan di browser — hanya untuk satu perangkat</p>
+    <p>Foto menggunakan link Imgur — bisa dilihat semua orang</p>
   </div>
   <div class="family-grid">
 
     <!-- BAPAK -->
     <div class="card reveal">
       <div class="tape"></div>
-      <div class="photo-zone" id="pz-bapak" onclick="triggerUpload('bapak')">
+      <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <img id="img-bapak" src="" alt="Foto Bapak">
-        <div class="ph-p" id="pp-bapak"><div class="ph-ic">👨</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-bapak"><div class="upload-pct" id="pct-bapak">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-bapak"></div></div></div>
-        <div class="cloud-bdg">Lokal</div>
-        <div class="ph-badge" id="pb-bapak">Ganti Foto</div>
+        <!-- GANTI LINK FOTO DISINI -->
+        <img id="img-bapak" src="https://imgur.com/W4EZ0k5" alt="Foto Bapak" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A8%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
-      <input type="file" id="fi-bapak" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'bapak')">
       <div class="card-body">
         <div class="card-role">Kepala Keluarga</div>
         <div class="card-name">Bapak <em>Sang Penjaga Jogja</em></div>
@@ -462,32 +301,26 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">17 Sep 1980</span>
           <span class="card-age" id="age-bapak"></span>
         </div>
-        <div class="ew"><span class="eh">Edit Deskripsi</span>
-          <div class="editable" contenteditable="true" id="desc-bapak" onblur="saveText('desc-bapak',this.innerHTML)" onfocus="startEdit(this)">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi. Selalu bilang "jangan boros" tapi diam-diam beliin es krim pas hujan.</div>
-        </div>
+        <div class="editable" id="desc-bapak">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi. Selalu bilang "jangan boros" tapi diam-diam beliin es krim pas hujan.</div>
         <div class="card-traits"><span class="trait">☕ Kopi Tubruk</span><span class="trait">📺 Jagoan Berita</span><span class="trait">🌱 Tangan Hijau</span></div>
       </div>
       <div class="card-actions">
         <a class="wa-btn" href="https://wa.me/6285311360759" target="_blank">
           <svg viewBox="0 0 24 24" fill="white" style="width:16px;height:16px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Bapak <span class="wa-num">0853-1136-0759</span>
+          Chat Bapak
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx" contenteditable="true" id="ff-bapak" onblur="saveText('ff-bapak',this.innerHTML)">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi. Katanya "nggak enak anginnya." Dan entah kenapa selalu benar.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi. Katanya "nggak enak anginnya." Dan entah kenapa selalu benar.</span></div>
     </div>
 
     <!-- IBU -->
     <div class="card reveal d1">
       <div class="tape"></div>
-      <div class="photo-zone" id="pz-ibu" onclick="triggerUpload('ibu')">
+      <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <img id="img-ibu" src="" alt="Foto Ibu">
-        <div class="ph-p" id="pp-ibu"><div class="ph-ic">👩</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-ibu"><div class="upload-pct" id="pct-ibu">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-ibu"></div></div></div>
-        <div class="cloud-bdg">Lokal</div>
-        <div class="ph-badge" id="pb-ibu">Ganti Foto</div>
+        <!-- GANTI LINK FOTO DISINI -->
+        <img id="img-ibu" src="https://i.imgur.com/placeholder.jpg" alt="Foto Ibu" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A9%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
-      <input type="file" id="fi-ibu" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'ibu')">
       <div class="card-body">
         <div class="card-role">Cahaya Keluarga</div>
         <div class="card-name">Ibu <em>Ratu Dapur Sragen</em></div>
@@ -496,32 +329,26 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">1 Okt 1981</span>
           <span class="card-age" id="age-ibu"></span>
         </div>
-        <div class="ew"><span class="eh">Edit Deskripsi</span>
-          <div class="editable" contenteditable="true" id="desc-ibu" onblur="saveText('desc-ibu',this.innerHTML)" onfocus="startEdit(this)">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh. Hafal jadwal semua orang lebih akurat dari Google Calendar. Marah paling 5 menit, habis itu sudah masak lagi sambil nyanyi. Punya radar pendeteksi kebohongan — akurasi 99.9%.</div>
-        </div>
+        <div class="editable" id="desc-ibu">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh. Hafal jadwal semua orang lebih akurat dari Google Calendar. Marah paling 5 menit, habis itu sudah masak lagi sambil nyanyi. Punya radar pendeteksi kebohongan — akurasi 99.9%.</div>
         <div class="card-traits"><span class="trait">🍳 Chef Keluarga</span><span class="trait">🌺 Ibu RT Teladan</span><span class="trait">📱 Ratu WA Grup</span></div>
       </div>
       <div class="card-actions">
         <a class="wa-btn" href="https://wa.me/6282122483362" target="_blank">
           <svg viewBox="0 0 24 24" fill="white" style="width:16px;height:16px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Ibu <span class="wa-num">0821-2248-3362</span>
+          Chat Ibu
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx" contenteditable="true" id="ff-ibu" onblur="saveText('ff-ibu',this.innerHTML)">Fun fact: Ibu bisa masak nasi goreng sambil nelpon, ngawasin adik belajar, sambil nonton sinetron. Multitasking level dewa.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Ibu bisa masak nasi goreng sambil nelpon, ngawasin adik belajar, sambil nonton sinetron. Multitasking level dewa.</span></div>
     </div>
 
     <!-- SAYA -->
     <div class="card reveal d2">
       <div class="tape"></div>
-      <div class="photo-zone" id="pz-saya" onclick="triggerUpload('saya')">
+      <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <img id="img-saya" src="" alt="Foto Saya">
-        <div class="ph-p" id="pp-saya"><div class="ph-ic">🧑</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-saya"><div class="upload-pct" id="pct-saya">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-saya"></div></div></div>
-        <div class="cloud-bdg">Lokal</div>
-        <div class="ph-badge" id="pb-saya">Ganti Foto</div>
+        <!-- GANTI LINK FOTO DISINI -->
+        <img id="img-saya" src="https://i.imgur.com/placeholder.jpg" alt="Foto Saya" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%A7%91%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
-      <input type="file" id="fi-saya" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'saya')">
       <div class="card-body">
         <div class="card-role">Anak Sulung</div>
         <div class="card-name">Saya <em>Produk Asli Sragen</em></div>
@@ -530,32 +357,26 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">15 Jun 2005</span>
           <span class="card-age" id="age-saya"></span>
         </div>
-        <div class="ew"><span class="eh">Edit Deskripsi</span>
-          <div class="editable" contenteditable="true" id="desc-saya" onblur="saveText('desc-saya',this.innerHTML)" onfocus="startEdit(this)">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede tapi masih disuruh ibu beli kecap. Sedang dalam proses membuktikan bahwa orang Sragen juga bisa buat hal-hal keren. Buktinya: website ini. Penggemar kopi hitam dan tidur siang yang terlalu lama.</div>
-        </div>
+        <div class="editable" id="desc-saya">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede tapi masih disuruh ibu beli kecap. Sedang dalam proses membuktikan bahwa orang Sragen juga bisa buat hal-hal keren. Buktinya: website ini. Penggemar kopi hitam dan tidur siang yang terlalu lama.</div>
         <div class="card-traits"><span class="trait">💻 Tech Enthusiast</span><span class="trait">🎨 Kreatif Dadakan</span><span class="trait">💤 Tidur Siang Pro</span></div>
       </div>
       <div class="card-actions">
         <a class="wa-btn" href="https://wa.me/6282111095385" target="_blank">
           <svg viewBox="0 0 24 24" fill="white" style="width:16px;height:16px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Saya <span class="wa-num">0821-1109-5385</span>
+          Chat Saya
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx" contenteditable="true" id="ff-saya" onblur="saveText('ff-saya',this.innerHTML)">Fun fact: Sering kasih solusi canggih untuk masalah rumah. Sayangnya solusinya selalu butuh WiFi kencang dan sering ditolak Bapak.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Sering kasih solusi canggih untuk masalah rumah. Sayangnya solusinya selalu butuh WiFi kencang dan sering ditolak Bapak.</span></div>
     </div>
 
     <!-- ADIK -->
     <div class="card reveal d3">
       <div class="tape"></div>
-      <div class="photo-zone" id="pz-adik" onclick="triggerUpload('adik')">
+      <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <img id="img-adik" src="" alt="Foto Adik">
-        <div class="ph-p" id="pp-adik"><div class="ph-ic">👦</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-adik"><div class="upload-pct" id="pct-adik">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-adik"></div></div></div>
-        <div class="cloud-bdg">Lokal</div>
-        <div class="ph-badge" id="pb-adik">Ganti Foto</div>
+        <!-- GANTI LINK FOTO DISINI -->
+        <img id="img-adik" src="https://i.imgur.com/placeholder.jpg" alt="Foto Adik" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
-      <input type="file" id="fi-adik" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'adik')">
       <div class="card-body">
         <div class="card-role">Bungsu Kesayangan</div>
         <div class="card-name">Adik <em>Penguasa Charger</em></div>
@@ -564,18 +385,16 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">21 Apr 2016</span>
           <span class="card-age" id="age-adik"></span>
         </div>
-        <div class="ew"><span class="eh">Edit Deskripsi</span>
-          <div class="editable" contenteditable="true" id="desc-adik" onblur="saveText('desc-adik',this.innerHTML)" onfocus="startEdit(this)">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Hidupnya penuh privilege tapi selalu pura-pura tidak tahu. Ahli menghilangkan snack dalam 0.3 detik lalu menyalahkan orang lain. Tapi di balik semua kenakalan itu — ada adik yang selalu cerita ke kakak kalau lagi sedih. Dan itu yang paling berharga.</div>
-        </div>
+        <div class="editable" id="desc-adik">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Hidupnya penuh privilege tapi selalu pura-pura tidak tahu. Ahli menghilangkan snack dalam 0.3 detik lalu menyalahkan orang lain. Tapi di balik semua kenakalan itu — ada adik yang selalu cerita ke kakak kalau lagi sedih. Dan itu yang paling berharga.</div>
         <div class="card-traits"><span class="trait">🎮 Gamer Sejati</span><span class="trait">📚 Pelajar (Katanya)</span><span class="trait">🍪 Snack Destroyer</span></div>
       </div>
       <div class="card-actions">
         <div class="wa-btn disabled">
           <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0;opacity:.35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Adik masih kecil 🔒 <span class="wa-num" style="opacity:.3">9 thn</span>
+          Adik masih kecil 🔒
         </div>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx" contenteditable="true" id="ff-adik" onblur="saveText('ff-adik',this.innerHTML)">Fun fact: Lahir di Tangerang tapi ngomongnya sudah ngapak. Punya sonar khusus kata "makan" — dengar dari 3 kamar, bahkan saat headphone full volume.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Lahir di Tangerang tapi ngomongnya sudah ngapak. Punya sonar khusus kata "makan" — dengar dari 3 kamar, bahkan saat headphone full volume.</span></div>
     </div>
 
   </div>
@@ -588,79 +407,6 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="reveal d2"><div class="stat-num">3</div><div class="stat-label">Kota Asal</div></div>
   <div class="reveal d3"><div class="stat-num">∞</div><div class="stat-label">Kenangan Tercipta</div></div>
 </div>
-
-<!-- ═══ MUSIK ═══ -->
-<section id="music-section">
-  <div class="ms-tag">✦ Playlist Keluarga ✦</div>
-  <div class="ms-title reveal">Lagu <em>Pengiring Kenangan</em></div>
-  <div class="ms-sub reveal d1">Upload MP3 · Tersimpan di browser · Hanya untuk perangkat ini</div>
-
-  <div class="playlist" id="playlist">
-    <!-- Contoh lagu default -->
-    <div class="song-card reveal" onclick="playTrack(0)">
-      <div class="song-num">01</div>
-      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-      <div class="song-disc">🎵</div>
-      <div class="song-info">
-        <div class="song-title">Bintang Kecil</div>
-        <div class="song-artist">Lagu Keluarga</div>
-      </div>
-      <div class="song-actions">
-        <span class="song-tag-lbl">MP3</span>
-      </div>
-    </div>
-    <div class="song-card reveal" onclick="playTrack(1)">
-      <div class="song-num">02</div>
-      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-      <div class="song-disc">🎵</div>
-      <div class="song-info">
-        <div class="song-title">Pelangi</div>
-        <div class="song-artist">Lagu Anak</div>
-      </div>
-      <div class="song-actions">
-        <span class="song-tag-lbl">MP3</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="music-upload-area" onclick="document.getElementById('music-fi').click()">
-    <span class="mua-icon">🎵</span>
-    <div class="mua-title">Upload Lagu MP3</div>
-    <div class="mua-sub">Klik untuk pilih file MP3</div>
-    <div class="mua-note">Format MP3 · Maks 5MB · Disimpan di browser</div>
-  </div>
-  <input type="file" id="music-fi" accept=".mp3,audio/mpeg" style="display:none" onchange="uploadMusicLocal(this)">
-
-  <div id="music-upload-prog">
-    <div class="mup-bar-wrap"><div class="mup-bar-fill" id="mup-fill"></div></div>
-    <div class="mup-label" id="mup-lbl">Memproses...</div>
-  </div>
-
-  <div class="player-controls" id="player-ctrl">
-    <div class="pc-now">
-      <div class="pc-thumb" id="pc-thumb">🎵</div>
-      <div class="pc-info">
-        <div class="pc-title" id="pc-title">—</div>
-        <div class="pc-artist">Playlist Keluarga</div>
-      </div>
-    </div>
-    <div class="pc-btns">
-      <button class="pc-btn" onclick="prevTrack()">⏮</button>
-      <button class="pc-btn main" id="pc-play-btn" onclick="togglePlay()">▶</button>
-      <button class="pc-btn" onclick="nextTrack()">⏭</button>
-    </div>
-    <div class="pc-prog-wrap">
-      <div class="pc-prog-bar" onclick="seekTrack(event)">
-        <div class="pc-prog-fill" id="pc-prog-fill"></div>
-      </div>
-      <div class="pc-times"><span class="pc-time" id="pc-cur">0:00</span><span class="pc-time" id="pc-dur">—</span></div>
-    </div>
-    <div class="pc-vol-row">
-      <span class="pc-vol-lbl">🔊</span>
-      <input type="range" min="0" max="1" step="0.01" value="0.8" oninput="audioEl.volume=this.value">
-    </div>
-  </div>
-</section>
 
 <!-- MOTTO -->
 <section id="motto">
@@ -711,17 +457,17 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   </div>
 </section>
 
-<!-- DOWNLOAD -->
+<!-- DOWNLOAD SECTION - SEKARANG UNTUK WHATSAPP WEB -->
 <section id="download-section">
-  <div class="dl-tag">✦ Unduh Aplikasi ✦</div>
-  <div class="dl-title reveal">Download <em>WhatsApp</em></div>
-  <p class="dl-sub reveal d1">Supaya bisa langsung chat sama keluarga — dari mana saja, kapan saja.</p>
+  <div class="dl-tag">✦ Chat via WhatsApp ✦</div>
+  <div class="dl-title reveal">Hubungi <em>Keluarga</em></div>
+  <p class="dl-sub reveal d1">Klik langsung chat dengan anggota keluarga via WhatsApp Web</p>
   <div class="dl-grid">
-    <a class="dl-card reveal" href="https://play.google.com/store/apps/details?id=com.whatsapp" target="_blank"><span class="dl-icon">🤖</span><div class="dl-name">Android</div><div class="dl-desc">Google Play Store</div><span class="dl-btn">⬇ Unduh Gratis</span></a>
-    <a class="dl-card reveal d1" href="https://apps.apple.com/app/whatsapp-messenger/id310633997" target="_blank"><span class="dl-icon">🍎</span><div class="dl-name">iPhone / iOS</div><div class="dl-desc">Apple App Store</div><span class="dl-btn">⬇ Unduh Gratis</span></a>
-    <a class="dl-card reveal d2" href="https://www.whatsapp.com/download" target="_blank"><span class="dl-icon">💻</span><div class="dl-name">Desktop / PC</div><div class="dl-desc">Windows &amp; Mac</div><span class="dl-btn">⬇ Unduh Gratis</span></a>
+    <a class="dl-card reveal" href="https://wa.me/6285311360759" target="_blank"><span class="dl-icon">👨</span><div class="dl-name">Bapak</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
+    <a class="dl-card reveal d1" href="https://wa.me/6282122483362" target="_blank"><span class="dl-icon">👩</span><div class="dl-name">Ibu</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
+    <a class="dl-card reveal d2" href="https://wa.me/6282111095385" target="_blank"><span class="dl-icon">🧑</span><div class="dl-name">Saya</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
   </div>
-  <p class="dl-note">Semua link resmi WhatsApp · Gratis · Aman · End-to-end Encrypted</p>
+  <p class="dl-note">Klik tombol di atas untuk langsung chat di WhatsApp (buka di HP atau WhatsApp Web)</p>
 </section>
 
 <footer>
@@ -733,18 +479,10 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 </footer>
 
 <script>
-/* ============================================
-   VERSI TANPA FIREBASE & CLOUDINARY
-   Penyimpanan menggunakan LocalStorage
-   ============================================ */
-
-// Elemen global
+/* ========== JAVASCRIPT ========== */
 const audioEl = document.getElementById('audio-el');
-let tracks = []; // Array lagu: { name, url (base64), duration }
-let currentTrack = -1;
-let ebTimer;
 
-/* ========== LOADER ========== */
+// LOADER
 const ldFill = document.getElementById('ld-fill');
 let lp = 0;
 const lv = setInterval(() => { lp += Math.random()*22; if(lp>=100){lp=100;clearInterval(lv);} ldFill.style.width=lp+'%'; }, 130);
@@ -752,11 +490,10 @@ window.addEventListener('load', () => {
   setTimeout(() => { 
     ldFill.style.width='100%'; 
     setTimeout(()=>document.getElementById('loader').classList.add('gone'),500);
-    loadSavedData(); // Load semua data tersimpan
   },600); 
 });
 
-/* ========== PARTICLES ========== */
+// PARTICLES
 const cv=document.getElementById('pcanvas'),ctx=cv.getContext('2d');
 let W,H,pts=[];
 function rsz(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
@@ -765,19 +502,19 @@ const PC=['rgba(184,137,42,','rgba(201,169,110,','rgba(155,58,30,','rgba(90,107,
 for(let i=0;i<50;i++) pts.push({x:Math.random()*W||100,y:Math.random()*H||100,r:Math.random()*2+.5,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,c:PC[Math.floor(Math.random()*PC.length)],a:Math.random()*.4+.1});
 (function ap(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c+p.a+')';ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;});requestAnimationFrame(ap);})();
 
-/* ========== CLOCK ========== */
+// CLOCK
 const DAYS=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const MONS=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 function tick(){
   const n=new Date();
   const t=`${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}:${String(n.getSeconds()).padStart(2,'0')}`;
-  ['live-clock'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=t+' WIB';});
-  const ic=document.getElementById('ib-clk');if(ic)ic.textContent=t;
-  const id2=document.getElementById('ib-date');if(id2)id2.textContent=`${DAYS[n.getDay()]}, ${n.getDate()} ${MONS[n.getMonth()]} ${n.getFullYear()}`;
+  const lc=document.getElementById('live-clock'); if(lc) lc.textContent=t+' WIB';
+  const ic=document.getElementById('ib-clk'); if(ic) ic.textContent=t;
+  const id2=document.getElementById('ib-date'); if(id2) id2.textContent=`${DAYS[n.getDay()]}, ${n.getDate()} ${MONS[n.getMonth()]} ${n.getFullYear()}`;
 }
 setInterval(tick,1000);tick();
 
-/* ========== SCROLL PROGRESS ========== */
+// SCROLL
 const sprg=document.getElementById('sprg'),bTop=document.getElementById('back-top');
 window.addEventListener('scroll',()=>{
   const s=window.scrollY/(document.body.scrollHeight-window.innerHeight);
@@ -787,7 +524,7 @@ window.addEventListener('scroll',()=>{
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08,rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* ========== AGE CALCULATION ========== */
+// AGE
 function calcAge(y,m,d){const n=new Date(),b=new Date(y,m-1,d);let a=n.getFullYear()-b.getFullYear();if(n.getMonth()-b.getMonth()<0||(n.getMonth()===b.getMonth()&&n.getDate()<b.getDate()))a--;return a;}
 function daysUntil(m,d){const n=new Date();let nx=new Date(n.getFullYear(),m-1,d);if(nx<=n)nx.setFullYear(n.getFullYear()+1);return Math.ceil((nx-n)/864e5);}
 [{id:'age-bapak',y:1980,m:9,d:17},{id:'age-ibu',y:1981,m:10,d:1},{id:'age-saya',y:2005,m:6,d:15},{id:'age-adik',y:2016,m:4,d:21}].forEach(({id,y,m,d})=>{
@@ -798,293 +535,11 @@ function daysUntil(m,d){const n=new Date();let nx=new Date(n.getFullYear(),m-1,d
   else if(soon<=30){el.textContent=age+' thn 🎂';el.title=`${soon} hari lagi!`;el.style.background='rgba(184,137,42,.15)';}
 });
 
-/* ========== STATS ========== */
+// STATS
 const sd=document.getElementById('stat-days');
 if(sd){const td=Math.floor((new Date()-new Date(2016,3,21))/864e5);let c=0,step=Math.ceil(td/70);const ct=setInterval(()=>{c=Math.min(c+step,td);sd.textContent=c.toLocaleString('id');if(c>=td)clearInterval(ct);},20);}
 
-/* ========== FOTO: UPLOAD & SIMPAN KE LOCALSTORAGE (BASE64) ========== */
-function triggerUpload(member) {
-  document.getElementById('fi-'+member).click();
-}
-
-function uploadPhoto(input, member) {
-  const file = input.files[0];
-  if (!file) return;
-
-  if (file.size > 5 * 1024 * 1024) {
-    showToast('⚠ Foto terlalu besar. Maksimal 5MB.');
-    return;
-  }
-
-  // Show progress overlay
-  const ov  = document.getElementById('ov-'+member);
-  const pct = document.getElementById('pct-'+member);
-  const bar = document.getElementById('bar-'+member);
-  ov.classList.add('show');
-
-  const reader = new FileReader();
-  reader.onprogress = (e) => {
-    if (e.lengthComputable) {
-      const p = Math.round((e.loaded/e.total)*100);
-      pct.textContent = p+'%';
-      bar.style.width = p+'%';
-    }
-  };
-  
-  reader.onload = () => {
-    const base64 = reader.result;
-    
-    // Simpan ke LocalStorage
-    try {
-      localStorage.setItem('foto_'+member, base64);
-      showToast('✅ Foto tersimpan di browser!');
-    } catch(e) {
-      showToast('⚠ Gagal menyimpan. Ukuran mungkin terlalu besar.');
-    }
-    
-    ov.classList.remove('show');
-    applyPhoto(member, base64);
-    input.value = '';
-  };
-  
-  reader.onerror = () => {
-    ov.classList.remove('show');
-    showToast('❌ Gagal membaca file');
-  };
-  
-  reader.readAsDataURL(file);
-}
-
-function applyPhoto(member, url) {
-  const img = document.getElementById('img-'+member);
-  const pp  = document.getElementById('pp-'+member);
-  const pz  = document.getElementById('pz-'+member);
-  const pb  = document.getElementById('pb-'+member);
-  if (!img) return;
-  img.src = url;
-  img.onload = () => {
-    img.classList.add('loaded');
-    if (pp) pp.classList.add('gone');
-    if (pz) pz.classList.add('has-photo');
-    if (pb) pb.textContent = '✓ Ganti Foto';
-  };
-}
-
-/* ========== TEKS EDITABLE ========== */
-function startEdit(el) { 
-  el.closest('.card')?.classList.add('editing'); 
-  document.getElementById('edit-banner').classList.add('show'); 
-  clearTimeout(ebTimer); 
-}
-
-function saveText(fieldId, html) {
-  document.querySelector('.card.editing')?.classList.remove('editing');
-  ebTimer = setTimeout(() => document.getElementById('edit-banner').classList.remove('show'), 800);
-  
-  // Simpan ke LocalStorage
-  try {
-    localStorage.setItem(fieldId, html);
-    showToast('✅ Tersimpan di browser!');
-  } catch(e) {
-    showToast('⚠ Gagal menyimpan');
-  }
-}
-
-/* ========== LOAD SEMUA DATA TERSIMPAN ========== */
-function loadSavedData() {
-  // Load foto
-  ['bapak','ibu','saya','adik'].forEach(m => {
-    const savedFoto = localStorage.getItem('foto_'+m);
-    if (savedFoto) applyPhoto(m, savedFoto);
-  });
-  
-  // Load teks
-  ['desc-bapak','desc-ibu','desc-saya','desc-adik','ff-bapak','ff-ibu','ff-saya','ff-adik'].forEach(id => {
-    const saved = localStorage.getItem(id);
-    if (saved) {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = saved;
-    }
-  });
-  
-  // Load musik dari localStorage
-  loadMusicFromStorage();
-}
-
-/* ========== MUSIK LOKAL (BASE64) ========== */
-function uploadMusicLocal(input) {
-  const file = input.files[0];
-  if (!file) return;
-
-  if (!file.type.includes('audio')) {
-    showToast('⚠ Harus file audio');
-    return;
-  }
-
-  if (file.size > 5 * 1024 * 1024) {
-    showToast('⚠ File terlalu besar. Maks 5MB.');
-    return;
-  }
-
-  const name = file.name.replace(/\.mp3$/i,'').replace(/_/g,' ');
-  const prog = document.getElementById('music-upload-prog');
-  const fill = document.getElementById('mup-fill');
-  const lbl  = document.getElementById('mup-lbl');
-  prog.classList.add('show');
-  lbl.textContent = 'Memproses "'+name+'"...';
-
-  const reader = new FileReader();
-  reader.onprogress = (e) => {
-    if (e.lengthComputable) {
-      fill.style.width = Math.round((e.loaded/e.total)*100)+'%';
-    }
-  };
-  
-  reader.onload = () => {
-    const base64 = reader.result;
-    
-    // Simpan ke localStorage
-    let musicList = [];
-    try {
-      const saved = localStorage.getItem('music_list');
-      if (saved) musicList = JSON.parse(saved);
-      
-      musicList.push({
-        name: name,
-        url: base64,
-        id: Date.now()
-      });
-      
-      localStorage.setItem('music_list', JSON.stringify(musicList));
-      showToast('✅ "'+name+'" tersimpan!');
-      
-    } catch(e) {
-      showToast('⚠ Gagal menyimpan. Ukuran mungkin terlalu besar.');
-    }
-    
-    prog.classList.remove('show');
-    fill.style.width = '0';
-    input.value = '';
-    
-    // Refresh playlist
-    loadMusicFromStorage();
-  };
-  
-  reader.onerror = () => {
-    prog.classList.remove('show');
-    showToast('❌ Gagal membaca file');
-  };
-  
-  reader.readAsDataURL(file);
-}
-
-function loadMusicFromStorage() {
-  const playlist = document.getElementById('playlist');
-  if (!playlist) return;
-  
-  // Hapus semua kecuali yang default? Lebih baik refresh semua
-  // Tapi kita akan rebuild berdasarkan localStorage
-  try {
-    const saved = localStorage.getItem('music_list');
-    tracks = saved ? JSON.parse(saved) : [];
-    
-    // Hapus semua lagu dari DOM
-    playlist.innerHTML = '';
-    
-    if (tracks.length === 0) {
-      // Tambah lagu default
-      tracks = [
-        { name: 'Bintang Kecil', url: 'default1', id: 1 },
-        { name: 'Pelangi', url: 'default2', id: 2 }
-      ];
-    }
-    
-    // Render ulang
-    tracks.forEach((track, idx) => {
-      const div = document.createElement('div');
-      div.className = 'song-card reveal';
-      div.onclick = () => playTrack(idx);
-      div.innerHTML = `
-        <div class="song-num">${String(idx+1).padStart(2,'0')}</div>
-        <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-        <div class="song-disc">🎵</div>
-        <div class="song-info">
-          <div class="song-title">${track.name}</div>
-          <div class="song-artist">Playlist Keluarga</div>
-        </div>
-        <div class="song-actions">
-          <span class="song-tag-lbl">MP3</span>
-        </div>
-      `;
-      playlist.appendChild(div);
-      setTimeout(() => div.classList.add('visible'), 60);
-    });
-    
-  } catch(e) {
-    console.error('Gagal load musik:', e);
-  }
-}
-
-/* ========== PLAYER FUNCTIONS ========== */
-function playTrack(idx) {
-  if (idx < 0 || idx >= tracks.length) return;
-  
-  const track = tracks[idx];
-  
-  // Untuk lagu default (bukan base64), kita perlu URL
-  if (track.url === 'default1') {
-    // Buat audio sederhana (sebenarnya tidak bisa, tapi kita beri dummy)
-    showToast('⚠ Lagu default hanya contoh');
-    return;
-  }
-  if (track.url === 'default2') {
-    showToast('⚠ Lagu default hanya contoh');
-    return;
-  }
-  
-  currentTrack = idx;
-  audioEl.src = track.url;
-  audioEl.volume = 0.8;
-  audioEl.play().then(() => {
-    document.getElementById('pc-title').textContent = track.name;
-    document.getElementById('pc-play-btn').textContent = '⏸';
-    document.getElementById('pc-thumb').classList.add('spin');
-    document.getElementById('player-ctrl').classList.add('show');
-    document.querySelectorAll('.song-card').forEach((c,i) => c.classList.toggle('playing', i===idx));
-    showToast('▶ '+track.name);
-  }).catch(e => showToast('❌ Gagal memutar: '+e.message));
-}
-
-audioEl.addEventListener('timeupdate', () => {
-  if (!audioEl.duration) return;
-  const p = (audioEl.currentTime/audioEl.duration)*100;
-  document.getElementById('pc-prog-fill').style.width = p+'%';
-  document.getElementById('pc-cur').textContent = fmt(audioEl.currentTime);
-  document.getElementById('pc-dur').textContent = fmt(audioEl.duration);
-});
-audioEl.addEventListener('ended', () => nextTrack());
-audioEl.addEventListener('pause', () => {
-  document.getElementById('pc-play-btn').textContent = '▶';
-  document.getElementById('pc-thumb').classList.remove('spin');
-});
-
-function togglePlay() {
-  if (currentTrack < 0) { if (tracks.length) playTrack(0); return; }
-  audioEl.paused ? audioEl.play() : audioEl.pause();
-}
-function nextTrack() { playTrack((currentTrack+1) % tracks.length); }
-function prevTrack() { playTrack((currentTrack-1+tracks.length) % tracks.length); }
-function seekTrack(e) {
-  if (!audioEl.duration) return;
-  const r = e.currentTarget.getBoundingClientRect();
-  audioEl.currentTime = ((e.clientX-r.left)/r.width) * audioEl.duration;
-}
-function fmt(s) { 
-  if (isNaN(s)) return '0:00';
-  return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); 
-}
-
-/* ========== COUNTDOWN ========== */
+// COUNTDOWN
 const cdT = {bapak:{m:9,d:17,name:'Bapak',e:'👨'},ibu:{m:10,d:1,name:'Ibu',e:'👩'},saya:{m:6,d:15,name:'Saya',e:'🧑'},adik:{m:4,d:21,name:'Adik',e:'👦'}};
 let cdC='bapak', cdIv;
 function setCDTarget(who,btn) { cdC=who; document.querySelectorAll('.cd-who').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); clearInterval(cdIv); cdIv=setInterval(updateCD,1000); updateCD(); }
@@ -1099,15 +554,14 @@ function updateCD() {
 }
 cdIv=setInterval(updateCD,1000);updateCD();
 
-/* ========== FLOAT WA ========== */
+// FLOAT WA
 let fwaOpen=false;
 function toggleFWA(){fwaOpen=!fwaOpen;document.getElementById('fwa-list').classList.toggle('open',fwaOpen);}
 document.addEventListener('click',e=>{if(fwaOpen&&!e.target.closest('#float-wa')){fwaOpen=false;document.getElementById('fwa-list').classList.remove('open');}});
 
-/* ========== CARD TILT ========== */
+// CARD TILT
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
-    if(card.classList.contains('editing'))return;
     const r=card.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
     card.style.transform=`translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`;card.style.transition='box-shadow .4s';
@@ -1115,14 +569,9 @@ document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s';});
 });
 
-/* ========== TOAST ========== */
+// TOAST
 let tt;
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),3500);}
-
-// Inisialisasi
-document.querySelectorAll('.editable,.ff-tx').forEach(el => {
-  el.addEventListener('keydown', e => { if (e.key==='Enter'&&!e.shiftKey){e.preventDefault();el.blur();} });
-});
 </script>
 </body>
 </html>
