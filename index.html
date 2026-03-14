@@ -7,369 +7,578 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-/* ═══ RESET ════════════════════════════════ */
+/* ═══════════════════════ BASE ═══════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --cream:  #F8F0DC; --ivory:  #FDF6E8; --paper:  #EFE3C2;
-  --sepia:  #C9A96E; --brown:  #6B3D2E; --dark:   #2C1A0E;
-  --rust:   #9B3A1E; --sage:   #5A6B47; --gold:   #B8892A;
-  --warm:   #E8D5A3; --ink:    #3A2515;
-  --ff-serif: 'Playfair Display', serif;
-  --ff-body:  'Lora', serif;
-  --ff-mono:  'DM Mono', monospace;
+  --cream:#F8F0DC; --ivory:#FDF6E8; --paper:#EFE3C2;
+  --sepia:#C9A96E; --brown:#6B3D2E; --dark:#2C1A0E;
+  --rust:#9B3A1E; --sage:#5A6B47; --gold:#B8892A;
+  --warm:#E8D5A3; --ink:#3A2515; --wa:#25D366;
+  --ff-s:'Playfair Display',serif; --ff-b:'Lora',serif; --ff-m:'DM Mono',monospace;
 }
-html { scroll-behavior: smooth; }
-body { background: var(--cream); color: var(--ink); font-family: var(--ff-body); overflow-x: hidden; }
-body::before {
-  content: ''; position: fixed; inset: 0;
-  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(180,140,80,.05) 27px, rgba(180,140,80,.05) 28px);
-  pointer-events: none; z-index: 0;
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--ff-b);overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(180,140,80,.05) 27px,rgba(180,140,80,.05) 28px);
+  pointer-events:none;z-index:0;
 }
 
-/* ═══ CORNERS ═══ */
-.corner { position: fixed; width: 26px; height: 26px; border-color: var(--gold); border-style: solid; z-index: 9001; opacity: .45; pointer-events: none; }
-.c-tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
-.c-tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
-.c-bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
-.c-br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+/* ═══ CORNER DECOR ═══ */
+.corner{position:fixed;width:26px;height:26px;border-color:var(--gold);border-style:solid;z-index:9001;opacity:.45;pointer-events:none;}
+.c-tl{top:8px;left:8px;border-width:2px 0 0 2px;}.c-tr{top:8px;right:8px;border-width:2px 2px 0 0;}
+.c-bl{bottom:8px;left:8px;border-width:0 0 2px 2px;}.c-br{bottom:8px;right:8px;border-width:0 2px 2px 0;}
 
-/* ═══ HEADER ═══ */
-header {
-  position: relative; text-align: center;
-  padding: 5.5rem 2rem 4rem; background: var(--ivory);
-  border-bottom: 2px solid var(--warm); overflow: hidden; z-index: 1;
-}
-.hdr-shadow-text {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  font-family: var(--ff-serif); font-size: 17vw; font-weight: 900;
-  color: var(--sepia); opacity: .04; white-space: nowrap;
-  user-select: none; pointer-events: none; line-height: 1;
-}
-.stamp {
-  position: absolute; top: 2.2rem; right: 2.5rem;
-  width: 74px; height: 74px; border: 2px solid var(--rust);
-  border-radius: 3px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; color: var(--rust);
-  opacity: .3; transform: rotate(7deg); text-align: center;
-}
-.stamp-yr { font-family: var(--ff-mono); font-size: .52rem; letter-spacing: .15em; }
-.stamp-main { font-family: var(--ff-serif); font-size: 1.3rem; font-weight: 700; font-style: italic; line-height: 1; }
-.stamp-btm { font-family: var(--ff-mono); font-size: .46rem; letter-spacing: .18em; }
-.postmark { position: absolute; top: 2.8rem; left: 2.5rem; opacity: .13; transform: rotate(-10deg); }
-.pm-circle {
-  width: 56px; height: 56px; border: 2px solid var(--brown); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-mono); font-size: .4rem; text-transform: uppercase;
-  letter-spacing: .08em; color: var(--brown); text-align: center; line-height: 1.5;
-}
-.hdr-ornament { font-size: 1rem; color: var(--sepia); letter-spacing: 1.1em; margin-bottom: 1rem; opacity: .6; }
-.hdr-tag {
-  display: inline-block; font-family: var(--ff-mono); font-size: .62rem;
-  text-transform: uppercase; letter-spacing: .28em;
-  color: var(--gold); border: 1px solid var(--gold);
-  padding: .3rem 1.1rem; margin-bottom: 1.4rem; opacity: .8;
-}
-header h1 { font-family: var(--ff-serif); font-size: clamp(2.6rem,7vw,5.2rem); font-weight: 900; color: var(--dark); line-height: 1.05; margin-bottom: .4rem; }
-header h1 em { font-style: italic; color: var(--rust); }
-.hdr-sub { font-family: var(--ff-body); font-size: 1.05rem; font-style: italic; color: var(--brown); opacity: .75; }
-.hdr-quote { font-family: var(--ff-mono); font-size: .64rem; color: var(--sepia); letter-spacing: .07em; opacity: .6; margin-top: 1.4rem; }
-.hdr-quote::before { content: '— '; }
+/* ═══════════ PARTICLE CANVAS ═══════════ */
+#particle-canvas{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.55;}
 
-/* ═══ NAV ═══ */
-nav {
-  background: var(--dark); padding: .75rem 2rem;
-  display: flex; align-items: center; justify-content: center;
-  gap: 2.5rem; position: sticky; top: 0; z-index: 500;
-  border-bottom: 2px solid var(--gold);
+/* ═══════════ LOADER ═══════════ */
+#loader{
+  position:fixed;inset:0;background:var(--dark);z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
+  transition:opacity .8s .2s, transform .8s .2s;
 }
-nav a {
-  font-family: var(--ff-mono); font-size: .62rem; text-transform: uppercase;
-  letter-spacing: .2em; color: var(--warm); text-decoration: none;
-  opacity: .55; transition: opacity .3s, color .3s; position: relative; padding-bottom: 2px;
+#loader.gone{opacity:0;pointer-events:none;transform:translateY(-100%);}
+.loader-logo{font-family:var(--ff-s);font-size:2.2rem;font-style:italic;color:var(--cream);letter-spacing:.06em;}
+.loader-logo span{color:var(--sepia);}
+.loader-bar-wrap{width:200px;height:2px;background:rgba(245,223,188,.1);}
+.loader-fill{height:100%;background:var(--gold);width:0;transition:width .9s cubic-bezier(.4,0,.2,1);}
+.loader-sub{font-family:var(--ff-m);font-size:.58rem;color:var(--sepia);letter-spacing:.2em;text-transform:uppercase;opacity:.5;}
+
+/* ═══════════ HEADER ═══════════ */
+header{
+  position:relative;text-align:center;padding:6rem 2rem 4.5rem;
+  background:var(--ivory);border-bottom:2px solid var(--warm);overflow:hidden;z-index:2;
 }
-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s; }
-nav a:hover { opacity: 1; color: var(--gold); }
-nav a:hover::after { width: 100%; }
-
-/* ═══ DIVIDERS ═══ */
-.divider { text-align: center; padding: 3rem 0 1.8rem; position: relative; }
-.divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: calc(50% - 90px); height: 1px; background: linear-gradient(to right, transparent, var(--sepia)); opacity: .28; }
-.divider::before { left: 0; }
-.divider::after { right: 0; background: linear-gradient(to left, transparent, var(--sepia)); }
-.div-inner { display: inline-flex; align-items: center; gap: .8rem; font-family: var(--ff-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .24em; color: var(--sepia); opacity: .52; }
-
-/* ═══ SECTION INTRO ═══ */
-.sec-intro { text-align: center; padding: 0 2rem 3rem; }
-.sec-intro h2 { font-family: var(--ff-serif); font-size: clamp(1.9rem,4vw,3rem); font-weight: 900; color: var(--dark); line-height: 1.1; }
-.sec-intro h2 em { font-style: italic; color: var(--rust); }
-.sec-intro p { font-style: italic; color: var(--brown); font-size: .95rem; margin-top: .4rem; opacity: .7; }
-
-/* ═══ FAMILY GRID ═══ */
-#keluarga { padding: 0 2rem 5rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-.family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 2.8rem; }
-
-/* ═══ CARD ═══ */
-.card {
-  background: var(--ivory); border: 1px solid rgba(185,137,42,.22);
-  position: relative; overflow: visible;
-  transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .4s;
+.hdr-bg{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--ff-s);font-size:18vw;font-weight:900;color:var(--sepia);
+  opacity:.04;white-space:nowrap;user-select:none;pointer-events:none;line-height:1;
 }
-.card:hover { box-shadow: 5px 18px 42px rgba(44,26,14,.18); }
-
-/* tape */
-.tape {
-  position: absolute; top: -13px; left: 50%;
-  transform: translateX(-50%) rotate(-1.5deg);
-  width: 58px; height: 24px; background: rgba(210,190,135,.5);
-  border: 1px solid rgba(185,137,42,.18); z-index: 2;
+.stamp{
+  position:absolute;top:2rem;right:2.5rem;width:76px;height:76px;
+  border:2px solid var(--rust);border-radius:3px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--rust);opacity:.28;transform:rotate(7deg);text-align:center;
 }
-.tape::before { content: ''; position: absolute; inset: 3px; border: 1px dashed rgba(185,137,42,.18); }
-.card:nth-child(2) .tape { transform: translateX(-50%) rotate(1.9deg); }
-.card:nth-child(3) .tape { transform: translateX(-50%) rotate(-2.4deg); }
-.card:nth-child(4) .tape { transform: translateX(-50%) rotate(1.2deg); }
+.stamp-yr{font-family:var(--ff-m);font-size:.5rem;letter-spacing:.15em;}
+.stamp-main{font-family:var(--ff-s);font-size:1.3rem;font-weight:700;font-style:italic;line-height:1;}
+.stamp-btm{font-family:var(--ff-m);font-size:.44rem;letter-spacing:.18em;}
+.postmark{position:absolute;top:2.5rem;left:2.5rem;opacity:.12;transform:rotate(-10deg);}
+.pm-c{
+  width:58px;height:58px;border:2px solid var(--brown);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-m);font-size:.39rem;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--brown);text-align:center;line-height:1.5;
+}
+/* Live clock in header */
+.hdr-clock{
+  position:absolute;top:2rem;left:50%;transform:translateX(-50%);
+  font-family:var(--ff-m);font-size:.65rem;color:var(--sepia);
+  letter-spacing:.18em;opacity:.5;
+}
+.hdr-orn{font-size:1rem;color:var(--sepia);letter-spacing:1.1em;margin-bottom:1rem;opacity:.58;}
+.hdr-tag{
+  display:inline-block;font-family:var(--ff-m);font-size:.62rem;text-transform:uppercase;
+  letter-spacing:.28em;color:var(--gold);border:1px solid var(--gold);
+  padding:.3rem 1.1rem;margin-bottom:1.4rem;opacity:.8;
+}
+header h1{font-family:var(--ff-s);font-size:clamp(2.6rem,7vw,5.2rem);font-weight:900;color:var(--dark);line-height:1.05;margin-bottom:.4rem;}
+header h1 em{font-style:italic;color:var(--rust);}
+.hdr-sub{font-family:var(--ff-b);font-size:1.05rem;font-style:italic;color:var(--brown);opacity:.75;}
+.hdr-q{font-family:var(--ff-m);font-size:.63rem;color:var(--sepia);letter-spacing:.07em;opacity:.58;margin-top:1.2rem;}
+.hdr-q::before{content:'— ';}
+
+/* ═══════════ NAV ═══════════ */
+nav{
+  background:var(--dark);padding:.7rem 1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:2rem;
+  position:sticky;top:0;z-index:500;border-bottom:2px solid var(--gold);flex-wrap:wrap;
+}
+nav a{
+  font-family:var(--ff-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;
+  color:var(--warm);text-decoration:none;opacity:.52;
+  transition:opacity .3s,color .3s;position:relative;padding-bottom:2px;
+}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+nav a:hover{opacity:1;color:var(--gold);}
+nav a:hover::after{width:100%;}
+
+/* ═══════════ WEATHER BAR ═══════════ */
+#weather-bar{
+  background:linear-gradient(90deg,rgba(184,137,42,.12),rgba(91,107,71,.12));
+  border-bottom:1px solid rgba(184,137,42,.2);
+  padding:.55rem 2rem;display:flex;align-items:center;justify-content:center;gap:2rem;
+  font-family:var(--ff-m);font-size:.6rem;letter-spacing:.1em;color:var(--brown);
+  flex-wrap:wrap;position:relative;z-index:2;
+}
+.wb-item{display:flex;align-items:center;gap:.4rem;opacity:.7;}
+.wb-item span:first-child{font-size:.9rem;}
+
+/* ═══════════ DIVIDERS ═══════════ */
+.divider{text-align:center;padding:3rem 0 1.8rem;position:relative;}
+.divider::before,.divider::after{content:'';position:absolute;top:50%;width:calc(50% - 90px);height:1px;background:linear-gradient(to right,transparent,var(--sepia));opacity:.28;}
+.divider::before{left:0;}.divider::after{right:0;background:linear-gradient(to left,transparent,var(--sepia));}
+.div-inner{display:inline-flex;align-items:center;gap:.8rem;font-family:var(--ff-m);font-size:.66rem;text-transform:uppercase;letter-spacing:.24em;color:var(--sepia);opacity:.52;}
+
+.sec-intro{text-align:center;padding:0 2rem 3rem;}
+.sec-intro h2{font-family:var(--ff-s);font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--dark);line-height:1.1;}
+.sec-intro h2 em{font-style:italic;color:var(--rust);}
+.sec-intro p{font-style:italic;color:var(--brown);font-size:.95rem;margin-top:.4rem;opacity:.7;}
+
+/* ═══════════ FAMILY GRID ═══════════ */
+#keluarga{padding:0 2rem 5rem;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+.family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:2.8rem;}
+
+/* ═══════════ CARD ═══════════ */
+.card{
+  background:var(--ivory);border:1px solid rgba(185,137,42,.22);
+  position:relative;overflow:visible;
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;
+}
+.card:hover{box-shadow:5px 18px 42px rgba(44,26,14,.18);}
+.tape{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-1.5deg);
+  width:58px;height:24px;background:rgba(210,190,135,.5);
+  border:1px solid rgba(185,137,42,.18);z-index:2;
+}
+.tape::before{content:'';position:absolute;inset:3px;border:1px dashed rgba(185,137,42,.18);}
+.card:nth-child(2) .tape{transform:translateX(-50%) rotate(1.9deg);}
+.card:nth-child(3) .tape{transform:translateX(-50%) rotate(-2.4deg);}
+.card:nth-child(4) .tape{transform:translateX(-50%) rotate(1.2deg);}
 
 /* photo zone */
-.photo-zone {
-  position: relative; margin: 1.8rem 1.4rem 0; aspect-ratio: 3/3.4;
-  background: var(--paper); border: 1px solid rgba(185,137,42,.18);
-  overflow: hidden; display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: .5rem; cursor: pointer; transition: background .3s;
+.photo-zone{
+  position:relative;margin:1.8rem 1.4rem 0;aspect-ratio:3/3.4;
+  background:var(--paper);border:1px solid rgba(185,137,42,.18);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.5rem;cursor:pointer;transition:background .3s;
 }
-.photo-zone:hover { background: var(--warm); }
-.photo-zone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; filter: sepia(.15) contrast(1.04); transition: filter .5s; }
-.photo-zone img.loaded { display: block; }
-.photo-zone img:hover { filter: sepia(0) contrast(1); }
-.ph-placeholder { display: flex; flex-direction: column; align-items: center; gap: .45rem; pointer-events: none; }
-.ph-placeholder.gone { display: none; }
-.ph-icon { font-size: 2.2rem; opacity: .28; line-height: 1; }
-.ph-txt { font-family: var(--ff-mono); font-size: .57rem; text-transform: uppercase; letter-spacing: .13em; color: var(--brown); opacity: .4; text-align: center; line-height: 1.5; }
-.ph-badge {
-  position: absolute; bottom: .55rem; right: .55rem; font-family: var(--ff-mono); font-size: .52rem;
-  text-transform: uppercase; letter-spacing: .09em; background: rgba(44,26,14,.52); color: var(--warm);
-  padding: .22rem .5rem; border-radius: 2px; opacity: 0; transition: opacity .3s;
+.photo-zone:hover{background:var(--warm);}
+.photo-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;filter:sepia(.15) contrast(1.04);transition:filter .5s;}
+.photo-zone img.loaded{display:block;}
+.photo-zone img:hover{filter:sepia(0) contrast(1);}
+.ph-placeholder{display:flex;flex-direction:column;align-items:center;gap:.45rem;pointer-events:none;}
+.ph-placeholder.gone{display:none;}
+.ph-icon{font-size:2.2rem;opacity:.28;line-height:1;}
+.ph-txt{font-family:var(--ff-m);font-size:.57rem;text-transform:uppercase;letter-spacing:.13em;color:var(--brown);opacity:.4;text-align:center;line-height:1.5;}
+.ph-badge{
+  position:absolute;bottom:.55rem;right:.55rem;font-family:var(--ff-m);font-size:.52rem;
+  text-transform:uppercase;letter-spacing:.09em;background:rgba(44,26,14,.52);color:var(--warm);
+  padding:.22rem .5rem;border-radius:2px;opacity:0;transition:opacity .3s;
 }
-.photo-zone:hover .ph-badge { opacity: 1; }
-.photo-zone.has-photo .ph-badge { opacity: 1; background: rgba(90,107,71,.75); }
-.pco { position: absolute; width: 13px; height: 13px; border-color: var(--sepia); border-style: solid; opacity: .38; pointer-events: none; }
-.pco.tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
-.pco.tr { top: 4px; right: 4px; border-width: 1px 1px 0 0; }
-.pco.bl { bottom: 4px; left: 4px; border-width: 0 0 1px 1px; }
-.pco.br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
-.photo-input { display: none; }
+.photo-zone:hover .ph-badge{opacity:1;}
+.photo-zone.has-photo .ph-badge{opacity:1;background:rgba(90,107,71,.75);}
+.pco{position:absolute;width:13px;height:13px;border-color:var(--sepia);border-style:solid;opacity:.38;pointer-events:none;}
+.pco.tl{top:4px;left:4px;border-width:1px 0 0 1px;}.pco.tr{top:4px;right:4px;border-width:1px 1px 0 0;}
+.pco.bl{bottom:4px;left:4px;border-width:0 0 1px 1px;}.pco.br{bottom:4px;right:4px;border-width:0 1px 1px 0;}
+.photo-input{display:none;}
 
 /* card body */
-.card-body { padding: 1.1rem 1.4rem 1.4rem; }
-.card-role { font-family: var(--ff-mono); font-size: .58rem; text-transform: uppercase; letter-spacing: .2em; color: var(--gold); margin-bottom: .3rem; display: flex; align-items: center; gap: .5rem; }
-.card-role::before { content: ''; display: inline-block; width: 14px; height: 1px; background: var(--gold); }
-.card-name { font-family: var(--ff-serif); font-size: 1.45rem; font-weight: 700; color: var(--dark); line-height: 1.1; margin-bottom: .25rem; }
-.card-name em { font-style: italic; font-weight: 400; color: var(--rust); font-size: .92rem; display: block; margin-top: .08rem; }
+.card-body{padding:1.1rem 1.4rem .8rem;}
+.card-role{font-family:var(--ff-m);font-size:.58rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem;}
+.card-role::before{content:'';display:inline-block;width:14px;height:1px;background:var(--gold);}
+.card-name{font-family:var(--ff-s);font-size:1.42rem;font-weight:700;color:var(--dark);line-height:1.1;margin-bottom:.25rem;}
+.card-name em{font-style:italic;font-weight:400;color:var(--rust);font-size:.9rem;display:block;margin-top:.08rem;}
+.bday-row{display:flex;align-items:center;gap:.45rem;margin-bottom:.85rem;flex-wrap:wrap;}
+.card-origin{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--ff-m);font-size:.55rem;color:var(--sage);letter-spacing:.09em;text-transform:uppercase;background:rgba(90,107,71,.09);padding:.18rem .55rem;border:1px solid rgba(90,107,71,.2);border-radius:2px;}
+.card-origin::before{content:'📍';font-size:.68rem;}
+.card-bday{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--ff-m);font-size:.55rem;color:var(--rust);letter-spacing:.09em;background:rgba(155,58,30,.08);padding:.18rem .55rem;border:1px solid rgba(155,58,30,.18);border-radius:2px;}
+.card-bday::before{content:'🎂';font-size:.68rem;}
+.card-age{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--ff-m);font-size:.52rem;color:var(--gold);background:rgba(184,137,42,.1);padding:.18rem .5rem;border:1px solid rgba(184,137,42,.2);border-radius:2px;}
 
-/* BIRTHDATE BADGE */
-.bday-row {
-  display: flex; align-items: center; gap: .5rem; margin-bottom: .85rem; flex-wrap: wrap;
+/* EDITABLE DESC */
+.editable-wrap{position:relative;}
+.editable-wrap:hover .edit-hint{opacity:1;}
+.edit-hint{position:absolute;top:-20px;right:0;font-family:var(--ff-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;background:var(--dark);color:var(--gold);padding:.18rem .5rem;border-radius:2px;opacity:0;transition:opacity .25s;white-space:nowrap;pointer-events:none;z-index:10;}
+.edit-hint::after{content:' ✏';}
+.editable{
+  font-size:.85rem;color:var(--brown);line-height:1.78;font-style:italic;
+  border-top:1px dashed rgba(185,137,42,.22);padding-top:.8rem;margin-bottom:.5rem;
+  cursor:text;outline:none;border-bottom:1px dashed transparent;
+  transition:border-color .2s,background .2s,padding .2s;border-radius:2px;
 }
-.card-origin {
-  display: inline-flex; align-items: center; gap: .35rem;
-  font-family: var(--ff-mono); font-size: .55rem; color: var(--sage);
-  letter-spacing: .09em; text-transform: uppercase;
-  background: rgba(90,107,71,.09); padding: .18rem .55rem;
-  border: 1px solid rgba(90,107,71,.2); border-radius: 2px;
+.editable:hover{background:rgba(184,137,42,.05);border-bottom-color:rgba(184,137,42,.25);}
+.editable:focus{background:rgba(253,246,232,.9);border-bottom-color:var(--gold);border-top-color:var(--gold);padding:.55rem .5rem .8rem;font-style:normal;color:var(--ink);box-shadow:0 2px 12px rgba(44,26,14,.08);}
+
+.card-traits{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem;margin-bottom:.9rem;}
+.trait{font-family:var(--ff-m);font-size:.52rem;letter-spacing:.07em;color:var(--brown);background:var(--paper);padding:.2rem .5rem;border:1px solid rgba(185,137,42,.18);border-radius:2px;opacity:.78;}
+
+/* ═══ WA + ACTION BUTTONS ═══ */
+.card-actions{
+  display:flex;flex-direction:column;gap:.5rem;
+  padding:.9rem 1.4rem;border-top:1px dashed rgba(185,137,42,.22);
 }
-.card-origin::before { content: '📍'; font-size: .68rem; }
-.card-bday {
-  display: inline-flex; align-items: center; gap: .35rem;
-  font-family: var(--ff-mono); font-size: .55rem; color: var(--rust);
-  letter-spacing: .09em;
-  background: rgba(155,58,30,.08); padding: .18rem .55rem;
-  border: 1px solid rgba(155,58,30,.18); border-radius: 2px;
+.wa-btn{
+  display:flex;align-items:center;gap:.7rem;
+  background:var(--wa);color:#fff;text-decoration:none;
+  padding:.6rem 1rem;border-radius:3px;
+  font-family:var(--ff-m);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:transform .2s,box-shadow .2s,filter .2s;
+  position:relative;overflow:hidden;
 }
-.card-bday::before { content: '🎂'; font-size: .68rem; }
-.card-age {
-  display: inline-flex; align-items: center; gap: .3rem;
-  font-family: var(--ff-mono); font-size: .52rem; color: var(--gold);
-  background: rgba(184,137,42,.1); padding: .18rem .5rem;
-  border: 1px solid rgba(184,137,42,.2); border-radius: 2px;
+.wa-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.wa-btn:hover::before{transform:scaleX(1);}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.wa-btn svg{width:16px;height:16px;flex-shrink:0;}
+.wa-num{font-size:.52rem;opacity:.75;margin-left:auto;}
+/* No WA for adik (underage) */
+.wa-btn.disabled{background:rgba(180,140,80,.25);color:var(--brown);cursor:not-allowed;pointer-events:none;}
+
+/* fun fact */
+.fun-fact{background:var(--dark);padding:.7rem 1.4rem;display:flex;align-items:flex-start;gap:.45rem;border-top:2px solid var(--gold);}
+.ff-icon{font-size:.75rem;line-height:1.6;flex-shrink:0;}
+.ff-text{font-family:var(--ff-m);font-size:.56rem;color:var(--warm);line-height:1.72;letter-spacing:.02em;opacity:.85;cursor:text;outline:none;border-bottom:1px dashed transparent;transition:border-color .2s;}
+.ff-text:focus{border-bottom-color:var(--gold);opacity:1;}
+
+/* ═══ FAMILY STATS BAR ═══ */
+#stats-bar{
+  background:var(--dark);padding:2.5rem 4rem;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+  text-align:center;border-top:1px solid rgba(184,137,42,.18);border-bottom:2px solid var(--gold);
+  position:relative;z-index:2;
+}
+.stat-item{}
+.stat-num{font-family:var(--ff-s);font-size:2.8rem;font-weight:900;font-style:italic;color:var(--gold);line-height:1;margin-bottom:.3rem;}
+.stat-label{font-family:var(--ff-m);font-size:.55rem;text-transform:uppercase;letter-spacing:.18em;color:var(--warm);opacity:.5;}
+
+/* ═══════════ MOTTO ═══════════ */
+#motto{background:var(--dark);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;z-index:2;}
+#motto::before{content:'"';position:absolute;top:-3rem;left:50%;transform:translateX(-50%);font-family:var(--ff-s);font-size:24rem;color:var(--gold);opacity:.04;font-style:italic;pointer-events:none;line-height:1;}
+.motto-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.4rem;}
+.motto-q{font-family:var(--ff-s);font-size:clamp(1.45rem,3.5vw,2.4rem);font-style:italic;color:var(--cream);max-width:680px;margin:0 auto 1.4rem;line-height:1.48;}
+.motto-q span{color:var(--sepia);}
+.motto-attr{font-family:var(--ff-m);font-size:.62rem;color:var(--sepia);letter-spacing:.13em;text-transform:uppercase;opacity:.45;}
+.cities{display:flex;align-items:center;justify-content:center;gap:1.3rem;margin-top:3rem;flex-wrap:wrap;}
+.city{font-family:var(--ff-m);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);border:1px solid rgba(245,223,188,.14);padding:.38rem .95rem;opacity:.45;}
+.city-dot{color:var(--sepia);opacity:.28;font-size:.75rem;}
+
+/* ═══════════ COUNTDOWN ═══════════ */
+#countdown-section{
+  padding:4rem 2rem;background:var(--paper);text-align:center;
+  border-top:1px solid var(--warm);border-bottom:1px solid var(--warm);
+  position:relative;z-index:2;
+}
+.cd-title{font-family:var(--ff-s);font-size:1.5rem;font-weight:700;color:var(--dark);margin-bottom:.3rem;}
+.cd-title em{font-style:italic;color:var(--rust);}
+.cd-sub{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sepia);opacity:.6;margin-bottom:2rem;}
+.cd-who-btns{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:2rem;flex-wrap:wrap;}
+.cd-who{
+  font-family:var(--ff-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;
+  padding:.4rem 1rem;border:1px solid rgba(185,137,42,.3);background:transparent;
+  color:var(--brown);cursor:pointer;transition:all .25s;border-radius:2px;
+}
+.cd-who.active,.cd-who:hover{background:var(--dark);color:var(--gold);border-color:var(--gold);}
+.countdown-grid{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.cd-box{
+  background:var(--ivory);border:1px solid rgba(185,137,42,.25);
+  padding:1.2rem 1.5rem;min-width:80px;text-align:center;
+  position:relative;
+}
+.cd-box::after{content:'';position:absolute;inset:3px;border:1px dashed rgba(185,137,42,.1);pointer-events:none;}
+.cd-num{font-family:var(--ff-s);font-size:2.5rem;font-weight:900;color:var(--rust);line-height:1;}
+.cd-unit{font-family:var(--ff-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.15em;color:var(--sepia);opacity:.6;margin-top:.2rem;}
+.cd-colon{font-family:var(--ff-s);font-size:2.5rem;font-weight:900;color:var(--sepia);opacity:.3;line-height:1;align-self:flex-start;padding-top:1.2rem;}
+.cd-msg{font-family:var(--ff-b);font-size:1rem;font-style:italic;color:var(--brown);margin-top:1.5rem;opacity:.75;}
+
+/* ═══════════ MOMEN ═══════════ */
+#momen{padding:0 2rem 6rem;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+.moments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.mc{background:var(--ivory);border:1px solid rgba(185,137,42,.16);padding:1.5rem;position:relative;transition:transform .3s;}
+.mc:hover{transform:translateY(-4px);}
+.mc:nth-child(even){margin-top:2.2rem;}
+.mc-num{font-family:var(--ff-m);font-size:2.4rem;color:var(--sepia);opacity:.14;line-height:1;margin-bottom:.4rem;font-weight:400;}
+.mc h3{font-family:var(--ff-s);font-size:1.08rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;line-height:1.2;}
+.mc p{font-size:.86rem;color:var(--brown);line-height:1.74;font-style:italic;}
+.mc-tag{display:inline-block;margin-top:.9rem;font-family:var(--ff-m);font-size:.53rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:1px;opacity:.65;}
+
+/* ═══════════ DOWNLOAD SECTION ═══════════ */
+#download-section{
+  padding:5rem 2rem;background:var(--dark);text-align:center;
+  position:relative;overflow:hidden;z-index:2;
+}
+#download-section::before{
+  content:'⬇';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:20rem;color:var(--gold);opacity:.03;pointer-events:none;line-height:1;
+}
+.dl-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.2rem;}
+.dl-title{font-family:var(--ff-s);font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--cream);margin-bottom:.5rem;line-height:1.1;}
+.dl-title em{font-style:italic;color:var(--sepia);}
+.dl-sub{font-family:var(--ff-b);font-size:1rem;font-style:italic;color:var(--warm);opacity:.6;max-width:480px;margin:0 auto 3rem;}
+.dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:800px;margin:0 auto;}
+.dl-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.2);
+  padding:2rem 1.5rem;text-align:center;text-decoration:none;
+  transition:transform .3s,background .3s,border-color .3s;
+  position:relative;overflow:hidden;
+}
+.dl-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left;}
+.dl-card:hover::before{transform:scaleX(1);}
+.dl-card:hover{transform:translateY(-5px);background:rgba(184,137,42,.08);border-color:rgba(184,137,42,.4);}
+.dl-icon{font-size:2.8rem;margin-bottom:1rem;display:block;line-height:1;
+  filter:drop-shadow(0 4px 12px rgba(184,137,42,.3));
+  animation:floatIcon 3s ease-in-out infinite;
+}
+.dl-card:nth-child(2) .dl-icon{animation-delay:.5s;}
+.dl-card:nth-child(3) .dl-icon{animation-delay:1s;}
+@keyframes floatIcon{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.dl-name{font-family:var(--ff-s);font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:.3rem;}
+.dl-desc{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);letter-spacing:.08em;opacity:.55;margin-bottom:1.2rem;}
+.dl-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--ff-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;
+  background:var(--gold);color:var(--dark);padding:.55rem 1.2rem;
+  border-radius:2px;text-decoration:none;transition:background .2s;font-weight:700;
+}
+.dl-btn:hover{background:var(--warm);}
+.dl-note{margin-top:3rem;font-family:var(--ff-m);font-size:.58rem;color:var(--sepia);opacity:.4;letter-spacing:.08em;}
+
+/* ═══════════ MUSIC PLAYER ═══════════ */
+#music-player{
+  position:fixed;bottom:1.5rem;left:1.5rem;z-index:8000;
+  background:var(--dark);border:1px solid rgba(184,137,42,.35);
+  padding:.7rem 1rem;display:flex;align-items:center;gap:.8rem;
+  width:200px;transform:translateX(-220px);transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+#music-player.visible{transform:translateX(0);}
+.mp-icon{font-size:1.2rem;animation:spin 4s linear infinite;animation-play-state:paused;}
+#music-player.playing .mp-icon{animation-play-state:running;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.mp-info{flex:1;min-width:0;}
+.mp-title{font-family:var(--ff-m);font-size:.55rem;color:var(--gold);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mp-sub{font-family:var(--ff-m);font-size:.48rem;color:var(--warm);opacity:.5;letter-spacing:.06em;}
+.mp-btn{
+  background:none;border:1px solid rgba(184,137,42,.3);color:var(--gold);
+  width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:.8rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;flex-shrink:0;
+}
+.mp-btn:hover{background:rgba(184,137,42,.2);}
+.mp-wave{display:flex;align-items:flex-end;gap:2px;height:16px;}
+.mp-bar{width:3px;background:var(--gold);border-radius:2px;opacity:0;transition:opacity .3s;}
+#music-player.playing .mp-bar{opacity:1;}
+#music-player.playing .mp-bar:nth-child(1){animation:wave .8s ease-in-out infinite;}
+#music-player.playing .mp-bar:nth-child(2){animation:wave .8s ease-in-out infinite .15s;}
+#music-player.playing .mp-bar:nth-child(3){animation:wave .8s ease-in-out infinite .3s;}
+#music-player.playing .mp-bar:nth-child(4){animation:wave .8s ease-in-out infinite .45s;}
+@keyframes wave{0%,100%{height:4px;}50%{height:14px;}}
+
+/* ═══════════ FLOATING WA BUTTONS ═══════════ */
+#float-wa{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:8000;
+  display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;
+}
+.float-wa-toggle{
+  width:50px;height:50px;background:var(--wa);border-radius:50%;border:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.45);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  font-size:1.4rem;
+}
+.float-wa-toggle:hover{transform:scale(1.12);}
+.float-wa-list{
+  display:flex;flex-direction:column;gap:.5rem;
+  transform:scale(.8) translateY(20px);transform-origin:bottom right;
+  opacity:0;pointer-events:none;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+}
+.float-wa-list.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+.fwa-item{
+  display:flex;align-items:center;gap:.7rem;justify-content:flex-end;
+}
+.fwa-label{
+  font-family:var(--ff-m);font-size:.6rem;letter-spacing:.08em;
+  background:var(--dark);color:var(--warm);padding:.3rem .7rem;
+  border-radius:2px;white-space:nowrap;opacity:.9;
+}
+.fwa-btn{
+  width:40px;height:40px;background:var(--wa);border-radius:50%;border:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;box-shadow:0 3px 12px rgba(37,211,102,.35);
+  transition:transform .2s,box-shadow .2s;text-decoration:none;
+  animation:bounceIn .4s cubic-bezier(.34,1.56,.64,1) both;
+}
+.fwa-btn:hover{transform:scale(1.1);box-shadow:0 6px 18px rgba(37,211,102,.5);}
+.fwa-item:nth-child(1) .fwa-btn{animation-delay:.05s;}
+.fwa-item:nth-child(2) .fwa-btn{animation-delay:.1s;}
+.fwa-item:nth-child(3) .fwa-btn{animation-delay:.15s;}
+@keyframes bounceIn{from{transform:scale(.3);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+/* pulse ring on toggle */
+.wa-pulse{
+  position:absolute;width:50px;height:50px;border-radius:50%;
+  border:2px solid var(--wa);animation:waPulse 2s ease-out infinite;pointer-events:none;
+}
+@keyframes waPulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.8);opacity:0;}}
+
+/* ═══════════ SCROLL PROGRESS ═══════════ */
+#scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--rust),var(--gold),var(--sepia));
+  transform-origin:left;transform:scaleX(0);z-index:9999;
+  transition:transform .1s linear;
 }
 
-/* ═══ EDITABLE TEXT ═══ */
-/* The little pencil tooltip */
-.editable-wrap { position: relative; }
-.editable-wrap:hover .edit-hint { opacity: 1; }
-.edit-hint {
-  position: absolute; top: -22px; right: 0;
-  font-family: var(--ff-mono); font-size: .5rem;
-  text-transform: uppercase; letter-spacing: .1em;
-  background: var(--dark); color: var(--gold);
-  padding: .2rem .5rem; border-radius: 2px;
-  opacity: 0; transition: opacity .25s;
-  white-space: nowrap; pointer-events: none; z-index: 10;
+/* ═══════════ BACK TO TOP ═══════════ */
+#back-top{
+  position:fixed;bottom:5.5rem;right:1.5rem;z-index:8001;
+  width:38px;height:38px;background:var(--dark);border:1px solid rgba(184,137,42,.4);
+  color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;opacity:0;transform:translateY(20px);
+  transition:opacity .3s,transform .3s;
 }
-.edit-hint::after { content: ' ✏'; }
+#back-top.show{opacity:1;transform:translateY(0);}
+#back-top:hover{background:rgba(184,137,42,.15);}
 
-/* editable field — view mode */
-.editable {
-  font-size: .86rem; color: var(--brown); line-height: 1.78; font-style: italic;
-  border-top: 1px dashed rgba(185,137,42,.22); padding-top: .8rem; margin-bottom: .7rem;
-  cursor: text; position: relative;
-  border-bottom: 1px dashed transparent;
-  transition: border-color .2s, background .2s, padding .2s;
-  border-radius: 2px;
-  outline: none;
+/* ═══════════ TOAST ═══════════ */
+#toast{
+  position:fixed;top:1.5rem;right:1.5rem;background:var(--dark);color:var(--warm);
+  font-family:var(--ff-m);font-size:.66rem;letter-spacing:.07em;
+  padding:.8rem 1.5rem;border-left:3px solid var(--gold);z-index:9999;
+  transform:translateY(-80px);opacity:0;pointer-events:none;
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .3s;max-width:300px;
 }
-.editable:hover { background: rgba(184,137,42,.05); border-bottom-color: rgba(184,137,42,.25); }
-.editable:focus {
-  background: rgba(253,246,232,.9);
-  border-bottom-color: var(--gold);
-  border-top-color: var(--gold);
-  padding: .6rem .55rem .8rem;
-  font-style: normal; color: var(--ink);
-  box-shadow: 0 2px 12px rgba(44,26,14,.08);
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* edit banner */
+.edit-banner{display:none;position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);background:var(--dark);color:var(--warm);font-family:var(--ff-m);font-size:.62rem;letter-spacing:.07em;padding:.65rem 1.6rem;border:1px solid var(--gold);z-index:9999;white-space:nowrap;pointer-events:none;box-shadow:0 4px 20px rgba(44,26,14,.35);}
+.edit-banner.show{display:block;}
+
+/* ═══════════ FOOTER ═══════════ */
+footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2rem;text-align:center;position:relative;z-index:2;}
+.ft-name{font-family:var(--ff-s);font-size:1.55rem;font-weight:700;font-style:italic;color:var(--dark);margin-bottom:.25rem;}
+.ft-sub{font-family:var(--ff-m);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sepia);opacity:.5;margin-bottom:1rem;}
+.ft-orn{font-size:1rem;color:var(--sepia);letter-spacing:.8em;opacity:.38;}
+.ft-note{margin-top:.9rem;font-family:var(--ff-m);font-size:.52rem;color:var(--brown);opacity:.3;letter-spacing:.07em;}
+
+/* ═══════════ REVEAL ═══════════ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .78s ease,transform .78s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.12s;}.d2{transition-delay:.24s;}.d3{transition-delay:.36s;}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media(max-width:720px){
+  .family-grid{grid-template-columns:1fr 1fr;gap:1.8rem;}
+  .moments-grid{grid-template-columns:1fr;}
+  .mc:nth-child(even){margin-top:0;}
+  .stamp,.postmark{display:none;}
+  nav{gap:1rem;overflow-x:auto;justify-content:flex-start;padding:.7rem 1rem;}
+  #stats-bar{grid-template-columns:repeat(2,1fr);padding:2rem 1.5rem;}
+  .dl-grid{grid-template-columns:1fr;}
+  #music-player{width:170px;}
 }
-.editable:focus + .edit-done { display: flex; }
-
-/* done button that appears on focus */
-.edit-done {
-  display: none; align-items: center; gap: .4rem;
-  margin-top: -.4rem; margin-bottom: .7rem;
-}
-.edit-done button {
-  font-family: var(--ff-mono); font-size: .55rem; text-transform: uppercase;
-  letter-spacing: .1em; background: var(--sage); color: var(--cream);
-  border: none; padding: .28rem .7rem; cursor: pointer; border-radius: 2px;
-  transition: background .2s;
-}
-.edit-done button:hover { background: var(--dark); }
-.edit-done span { font-family: var(--ff-mono); font-size: .5rem; color: var(--brown); opacity: .45; }
-
-/* fun fact — also editable */
-.fun-fact {
-  background: var(--dark); padding: .7rem 1.4rem;
-  display: flex; align-items: flex-start; gap: .45rem;
-  border-top: 2px solid var(--gold);
-}
-.ff-icon { font-size: .75rem; line-height: 1.6; flex-shrink: 0; }
-.ff-text {
-  font-family: var(--ff-mono); font-size: .56rem;
-  color: var(--warm); line-height: 1.72; letter-spacing: .02em;
-  opacity: .85; cursor: text; outline: none;
-  border-bottom: 1px dashed transparent; transition: border-color .2s;
-}
-.ff-text:focus { border-bottom-color: var(--gold); opacity: 1; }
-.ff-text:hover { opacity: 1; }
-
-/* card traits */
-.card-traits { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .7rem; }
-.trait { font-family: var(--ff-mono); font-size: .53rem; letter-spacing: .07em; color: var(--brown); background: var(--paper); padding: .22rem .55rem; border: 1px solid rgba(185,137,42,.18); border-radius: 2px; opacity: .78; }
-
-/* edit-mode glowing border on whole card */
-.card.editing { box-shadow: 0 0 0 2px var(--gold), 5px 18px 42px rgba(44,26,14,.18); }
-
-/* ═══ EDIT-MODE BANNER ═══ */
-.edit-banner {
-  display: none;
-  position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
-  background: var(--dark); color: var(--warm); font-family: var(--ff-mono);
-  font-size: .62rem; letter-spacing: .07em;
-  padding: .65rem 1.6rem; border: 1px solid var(--gold);
-  z-index: 9999; white-space: nowrap; pointer-events: none;
-  box-shadow: 0 4px 20px rgba(44,26,14,.35);
-}
-.edit-banner.show { display: block; }
-
-/* ═══ MOTTO ═══ */
-#motto { background: var(--dark); padding: 5.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
-#motto::before { content: '"'; position: absolute; top: -3rem; left: 50%; transform: translateX(-50%); font-family: var(--ff-serif); font-size: 24rem; color: var(--gold); opacity: .04; font-style: italic; pointer-events: none; line-height: 1; }
-.motto-tag { font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); opacity: .65; margin-bottom: 1.4rem; }
-.motto-q { font-family: var(--ff-serif); font-size: clamp(1.45rem,3.5vw,2.4rem); font-style: italic; color: var(--cream); max-width: 680px; margin: 0 auto 1.4rem; line-height: 1.48; }
-.motto-q span { color: var(--sepia); }
-.motto-attr { font-family: var(--ff-mono); font-size: .62rem; color: var(--sepia); letter-spacing: .13em; text-transform: uppercase; opacity: .45; }
-.cities { display: flex; align-items: center; justify-content: center; gap: 1.3rem; margin-top: 3rem; flex-wrap: wrap; }
-.city { font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--warm); border: 1px solid rgba(245,223,188,.14); padding: .38rem .95rem; opacity: .45; }
-.city-dot { color: var(--sepia); opacity: .28; font-size: .75rem; }
-
-/* ═══ MOMEN ═══ */
-#momen { padding: 0 2rem 6rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-.moments-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; }
-.mc { background: var(--ivory); border: 1px solid rgba(185,137,42,.16); padding: 1.5rem; position: relative; transition: transform .3s; }
-.mc:hover { transform: translateY(-4px); }
-.mc:nth-child(even) { margin-top: 2.2rem; }
-.mc-num { font-family: var(--ff-mono); font-size: 2.4rem; color: var(--sepia); opacity: .14; line-height: 1; margin-bottom: .4rem; font-weight: 400; }
-.mc h3 { font-family: var(--ff-serif); font-size: 1.08rem; font-weight: 700; color: var(--dark); margin-bottom: .5rem; line-height: 1.2; }
-.mc p { font-size: .86rem; color: var(--brown); line-height: 1.74; font-style: italic; }
-.mc-tag { display: inline-block; margin-top: .9rem; font-family: var(--ff-mono); font-size: .53rem; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 1px; opacity: .65; }
-
-/* ═══ FOOTER ═══ */
-footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2.8rem 2rem; text-align: center; position: relative; z-index: 1; }
-.ft-name { font-family: var(--ff-serif); font-size: 1.55rem; font-weight: 700; font-style: italic; color: var(--dark); margin-bottom: .25rem; }
-.ft-sub { font-family: var(--ff-mono); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--sepia); opacity: .5; margin-bottom: 1rem; }
-.ft-orn { font-size: 1rem; color: var(--sepia); letter-spacing: .8em; opacity: .38; }
-.ft-note { margin-top: .9rem; font-family: var(--ff-mono); font-size: .52rem; color: var(--brown); opacity: .3; letter-spacing: .07em; }
-
-/* ═══ TOAST ═══ */
-#toast {
-  position: fixed; bottom: 2rem; right: 2rem; background: var(--dark); color: var(--warm);
-  font-family: var(--ff-mono); font-size: .66rem; letter-spacing: .07em;
-  padding: .8rem 1.5rem; border-left: 3px solid var(--gold); z-index: 9999;
-  transform: translateY(80px); opacity: 0; pointer-events: none;
-  transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .3s;
-}
-#toast.show { transform: translateY(0); opacity: 1; }
-
-/* ═══ REVEAL ═══ */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .78s ease, transform .78s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.d1 { transition-delay: .12s; } .d2 { transition-delay: .24s; } .d3 { transition-delay: .36s; }
-
-/* ═══ RESPONSIVE ═══ */
-@media (max-width: 720px) {
-  .family-grid { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
-  .moments-grid { grid-template-columns: 1fr; }
-  .mc:nth-child(even) { margin-top: 0; }
-  .stamp, .postmark { display: none; }
-  nav { gap: 1.6rem; overflow-x: auto; justify-content: flex-start; }
-}
-@media (max-width: 480px) {
-  .family-grid { grid-template-columns: 1fr; max-width: 310px; margin: 0 auto; }
+@media(max-width:480px){
+  .family-grid{grid-template-columns:1fr;max-width:310px;margin:0 auto;}
 }
 </style>
 </head>
 <body>
 
+<!-- Scroll progress bar -->
+<div id="scroll-progress"></div>
+
+<!-- Corner decor -->
 <div class="corner c-tl"></div><div class="corner c-tr"></div>
 <div class="corner c-bl"></div><div class="corner c-br"></div>
 
+<!-- Toast -->
 <div id="toast"></div>
 <div class="edit-banner" id="edit-banner">✏ Mode Edit Aktif — Klik teks untuk mengubahnya</div>
 
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Keluarga <span>Kita</span></div>
+  <div class="loader-bar-wrap"><div class="loader-fill" id="loader-fill"></div></div>
+  <div class="loader-sub">Memuat kenangan...</div>
+</div>
+
+<!-- Particle canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- FLOATING WA -->
+<div id="float-wa">
+  <div class="float-wa-list" id="fwa-list">
+    <div class="fwa-item">
+      <span class="fwa-label">Bapak 👨</span>
+      <a class="fwa-btn" href="https://wa.me/6285311360759" target="_blank" title="WA Bapak">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+    <div class="fwa-item">
+      <span class="fwa-label">Ibu 👩</span>
+      <a class="fwa-btn" href="https://wa.me/6282122483362" target="_blank" title="WA Ibu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+    <div class="fwa-item">
+      <span class="fwa-label">Saya 🧑</span>
+      <a class="fwa-btn" href="https://wa.me/6282111095385" target="_blank" title="WA Saya">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div style="position:relative;">
+    <div class="wa-pulse"></div>
+    <button class="float-wa-toggle" id="fwa-toggle" onclick="toggleFWA()" title="Hubungi Keluarga">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- MUSIC PLAYER -->
+<div id="music-player">
+  <span class="mp-icon">🎵</span>
+  <div class="mp-info">
+    <div class="mp-title" id="mp-title">Kenangan Manis</div>
+    <div class="mp-sub">Playlist Keluarga</div>
+  </div>
+  <div class="mp-wave"><div class="mp-bar"></div><div class="mp-bar"></div><div class="mp-bar"></div><div class="mp-bar"></div></div>
+  <button class="mp-btn" id="mp-btn" onclick="toggleMusic()" title="Play/Pause">▶</button>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke Atas">↑</button>
+
 <!-- ══════════ HEADER ══════════════════════ -->
 <header>
-  <div class="hdr-shadow-text">Keluarga</div>
-  <div class="postmark"><div class="pm-circle">Sragen<br>—<br>Jogja<br>—<br>Indonesia</div></div>
+  <div class="hdr-bg">Keluarga</div>
+  <div class="postmark"><div class="pm-c">Sragen<br>—<br>Jogja<br>—<br>Indonesia</div></div>
   <div class="stamp">
     <div class="stamp-yr">EST.</div>
     <div class="stamp-main">Family</div>
     <div class="stamp-btm">✦ SRAGEN ✦</div>
   </div>
-  <div class="hdr-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="hdr-clock" id="live-clock"></div>
+  <div class="hdr-orn">✦ &nbsp; ✦ &nbsp; ✦</div>
   <div class="hdr-tag">Album Keluarga Digital</div>
   <h1>Keluarga <em>Kita</em></h1>
   <p class="hdr-sub">Empat orang, satu atap, ribuan cerita yang tidak masuk akal.</p>
-  <p class="hdr-quote">Rumah bukan tempat yang kau tinggali — tapi tempat yang selalu kau rindukan</p>
+  <p class="hdr-q">Rumah bukan tempat yang kau tinggali — tapi tempat yang selalu kau rindukan</p>
 </header>
 
 <!-- ══════════ NAV ═══════════════════════════ -->
 <nav>
   <a href="#keluarga">Anggota</a>
+  <a href="#countdown-section">Ulang Tahun</a>
   <a href="#motto">Motto</a>
   <a href="#momen">Momen</a>
+  <a href="#download-section">Unduh App</a>
 </nav>
+
+<!-- WEATHER BAR -->
+<div id="weather-bar">
+  <div class="wb-item"><span>🌡️</span><span id="wb-temp">Sragen, Jawa Tengah</span></div>
+  <div class="wb-item"><span>📅</span><span id="wb-date"></span></div>
+  <div class="wb-item"><span>👨‍👩‍👧‍👦</span><span>4 Anggota Keluarga</span></div>
+  <div class="wb-item"><span>❤️</span><span>Selalu Bersama</span></div>
+</div>
 
 <!-- ══════════ KELUARGA ═══════════════════════ -->
 <section id="keluarga">
   <div class="divider"><div class="div-inner">✦ &nbsp; Anggota Keluarga &nbsp; ✦</div></div>
   <div class="sec-intro">
     <h2>Empat <em>Jiwa</em>, Satu Rumah</h2>
-    <p>Klik foto untuk menambahkan foto asli. Klik teks deskripsi untuk mengeditnya langsung.</p>
+    <p>Klik foto untuk upload foto asli · Klik teks untuk edit · Hubungi via WhatsApp</p>
   </div>
 
   <div class="family-grid">
@@ -380,14 +589,10 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
       <div class="photo-zone" id="pz-bapak" onclick="document.getElementById('pi-bapak').click()">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="pi-bapak-img" src="" alt="Foto Bapak">
-        <div class="ph-placeholder" id="pp-bapak">
-          <div class="ph-icon">👨</div>
-          <div class="ph-txt">Klik untuk<br>tambah foto</div>
-        </div>
+        <div class="ph-placeholder" id="pp-bapak"><div class="ph-icon">👨</div><div class="ph-txt">Klik untuk<br>tambah foto</div></div>
         <div class="ph-badge" id="pb-bapak">Ganti Foto</div>
       </div>
-      <input type="file" id="pi-bapak" class="photo-input" accept="image/*"
-        onchange="loadPhoto(this,'pi-bapak-img','pp-bapak','pz-bapak','pb-bapak','Bapak')">
+      <input type="file" id="pi-bapak" class="photo-input" accept="image/*" onchange="loadPhoto(this,'pi-bapak-img','pp-bapak','pz-bapak','pb-bapak','Bapak')">
       <div class="card-body">
         <div class="card-role">Kepala Keluarga</div>
         <div class="card-name">Bapak <em>Sang Penjaga Jogja</em></div>
@@ -398,14 +603,20 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
         </div>
         <div class="editable-wrap">
           <span class="edit-hint">Edit Deskripsi</span>
-          <div class="editable" contenteditable="true" id="desc-bapak" onblur="saveEdit(this)" onfocus="startEdit(this)">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang <em>"ya sudah, piye"</em> — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi. Selalu bilang "jangan boros" tapi diam-diam beliin es krim pas hujan deras.</div>
-          <div class="edit-done"><button onclick="document.getElementById('desc-bapak').blur()">✓ Simpan</button><span>atau tekan Tab</span></div>
+          <div class="editable" contenteditable="true" id="desc-bapak" onblur="saveEdit(this)" onfocus="startEdit(this)">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi. Selalu bilang "jangan boros" tapi diam-diam beliin es krim pas hujan.</div>
         </div>
         <div class="card-traits">
           <span class="trait">☕ Kopi Tubruk</span>
           <span class="trait">📺 Jagoan Berita</span>
           <span class="trait">🌱 Tangan Hijau</span>
         </div>
+      </div>
+      <div class="card-actions">
+        <a class="wa-btn" href="https://wa.me/6285311360759" target="_blank">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat Bapak
+          <span class="wa-num">0853-1136-0759</span>
+        </a>
       </div>
       <div class="fun-fact">
         <span class="ff-icon">💡</span>
@@ -419,14 +630,10 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
       <div class="photo-zone" id="pz-ibu" onclick="document.getElementById('pi-ibu').click()">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="pi-ibu-img" src="" alt="Foto Ibu">
-        <div class="ph-placeholder" id="pp-ibu">
-          <div class="ph-icon">👩</div>
-          <div class="ph-txt">Klik untuk<br>tambah foto</div>
-        </div>
+        <div class="ph-placeholder" id="pp-ibu"><div class="ph-icon">👩</div><div class="ph-txt">Klik untuk<br>tambah foto</div></div>
         <div class="ph-badge" id="pb-ibu">Ganti Foto</div>
       </div>
-      <input type="file" id="pi-ibu" class="photo-input" accept="image/*"
-        onchange="loadPhoto(this,'pi-ibu-img','pp-ibu','pz-ibu','pb-ibu','Ibu')">
+      <input type="file" id="pi-ibu" class="photo-input" accept="image/*" onchange="loadPhoto(this,'pi-ibu-img','pp-ibu','pz-ibu','pb-ibu','Ibu')">
       <div class="card-body">
         <div class="card-role">Cahaya Keluarga</div>
         <div class="card-name">Ibu <em>Ratu Dapur Sragen</em></div>
@@ -438,13 +645,19 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
         <div class="editable-wrap">
           <span class="edit-hint">Edit Deskripsi</span>
           <div class="editable" contenteditable="true" id="desc-ibu" onblur="saveEdit(this)" onfocus="startEdit(this)">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh. Hafal jadwal semua orang lebih akurat dari Google Calendar. Marah paling 5 menit, habis itu sudah masak lagi sambil nyanyi. Punya radar pendeteksi kebohongan — akurasi 99.9%.</div>
-          <div class="edit-done"><button onclick="document.getElementById('desc-ibu').blur()">✓ Simpan</button><span>atau tekan Tab</span></div>
         </div>
         <div class="card-traits">
           <span class="trait">🍳 Chef Keluarga</span>
           <span class="trait">🌺 Ibu RT Teladan</span>
           <span class="trait">📱 Ratu WA Grup</span>
         </div>
+      </div>
+      <div class="card-actions">
+        <a class="wa-btn" href="https://wa.me/6282122483362" target="_blank">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat Ibu
+          <span class="wa-num">0821-2248-3362</span>
+        </a>
       </div>
       <div class="fun-fact">
         <span class="ff-icon">💡</span>
@@ -458,14 +671,10 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
       <div class="photo-zone" id="pz-saya" onclick="document.getElementById('pi-saya').click()">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="pi-saya-img" src="" alt="Foto Saya">
-        <div class="ph-placeholder" id="pp-saya">
-          <div class="ph-icon">🧑</div>
-          <div class="ph-txt">Klik untuk<br>tambah foto</div>
-        </div>
+        <div class="ph-placeholder" id="pp-saya"><div class="ph-icon">🧑</div><div class="ph-txt">Klik untuk<br>tambah foto</div></div>
         <div class="ph-badge" id="pb-saya">Ganti Foto</div>
       </div>
-      <input type="file" id="pi-saya" class="photo-input" accept="image/*"
-        onchange="loadPhoto(this,'pi-saya-img','pp-saya','pz-saya','pb-saya','Kamu')">
+      <input type="file" id="pi-saya" class="photo-input" accept="image/*" onchange="loadPhoto(this,'pi-saya-img','pp-saya','pz-saya','pb-saya','Kamu')">
       <div class="card-body">
         <div class="card-role">Anak Sulung</div>
         <div class="card-name">Saya <em>Produk Asli Sragen</em></div>
@@ -477,13 +686,19 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
         <div class="editable-wrap">
           <span class="edit-hint">Edit Deskripsi</span>
           <div class="editable" contenteditable="true" id="desc-saya" onblur="saveEdit(this)" onfocus="startEdit(this)">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede tapi masih disuruh ibu beli kecap. Sedang dalam proses membuktikan bahwa orang Sragen juga bisa buat hal-hal keren. Buktinya: website ini. Penggemar kopi hitam dan tidur siang yang terlalu lama.</div>
-          <div class="edit-done"><button onclick="document.getElementById('desc-saya').blur()">✓ Simpan</button><span>atau tekan Tab</span></div>
         </div>
         <div class="card-traits">
           <span class="trait">💻 Tech Enthusiast</span>
           <span class="trait">🎨 Kreatif Dadakan</span>
           <span class="trait">💤 Tidur Siang Pro</span>
         </div>
+      </div>
+      <div class="card-actions">
+        <a class="wa-btn" href="https://wa.me/6282111095385" target="_blank">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat Saya
+          <span class="wa-num">0821-1109-5385</span>
+        </a>
       </div>
       <div class="fun-fact">
         <span class="ff-icon">💡</span>
@@ -497,14 +712,10 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
       <div class="photo-zone" id="pz-adik" onclick="document.getElementById('pi-adik').click()">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="pi-adik-img" src="" alt="Foto Adik">
-        <div class="ph-placeholder" id="pp-adik">
-          <div class="ph-icon">👦</div>
-          <div class="ph-txt">Klik untuk<br>tambah foto</div>
-        </div>
+        <div class="ph-placeholder" id="pp-adik"><div class="ph-icon">👦</div><div class="ph-txt">Klik untuk<br>tambah foto</div></div>
         <div class="ph-badge" id="pb-adik">Ganti Foto</div>
       </div>
-      <input type="file" id="pi-adik" class="photo-input" accept="image/*"
-        onchange="loadPhoto(this,'pi-adik-img','pp-adik','pz-adik','pb-adik','Adik')">
+      <input type="file" id="pi-adik" class="photo-input" accept="image/*" onchange="loadPhoto(this,'pi-adik-img','pp-adik','pz-adik','pb-adik','Adik')">
       <div class="card-body">
         <div class="card-role">Bungsu Kesayangan</div>
         <div class="card-name">Adik <em>Penguasa Charger</em></div>
@@ -516,12 +727,18 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
         <div class="editable-wrap">
           <span class="edit-hint">Edit Deskripsi</span>
           <div class="editable" contenteditable="true" id="desc-adik" onblur="saveEdit(this)" onfocus="startEdit(this)">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Hidupnya penuh privilege tapi selalu pura-pura tidak tahu. Ahli menghilangkan snack dalam 0.3 detik lalu menyalahkan orang lain. Tapi di balik semua kenakalan itu — ada adik yang selalu cerita ke kakak kalau lagi sedih. Dan itu yang paling berharga.</div>
-          <div class="edit-done"><button onclick="document.getElementById('desc-adik').blur()">✓ Simpan</button><span>atau tekan Tab</span></div>
         </div>
         <div class="card-traits">
           <span class="trait">🎮 Gamer Sejati</span>
           <span class="trait">📚 Pelajar (Katanya)</span>
           <span class="trait">🍪 Snack Destroyer</span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <div class="wa-btn disabled" style="cursor:default;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;opacity:.5;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Adik masih kecil 🔒
+          <span class="wa-num" style="opacity:.4;">9 thn</span>
         </div>
       </div>
       <div class="fun-fact">
@@ -532,6 +749,26 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
 
   </div>
 </section>
+
+<!-- ══════════ STATS BAR ════════════════════════ -->
+<div id="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num" id="stat-total-days">—</div>
+    <div class="stat-label">Hari Bersama</div>
+  </div>
+  <div class="stat-item reveal d1">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Anggota Keluarga</div>
+  </div>
+  <div class="stat-item reveal d2">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Kota Asal</div>
+  </div>
+  <div class="stat-item reveal d3">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Kenangan Tercipta</div>
+  </div>
+</div>
 
 <!-- ══════════ MOTTO ═══════════════════════════ -->
 <section id="motto">
@@ -551,6 +788,28 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
   </div>
 </section>
 
+<!-- ══════════ COUNTDOWN ════════════════════════ -->
+<section id="countdown-section">
+  <div class="cd-title">Hitung Mundur <em>Ulang Tahun</em></div>
+  <div class="cd-sub">Siapa yang paling ditunggu-tunggu?</div>
+  <div class="cd-who-btns">
+    <button class="cd-who active" onclick="setCDTarget('bapak')">👨 Bapak</button>
+    <button class="cd-who" onclick="setCDTarget('ibu')">👩 Ibu</button>
+    <button class="cd-who" onclick="setCDTarget('saya')">🧑 Saya</button>
+    <button class="cd-who" onclick="setCDTarget('adik')">👦 Adik</button>
+  </div>
+  <div class="countdown-grid">
+    <div class="cd-box"><div class="cd-num" id="cd-days">—</div><div class="cd-unit">Hari</div></div>
+    <div class="cd-colon">:</div>
+    <div class="cd-box"><div class="cd-num" id="cd-hours">—</div><div class="cd-unit">Jam</div></div>
+    <div class="cd-colon">:</div>
+    <div class="cd-box"><div class="cd-num" id="cd-mins">—</div><div class="cd-unit">Menit</div></div>
+    <div class="cd-colon">:</div>
+    <div class="cd-box"><div class="cd-num" id="cd-secs">—</div><div class="cd-unit">Detik</div></div>
+  </div>
+  <div class="cd-msg" id="cd-msg"></div>
+</section>
+
 <!-- ══════════ MOMEN ════════════════════════════ -->
 <section id="momen">
   <div class="divider"><div class="div-inner">✦ &nbsp; Momen Tak Terlupakan &nbsp; ✦</div></div>
@@ -559,43 +818,50 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
     <p>Hal-hal biasa yang ternyata paling dirindukan.</p>
   </div>
   <div class="moments-grid">
-    <div class="mc reveal">
-      <div class="mc-num">01</div>
-      <h3>Sarapan Sabtu Pagi</h3>
-      <p>Nasi goreng Ibu dengan telur ceplok, kecap, dan kerupuk. Bapak baca koran. Adik masih ngantuk dan belum mandi. Kamu duduk nunggu kopi jadi. Nggak ada yang spesial — tapi entah kenapa selalu jadi momen paling hangat sepanjang minggu.</p>
-      <span class="mc-tag">Rutinitas</span>
-    </div>
-    <div class="mc reveal d1">
-      <div class="mc-num">02</div>
-      <h3>Perjalanan ke Jogja</h3>
-      <p>Setiap mudik ke keluarga Bapak. Macet di Klaten sudah jadi ritual wajib. Adik mabuk darat separuh jalan. Tapi sampai di sana, ada sate klathak dan gudeg yang bikin lupa semua lelah dan drama di mobil.</p>
-      <span class="mc-tag">Tradisi</span>
-    </div>
-    <div class="mc reveal d2">
-      <div class="mc-num">03</div>
-      <h3>Mati Lampu Bersama</h3>
-      <p>PLN mati jam 7 malam. Lilin dinyalakan. Tiba-tiba semua orang ngumpul di ruang tengah tanpa direncanakan. Ngobrol tanpa HP. Bapak cerita masa muda. Ibu ketawa-ketawa. Adik nanya hal-hal aneh. Ternyata mati lampu lebih berharga dari WiFi 100 Mbps.</p>
-      <span class="mc-tag">Tak Terduga</span>
-    </div>
-    <div class="mc reveal">
-      <div class="mc-num">04</div>
-      <h3>Lebaran di Sragen</h3>
-      <p>Baju baru yang terlalu formal. Salam tempel dari pakde yang berbau minyak angin. Ketupat Ibu yang paling enak sedunia tanpa tanding. Dan foto keluarga yang nggak pernah bagus karena adik selalu bergerak tepat saat kamera diklik.</p>
-      <span class="mc-tag">Tahunan</span>
-    </div>
-    <div class="mc reveal d1">
-      <div class="mc-num">05</div>
-      <h3>Drama Remote TV</h3>
-      <p>Bapak mau nonton berita. Adik mau kartun. Kamu mau film. Ibu mau sinetron. Solusinya: Ibu yang menang. Selalu. Tanpa negosiasi. Tanpa penjelasan. Sudah seperti hukum alam yang tidak bisa diganggu gugat.</p>
-      <span class="mc-tag">Setiap Malam</span>
-    </div>
-    <div class="mc reveal d2">
-      <div class="mc-num">06</div>
-      <h3>Hujan &amp; Bakwan Goreng</h3>
-      <p>Setiap hujan deras, Ibu langsung masuk dapur. Keluar 20 menit kemudian dengan bakwan panas dan teh manis. Tidak pernah diminta. Tidak pernah gagal. Bapak pernah bilang, "Ibu tahu yang kita butuhkan sebelum kita sendiri tahu."</p>
-      <span class="mc-tag">Musim Hujan</span>
-    </div>
+    <div class="mc reveal"><div class="mc-num">01</div><h3>Sarapan Sabtu Pagi</h3><p>Nasi goreng Ibu dengan telur ceplok, kecap, dan kerupuk. Bapak baca koran. Adik masih ngantuk dan belum mandi. Kamu duduk nunggu kopi jadi. Nggak ada yang spesial — tapi entah kenapa selalu jadi momen paling hangat.</p><span class="mc-tag">Rutinitas</span></div>
+    <div class="mc reveal d1"><div class="mc-num">02</div><h3>Perjalanan ke Jogja</h3><p>Setiap mudik ke keluarga Bapak. Macet di Klaten sudah jadi ritual wajib. Adik mabuk darat separuh jalan. Tapi sampai di sana, ada sate klathak dan gudeg yang bikin lupa semua lelah dan drama di mobil.</p><span class="mc-tag">Tradisi</span></div>
+    <div class="mc reveal d2"><div class="mc-num">03</div><h3>Mati Lampu Bersama</h3><p>PLN mati jam 7 malam. Lilin dinyalakan. Tiba-tiba semua orang ngumpul di ruang tengah tanpa direncanakan. Ngobrol tanpa HP. Bapak cerita masa muda. Ibu ketawa-ketawa. Adik nanya hal-hal aneh. Mati lampu lebih berharga dari WiFi 100 Mbps.</p><span class="mc-tag">Tak Terduga</span></div>
+    <div class="mc reveal"><div class="mc-num">04</div><h3>Lebaran di Sragen</h3><p>Baju baru yang terlalu formal. Salam tempel dari pakde yang berbau minyak angin. Ketupat Ibu yang paling enak sedunia. Dan foto keluarga yang nggak pernah bagus karena adik selalu bergerak tepat saat kamera diklik.</p><span class="mc-tag">Tahunan</span></div>
+    <div class="mc reveal d1"><div class="mc-num">05</div><h3>Drama Remote TV</h3><p>Bapak mau nonton berita. Adik mau kartun. Kamu mau film. Ibu mau sinetron. Solusinya: Ibu yang menang. Selalu. Tanpa negosiasi. Tanpa penjelasan. Sudah seperti hukum alam yang tidak bisa diganggu gugat.</p><span class="mc-tag">Setiap Malam</span></div>
+    <div class="mc reveal d2"><div class="mc-num">06</div><h3>Hujan &amp; Bakwan Goreng</h3><p>Setiap hujan deras, Ibu langsung masuk dapur. Keluar 20 menit kemudian dengan bakwan panas dan teh manis. Tidak pernah diminta. Tidak pernah gagal. Bapak pernah bilang, "Ibu tahu yang kita butuhkan sebelum kita sendiri tahu."</p><span class="mc-tag">Musim Hujan</span></div>
   </div>
+</section>
+
+<!-- ══════════ DOWNLOAD SECTION ════════════════ -->
+<section id="download-section">
+  <div class="dl-tag">✦ Unduh Aplikasi ✦</div>
+  <div class="dl-title reveal">Download <em>WhatsApp</em></div>
+  <p class="dl-sub reveal d1">Supaya bisa langsung chat sama keluarga — dari mana saja, kapan saja, tanpa drama.</p>
+  <div class="dl-grid">
+    <a class="dl-card reveal" href="https://play.google.com/store/apps/details?id=com.whatsapp" target="_blank">
+      <span class="dl-icon">🤖</span>
+      <div class="dl-name">Android</div>
+      <div class="dl-desc">Google Play Store</div>
+      <span class="dl-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Unduh Gratis
+      </span>
+    </a>
+    <a class="dl-card reveal d1" href="https://apps.apple.com/app/whatsapp-messenger/id310633997" target="_blank">
+      <span class="dl-icon">🍎</span>
+      <div class="dl-name">iPhone / iOS</div>
+      <div class="dl-desc">Apple App Store</div>
+      <span class="dl-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Unduh Gratis
+      </span>
+    </a>
+    <a class="dl-card reveal d2" href="https://www.whatsapp.com/download" target="_blank">
+      <span class="dl-icon">💻</span>
+      <div class="dl-name">Desktop / PC</div>
+      <div class="dl-desc">Windows &amp; Mac</div>
+      <span class="dl-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Unduh Gratis
+      </span>
+    </a>
+  </div>
+  <p class="dl-note">Semua link mengarah ke halaman resmi WhatsApp · Gratis · Aman · Terenkripsi</p>
 </section>
 
 <!-- ══════════ FOOTER ════════════════════════════ -->
@@ -608,123 +874,184 @@ footer { background: var(--ivory); border-top: 2px solid var(--warm); padding: 2
 </footer>
 
 <script>
-/* ════════ SCROLL REVEAL ════════════════════════ */
+/* ════ LOADER ════════════════════════════════ */
+const fill = document.getElementById('loader-fill');
+const loader = document.getElementById('loader');
+let p = 0;
+const iv = setInterval(() => { p += Math.random()*22; if(p>=100){p=100;clearInterval(iv);} fill.style.width=p+'%'; }, 130);
+window.addEventListener('load', () => { setTimeout(() => { fill.style.width='100%'; setTimeout(() => loader.classList.add('gone'), 500); }, 400); });
+
+/* ════ PARTICLES ════════════════════════════ */
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+const COLORS = ['rgba(184,137,42,','rgba(201,169,110,','rgba(155,58,30,','rgba(90,107,71,'];
+function mkParticle(){ return { x:Math.random()*W, y:Math.random()*H, r:Math.random()*2+.5, vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25, color:COLORS[Math.floor(Math.random()*COLORS.length)], alpha:Math.random()*.5+.1 }; }
+for(let i=0;i<55;i++) particles.push(mkParticle());
+function animParticles(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = p.color + p.alpha + ')';
+    ctx.fill();
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<-5) p.x=W+5; if(p.x>W+5) p.x=-5;
+    if(p.y<-5) p.y=H+5; if(p.y>H+5) p.y=-5;
+  });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+/* ════ LIVE CLOCK ════════════════════════════ */
+const clockEl = document.getElementById('live-clock');
+const wbDate = document.getElementById('wb-date');
+const DAYS = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const MONTHS = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+function updateClock(){
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  const ss = String(now.getSeconds()).padStart(2,'0');
+  clockEl.textContent = `${hh}:${mm}:${ss} WIB`;
+  wbDate.textContent = `${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+}
+setInterval(updateClock, 1000); updateClock();
+
+/* ════ SCROLL REVEAL ════════════════════════ */
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-/* ════════ USIA OTOMATIS ════════════════════════ */
-function calcAge(birthYear, birthMonth, birthDay) {
-  const now = new Date();
-  const birth = new Date(birthYear, birthMonth - 1, birthDay);
-  let age = now.getFullYear() - birth.getFullYear();
-  const m = now.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
-  return age;
-}
-
-function checkUpcoming(birthYear, birthMonth, birthDay) {
-  const now = new Date();
-  const nextBday = new Date(now.getFullYear(), birthMonth - 1, birthDay);
-  if (nextBday < now) nextBday.setFullYear(now.getFullYear() + 1);
-  const diff = Math.ceil((nextBday - now) / (1000 * 60 * 60 * 24));
-  return diff <= 30 ? diff : null;
-}
-
-const members = [
-  { id: 'age-bapak', y: 1980, m: 9,  d: 17 },
-  { id: 'age-ibu',   y: 1981, m: 10, d: 1  },
-  { id: 'age-saya',  y: 2005, m: 6,  d: 15 },
-  { id: 'age-adik',  y: 2016, m: 4,  d: 21 },
-];
-members.forEach(({ id, y, m, d }) => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const age = calcAge(y, m, d);
-  const soon = checkUpcoming(y, m, d);
-  el.textContent = age + ' thn';
-  if (soon !== null) {
-    el.textContent = age + ' thn 🎂';
-    el.title = soon === 0 ? 'Selamat Ulang Tahun! 🎉' : `Ulang tahun ${soon} hari lagi!`;
-    el.style.background = 'rgba(155,58,30,.18)';
-    el.style.borderColor = 'rgba(155,58,30,.35)';
-    if (soon === 0) showToast('🎉 Selamat Ulang Tahun! Ada yang berulang tahun hari ini!');
-  }
+/* ════ SCROLL PROGRESS + BACK TOP ════════════ */
+const prog = document.getElementById('scroll-progress');
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  const sp = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  prog.style.transform = `scaleX(${sp})`;
+  backTop.classList.toggle('show', window.scrollY > 400);
+  /* show music player after scrolling a bit */
+  document.getElementById('music-player').classList.toggle('visible', window.scrollY > 200);
 });
 
-/* ════════ PHOTO UPLOAD ════════════════════════ */
-function loadPhoto(input, imgId, ppId, pzId, pbId, name) {
-  const file = input.files[0];
-  if (!file) return;
+/* ════ AGE CALCULATION ════════════════════════ */
+function calcAge(y,m,d){ const now=new Date(),b=new Date(y,m-1,d); let a=now.getFullYear()-b.getFullYear(); const dm=now.getMonth()-b.getMonth(); if(dm<0||(dm===0&&now.getDate()<b.getDate())) a--; return a; }
+function daysUntilBday(m,d){ const now=new Date(); let next=new Date(now.getFullYear(),m-1,d); if(next<=now) next.setFullYear(now.getFullYear()+1); return Math.ceil((next-now)/(1000*60*60*24)); }
+const mbrs = [
+  {id:'age-bapak',y:1980,m:9,d:17},
+  {id:'age-ibu',y:1981,m:10,d:1},
+  {id:'age-saya',y:2005,m:6,d:15},
+  {id:'age-adik',y:2016,m:4,d:21},
+];
+mbrs.forEach(({id,y,m,d}) => {
+  const el = document.getElementById(id); if(!el) return;
+  const age = calcAge(y,m,d);
+  const soon = daysUntilBday(m,d);
+  el.textContent = age+' thn';
+  if(soon===0){ el.textContent=age+' thn 🎂🎉'; el.style.background='rgba(155,58,30,.2)'; el.style.borderColor='rgba(155,58,30,.4)'; showToast('🎉 Selamat Ulang Tahun! Ada anggota keluarga yang berulang tahun hari ini!'); }
+  else if(soon<=30){ el.textContent=age+' thn 🎂'; el.title=`Ulang tahun ${soon} hari lagi!`; el.style.background='rgba(184,137,42,.15)'; el.style.borderColor='rgba(184,137,42,.3)'; }
+});
+
+/* ════ COUNTDOWN TIMER ════════════════════════ */
+const cdTargets = {
+  bapak:{m:9,d:17,name:'Bapak',emoji:'👨'},
+  ibu:  {m:10,d:1,name:'Ibu',emoji:'👩'},
+  saya: {m:6,d:15,name:'Saya',emoji:'🧑'},
+  adik: {m:4,d:21,name:'Adik',emoji:'👦'},
+};
+let cdTarget = 'bapak', cdInterval;
+function setCDTarget(who){
+  cdTarget = who;
+  document.querySelectorAll('.cd-who').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  runCountdown();
+}
+function runCountdown(){
+  clearInterval(cdInterval);
+  cdInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+}
+function updateCountdown(){
+  const t = cdTargets[cdTarget];
+  const now = new Date();
+  let next = new Date(now.getFullYear(), t.m-1, t.d);
+  if(next <= now) next.setFullYear(now.getFullYear()+1);
+  const diff = next - now;
+  if(diff <= 0){ document.getElementById('cd-msg').textContent = `🎉 Selamat Ulang Tahun ${t.name}! Semoga panjang umur dan selalu bahagia! 🎂`; ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id=>document.getElementById(id).textContent='00'); return; }
+  const days  = Math.floor(diff/(1000*60*60*24));
+  const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const mins  = Math.floor((diff%(1000*60*60))/(1000*60));
+  const secs  = Math.floor((diff%(1000*60))/1000);
+  document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+  const msgs = days===0 ? `${t.emoji} Besok ulang tahun ${t.name}! Siapkan kadonya!` : days<=7 ? `${t.emoji} Tinggal ${days} hari lagi! Jangan sampai lupa ya!` : `${t.emoji} Masih ${days} hari menuju ulang tahun ${t.name}`;
+  document.getElementById('cd-msg').textContent = msgs;
+}
+runCountdown();
+
+/* ════ STATS - total days together ════════════ */
+const familyStart = new Date(2016, 3, 21); // since youngest born
+const totalDays = Math.floor((new Date() - familyStart) / (1000*60*60*24));
+const el = document.getElementById('stat-total-days');
+if(el){
+  let c = 0;
+  const step = Math.ceil(totalDays/60);
+  const ct = setInterval(() => { c = Math.min(c+step, totalDays); el.textContent = c.toLocaleString('id'); if(c>=totalDays) clearInterval(ct); }, 25);
+}
+
+/* ════ PHOTO UPLOAD ════════════════════════════ */
+function loadPhoto(input,imgId,ppId,pzId,pbId,name){
+  const file = input.files[0]; if(!file) return;
   const reader = new FileReader();
   reader.onload = ev => {
-    const img = document.getElementById(imgId);
-    const pp  = document.getElementById(ppId);
-    const pz  = document.getElementById(pzId);
-    const pb  = document.getElementById(pbId);
-    img.src = ev.target.result;
-    img.classList.add('loaded');
-    pp.classList.add('gone');
-    pz.classList.add('has-photo');
-    pb.textContent = '✓ Ganti Foto';
-    showToast('✓ Foto ' + name + ' berhasil ditambahkan!');
+    const img=document.getElementById(imgId),pp=document.getElementById(ppId),pz=document.getElementById(pzId),pb=document.getElementById(pbId);
+    img.src=ev.target.result; img.classList.add('loaded'); pp.classList.add('gone');
+    pz.classList.add('has-photo'); pb.textContent='✓ Ganti Foto';
+    showToast('✓ Foto '+name+' berhasil ditambahkan!');
   };
   reader.readAsDataURL(file);
 }
 
-/* ════════ EDITABLE TEXT ════════════════════════ */
-let editBannerTimer;
-function startEdit(el) {
-  const card = el.closest('.card');
-  if (card) card.classList.add('editing');
-  const banner = document.getElementById('edit-banner');
-  banner.classList.add('show');
-  clearTimeout(editBannerTimer);
-}
-function saveEdit(el) {
-  const card = el.closest('.card');
-  if (card) card.classList.remove('editing');
-  const banner = document.getElementById('edit-banner');
-  editBannerTimer = setTimeout(() => banner.classList.remove('show'), 800);
-  showToast('✓ Teks berhasil diperbarui!');
-}
-
-/* Prevent accidental newlines on Enter key — blur instead */
-document.querySelectorAll('.editable, .ff-text').forEach(el => {
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      el.blur();
-    }
-  });
+/* ════ EDITABLE TEXT ════════════════════════════ */
+let ebTimer;
+function startEdit(el){ el.closest('.card')?.classList.add('editing'); document.getElementById('edit-banner').classList.add('show'); clearTimeout(ebTimer); }
+function saveEdit(el){ el.closest('.card')?.classList.remove('editing'); ebTimer=setTimeout(()=>document.getElementById('edit-banner').classList.remove('show'),800); showToast('✓ Teks berhasil diperbarui!'); }
+document.querySelectorAll('.editable,.ff-text').forEach(el => {
+  el.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();el.blur();} });
 });
 
-/* ════════ TOAST ════════════════════════════════ */
-let tt;
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(tt);
-  tt = setTimeout(() => t.classList.remove('show'), 3200);
+/* ════ FLOATING WA ════════════════════════════ */
+let fwaOpen = false;
+function toggleFWA(){ fwaOpen=!fwaOpen; document.getElementById('fwa-list').classList.toggle('open',fwaOpen); }
+document.addEventListener('click',e=>{ if(fwaOpen&&!e.target.closest('#float-wa')){ fwaOpen=false; document.getElementById('fwa-list').classList.remove('open'); } });
+
+/* ════ MOCK MUSIC PLAYER ════════════════════════ */
+const songs = ['Kenangan Manis','Rumah Kita','Satu Jiwa','Bunda','Separuh Aku'];
+let songIdx = 0, musicPlaying = false;
+function toggleMusic(){
+  musicPlaying = !musicPlaying;
+  const player = document.getElementById('music-player');
+  const btn = document.getElementById('mp-btn');
+  player.classList.toggle('playing', musicPlaying);
+  btn.textContent = musicPlaying ? '⏸' : '▶';
+  if(musicPlaying){ setTimeout(()=>{ songIdx=(songIdx+1)%songs.length; document.getElementById('mp-title').textContent=songs[songIdx]; },3000); }
+  showToast(musicPlaying ? '🎵 Memutar: '+songs[songIdx] : '⏸ Musik dijeda');
 }
 
-/* ════════ CARD 3D TILT ════════════════════════ */
+/* ════ CARD 3D TILT ════════════════════════════ */
 document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    if (card.classList.contains('editing')) return;
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - 0.5;
-    const y = (e.clientY - r.top)  / r.height - 0.5;
-    card.style.transform = `translateY(-6px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg)`;
-    card.style.transition = 'box-shadow .4s';
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-    card.style.transition = 'transform .55s cubic-bezier(.34,1.56,.64,1), box-shadow .4s';
-  });
+  card.addEventListener('mousemove',e=>{ if(card.classList.contains('editing')) return; const r=card.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-.5; const y=(e.clientY-r.top)/r.height-.5; card.style.transform=`translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`; card.style.transition='box-shadow .4s'; });
+  card.addEventListener('mouseleave',()=>{ card.style.transform=''; card.style.transition='transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s'; });
 });
+
+/* ════ TOAST ════════════════════════════════════ */
+let tt;
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),3200); }
 </script>
 </body>
 </html>
