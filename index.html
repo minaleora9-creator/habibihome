@@ -117,40 +117,85 @@ nav a:hover::after{width:100%;}
 .ms-title{font-family:var(--ff-s);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--cream);text-align:center;margin-bottom:.4rem;}
 .ms-title em{font-style:italic;color:var(--sepia);}
 .ms-sub{font-family:var(--ff-b);font-size:.95rem;font-style:italic;color:var(--warm);opacity:.55;text-align:center;margin-bottom:3rem;}
-.playlist{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem;}
-.song-card{display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.18);padding:1rem 1.4rem;cursor:pointer;transition:background .25s,border-color .25s,transform .2s;position:relative;overflow:hidden;}
-.song-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
-.song-card:hover::before,.song-card.playing::before{transform:scaleY(1);}
-.song-card:hover{background:rgba(184,137,42,.08);border-color:rgba(184,137,42,.35);transform:translateX(4px);}
-.song-card.playing{background:rgba(184,137,42,.12);border-color:rgba(184,137,42,.4);}
-.song-num{font-family:var(--ff-m);font-size:.7rem;color:var(--sepia);opacity:.4;width:22px;text-align:center;flex-shrink:0;}
-.song-card.playing .song-num{opacity:0;}
-.song-wave{display:none;align-items:flex-end;gap:2px;height:18px;width:22px;flex-shrink:0;}
-.song-card.playing .song-wave{display:flex;}
-.sw-b{width:3px;background:var(--gold);border-radius:2px;}
-.song-card.playing .sw-b:nth-child(1){animation:sw .7s ease-in-out infinite;}
-.song-card.playing .sw-b:nth-child(2){animation:sw .7s ease-in-out infinite .18s;}
-.song-card.playing .sw-b:nth-child(3){animation:sw .7s ease-in-out infinite .36s;}
-.song-card.playing .sw-b:nth-child(4){animation:sw .7s ease-in-out infinite .54s;}
-@keyframes sw{0%,100%{height:4px;}50%{height:16px;}}
-.song-disc{width:44px;height:44px;border-radius:50%;background:var(--brown);border:2px solid rgba(184,137,42,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;overflow:hidden;}
-.song-disc::after{content:'';position:absolute;width:10px;height:10px;background:var(--dark);border-radius:50%;border:1px solid rgba(184,137,42,.3);}
-.song-card.playing .song-disc{animation:spinDisc 4s linear infinite;}
-@keyframes spinDisc{to{transform:rotate(360deg);}}
-.song-info{flex:1;min-width:0;}
-.song-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:.2rem;}
-.song-artist{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.song-actions{display:flex;align-items:center;gap:.5rem;}
-.song-del{background:none;border:none;cursor:pointer;font-size:.85rem;opacity:.3;transition:opacity .2s;padding:.2rem;}
-.song-del:hover{opacity:.8;}
-.song-tag-lbl{font-family:var(--ff-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;background:rgba(184,137,42,.15);color:var(--gold);border:1px solid rgba(184,137,42,.25);}
-/* music input link area */
-.music-link-area{max-width:780px;margin:2rem auto 0;border:1.5px dashed rgba(184,137,42,.3);padding:1.5rem 2rem;text-align:center;transition:border-color .3s,background .3s;}
-.music-link-area:hover{border-color:var(--gold);background:rgba(184,137,42,.06);}
-.mla-input{width:100%;padding:.8rem;background:rgba(255,255,255,.05);border:1px solid rgba(184,137,42,.2);color:var(--cream);font-family:var(--ff-m);font-size:.8rem;margin-bottom:1rem;border-radius:2px;}
-.mla-input:focus{outline:none;border-color:var(--gold);}
-.mla-btn{background:var(--gold);color:var(--dark);border:none;padding:.6rem 1.5rem;font-family:var(--ff-m);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:background .2s;}
-.mla-btn:hover{background:var(--warm);}
+
+/* SOUNDCLOUD PLAYLIST */
+.soundcloud-playlist {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.soundcloud-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(184,137,42,.2);
+  padding: 1.5rem;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+.soundcloud-card:hover {
+  border-color: var(--gold);
+  background: rgba(184,137,42,.06);
+  transform: translateX(4px);
+}
+
+.soundcloud-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.soundcloud-icon {
+  width: 50px;
+  height: 50px;
+  background: #ff7700;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.soundcloud-title {
+  flex: 1;
+}
+
+.soundcloud-title h3 {
+  font-family: var(--ff-s);
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: .2rem;
+}
+
+.soundcloud-title p {
+  font-family: var(--ff-m);
+  font-size: .6rem;
+  color: var(--warm);
+  opacity: .6;
+  letter-spacing: .08em;
+}
+
+.soundcloud-embed {
+  width: 100%;
+  height: 166px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(0,0,0,.2);
+}
+
+.soundcloud-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+/* ===== SISA CSS SAMA ===== */
 #motto{background:var(--paper);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;z-index:2;border-top:1px solid var(--warm);}
 #motto::before{content:'"';position:absolute;top:-3rem;left:50%;transform:translateX(-50%);font-family:var(--ff-s);font-size:24rem;color:var(--dark);opacity:.04;font-style:italic;pointer-events:none;line-height:1;}
 .motto-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.4rem;}
@@ -307,7 +352,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="divider"><div class="div-in">✦ &nbsp; Anggota Keluarga &nbsp; ✦</div></div>
   <div class="sec-intro">
     <h2>Empat <em>Jiwa</em>, Satu Rumah</h2>
-    <p>Foto menggunakan link Imgur — ganti dengan link foto asli Anda</p>
+    <p>Foto menggunakan link Imgur</p>
   </div>
   <div class="family-grid">
 
@@ -316,8 +361,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI DENGAN LINK FOTO BAPAK -->
-        <img id="img-bapak" src="https://i.imgur.com/qDrKi9K.jpeg" alt="Foto Bapak">
+        <img src="https://i.imgur.com/qDrKi9K.jpeg" alt="Foto Bapak">
       </div>
       <div class="card-body">
         <div class="card-role">Kepala Keluarga</div>
@@ -331,12 +375,8 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
         <div class="card-traits"><span class="trait">☕ Kopi Tubruk</span><span class="trait">📺 Jagoan Berita</span><span class="trait">🌱 Tangan Hijau</span></div>
       </div>
       <div class="card-actions">
-        <a class="wa-btn" href="https://wa.me/6285311360759" target="_blank">
-          <svg viewBox="0 0 24 24" fill="white" style="width:16px;height:16px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Bapak
-        </a>
+        <a class="wa-btn" href="https://wa.me/6285311360759" target="_blank">Chat Bapak</a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi.</span></div>
     </div>
 
     <!-- IBU -->
@@ -344,8 +384,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI DENGAN LINK FOTO IBU -->
-        <img id="img-ibu" src="https://i.imgur.com/GMuMTqS.jpeg" alt="Foto Ibu">
+        <img src="https://i.imgur.com/GMuMTqS.jpeg" alt="Foto Ibu">
       </div>
       <div class="card-body">
         <div class="card-role">Cahaya Keluarga</div>
@@ -355,16 +394,12 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">1 Okt 1981</span>
           <span class="card-age" id="age-ibu"></span>
         </div>
-        <div class="editable">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh.</div>
+        <div class="editable">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen.</div>
         <div class="card-traits"><span class="trait">🍳 Chef Keluarga</span><span class="trait">🌺 Ibu RT Teladan</span><span class="trait">📱 Ratu WA Grup</span></div>
       </div>
       <div class="card-actions">
-        <a class="wa-btn" href="https://wa.me/6282122483362" target="_blank">
-          <svg viewBox="0 0 24 24" fill="white" style="width:16px;height:16px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Ibu
-        </a>
+        <a class="wa-btn" href="https://wa.me/6282122483362" target="_blank">Chat Ibu</a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Multitasking level dewa, bisa masak sambil ngatur semuanya.</span></div>
     </div>
 
     <!-- SAYA -->
@@ -372,8 +407,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI DENGAN LINK FOTO SAYA -->
-        <img id="img-saya" src="https://i.imgur.com/CLOXLE0.jpeg" alt="Foto Saya">
+        <img src="https://i.imgur.com/CLOXLE0.jpeg" alt="Foto Saya">
       </div>
       <div class="card-body">
         <div class="card-role">Anak Sulung</div>
@@ -383,16 +417,12 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">15 Jun 2005</span>
           <span class="card-age" id="age-saya"></span>
         </div>
-        <div class="editable">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede.</div>
+        <div class="editable">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya.</div>
         <div class="card-traits"><span class="trait">💻 Tech Enthusiast</span><span class="trait">🎨 Kreatif Dadakan</span><span class="trait">💤 Tidur Siang Pro</span></div>
       </div>
       <div class="card-actions">
-        <a class="wa-btn" href="https://wa.me/6282111095385" target="_blank">
-          <svg viewBox="0 0 24 24" fill="white" style="width:16px;height:16px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Saya
-        </a>
+        <a class="wa-btn" href="https://wa.me/6282111095385" target="_blank">Chat Saya</a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Sering kasih solusi canggih yang ditolak Bapak.</span></div>
     </div>
 
     <!-- ADIK -->
@@ -400,8 +430,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI DENGAN LINK FOTO ADIK -->
-        <img id="img-adik" src="https://i.imgur.com/sWwblqc.jpeg" alt="Foto Adik">
+        <img src="https://i.imgur.com/sWwblqc.jpeg" alt="Foto Adik">
       </div>
       <div class="card-body">
         <div class="card-role">Bungsu Kesayangan</div>
@@ -411,16 +440,12 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">21 Apr 2016</span>
           <span class="card-age" id="age-adik"></span>
         </div>
-        <div class="editable">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Ahli menghilangkan snack.</div>
+        <div class="editable">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati.</div>
         <div class="card-traits"><span class="trait">🎮 Gamer Sejati</span><span class="trait">📚 Pelajar (Katanya)</span><span class="trait">🍪 Snack Destroyer</span></div>
       </div>
       <div class="card-actions">
-        <div class="wa-btn disabled">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0;opacity:.35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Adik masih kecil 🔒
-        </div>
+        <div class="wa-btn disabled">Adik masih kecil 🔒</div>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Punya sonar khusus kata "makan" — dengar dari 3 kamar.</span></div>
     </div>
 
   </div>
@@ -434,75 +459,65 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="reveal d3"><div class="stat-num">∞</div><div class="stat-label">Kenangan Tercipta</div></div>
 </div>
 
-<!-- ═══ MUSIK DENGAN LINK PUBLIK ═══ -->
+<!-- ═══ MUSIK DENGAN SOUNDCLOUD ═══ -->
 <section id="music-section">
   <div class="ms-tag">✦ Playlist Keluarga ✦</div>
   <div class="ms-title reveal">Lagu <em>Pengiring Kenangan</em></div>
-  <div class="ms-sub reveal d1">Putar langsung dari link MP3 publik</div>
+  <div class="ms-sub reveal d1">Putar langsung dari SoundCloud</div>
 
-  <div class="playlist" id="playlist">
-    <!-- Contoh lagu dengan link publik -->
-    <div class="song-card reveal" onclick="playTrack(0)">
-      <div class="song-num">01</div>
-      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-      <div class="song-disc">🎵</div>
-      <div class="song-info">
-        <div class="song-title">Bintang Kecil</div>
-        <div class="song-artist">Lagu Keluarga</div>
+  <div class="soundcloud-playlist">
+
+    <!-- Lagu 1: Sal Priadi - Kita Usahakan Rumah -->
+    <div class="soundcloud-card reveal">
+      <div class="soundcloud-info">
+        <div class="soundcloud-icon">🎵</div>
+        <div class="soundcloud-title">
+          <h3>Sal Priadi - Kita Usahakan Rumah</h3>
+          <p>SoundCloud · Fera Freesh</p>
+        </div>
+      </div>
+      <div class="soundcloud-embed">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1883558999&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        </iframe>
       </div>
     </div>
-    <div class="song-card reveal" onclick="playTrack(1)">
-      <div class="song-num">02</div>
-      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-      <div class="song-disc">🎵</div>
-      <div class="song-info">
-        <div class="song-title">Pelangi</div>
-        <div class="song-artist">Lagu Anak</div>
+
+    <!-- Lagu 2: Amigdala - Ku Kira Kau Rumah -->
+    <div class="soundcloud-card reveal d1">
+      <div class="soundcloud-info">
+        <div class="soundcloud-icon">🎵</div>
+        <div class="soundcloud-title">
+          <h3>Amigdala - Ku Kira Kau Rumah</h3>
+          <p>SoundCloud · Amigdala</p>
+        </div>
+      </div>
+      <div class="soundcloud-embed">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1187491065&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        </iframe>
       </div>
     </div>
-    <div class="song-card reveal" onclick="playTrack(2)">
-      <div class="song-num">03</div>
-      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-      <div class="song-disc">🎵</div>
-      <div class="song-info">
-        <div class="song-title">Naik Delman</div>
-        <div class="song-artist">Lagu Anak</div>
+
+    <!-- Lagu 3: Spotify Playlist (via Spotify Embed) -->
+    <div class="soundcloud-card reveal d2">
+      <div class="soundcloud-info">
+        <div class="soundcloud-icon">🎧</div>
+        <div class="soundcloud-title">
+          <h3>Spotify Playlist Keluarga</h3>
+          <p>Putar via Spotify</p>
+        </div>
+      </div>
+      <div class="soundcloud-embed">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </div>
+
   </div>
 
-  <!-- Area untuk tambah lagu via link -->
-  <div class="music-link-area">
-    <input type="text" id="music-link-input" class="mla-input" placeholder="https://... (link MP3 publik)" value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-    <input type="text" id="music-name-input" class="mla-input" placeholder="Nama lagu (opsional)" value="Contoh Lagu">
-    <button class="mla-btn" onclick="addMusicFromLink()">➕ Tambah Lagu dari Link</button>
-    <p style="color:var(--sepia);font-size:.6rem;margin-top:.8rem;opacity:.6;">Gunakan link MP3 publik (SoundHelix, Pixabay, dll)</p>
-  </div>
-
-  <div class="player-controls" id="player-ctrl">
-    <div class="pc-now">
-      <div class="pc-thumb" id="pc-thumb">🎵</div>
-      <div class="pc-info">
-        <div class="pc-title" id="pc-title">—</div>
-        <div class="pc-artist">Playlist Keluarga</div>
-      </div>
-    </div>
-    <div class="pc-btns">
-      <button class="pc-btn" onclick="prevTrack()">⏮</button>
-      <button class="pc-btn main" id="pc-play-btn" onclick="togglePlay()">▶</button>
-      <button class="pc-btn" onclick="nextTrack()">⏭</button>
-    </div>
-    <div class="pc-prog-wrap">
-      <div class="pc-prog-bar" onclick="seekTrack(event)">
-        <div class="pc-prog-fill" id="pc-prog-fill"></div>
-      </div>
-      <div class="pc-times"><span class="pc-time" id="pc-cur">0:00</span><span class="pc-time" id="pc-dur">—</span></div>
-    </div>
-    <div class="pc-vol-row">
-      <span class="pc-vol-lbl">🔊</span>
-      <input type="range" min="0" max="1" step="0.01" value="0.8" oninput="audioEl.volume=this.value">
-    </div>
-  </div>
+  <p style="text-align:center;color:var(--sepia);font-size:.7rem;margin-top:2rem;opacity:.5;">
+    Klik play untuk mendengarkan langsung
+  </p>
 </section>
 
 <!-- MOTTO -->
@@ -518,7 +533,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   </div>
 </section>
 
-<!-- COUNTDOWN (SUDAH DIPERBAIKI) -->
+<!-- COUNTDOWN -->
 <section id="countdown-section">
   <div class="cd-title">Hitung Mundur <em>Ulang Tahun</em></div>
   <div class="cd-sub">Siapa yang paling ditunggu-tunggu?</div>
@@ -545,45 +560,37 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="divider"><div class="div-in">✦ &nbsp; Momen Tak Terlupakan &nbsp; ✦</div></div>
   <div class="sec-intro"><h2>Cerita <em>Kecil</em> yang Besar</h2><p>Hal-hal biasa yang ternyata paling dirindukan.</p></div>
   <div class="moments-grid">
-    <div class="mc reveal"><div class="mc-num">01</div><h3>Sarapan Sabtu Pagi</h3><p>Nasi goreng Ibu dengan telur ceplok, kecap, dan kerupuk. Bapak baca koran. Adik masih ngantuk. Kamu duduk nunggu kopi jadi.</p><span class="mc-tag">Rutinitas</span></div>
-    <div class="mc reveal d1"><div class="mc-num">02</div><h3>Perjalanan ke Jogja</h3><p>Setiap mudik ke keluarga Bapak. Macet di Klaten sudah jadi ritual wajib. Adik mabuk darat separuh jalan.</p><span class="mc-tag">Tradisi</span></div>
-    <div class="mc reveal d2"><div class="mc-num">03</div><h3>Mati Lampu Bersama</h3><p>PLN mati jam 7 malam. Lilin dinyalakan. Tiba-tiba semua orang ngumpul di ruang tengah. Ngobrol tanpa HP.</p><span class="mc-tag">Tak Terduga</span></div>
-    <div class="mc reveal"><div class="mc-num">04</div><h3>Lebaran di Sragen</h3><p>Baju baru yang terlalu formal. Salam tempel dari pakde yang berbau minyak angin. Ketupat Ibu yang paling enak sedunia.</p><span class="mc-tag">Tahunan</span></div>
-    <div class="mc reveal d1"><div class="mc-num">05</div><h3>Drama Remote TV</h3><p>Bapak mau nonton berita. Adik mau kartun. Kamu mau film. Ibu mau sinetron. Solusinya: Ibu yang menang.</p><span class="mc-tag">Setiap Malam</span></div>
-    <div class="mc reveal d2"><div class="mc-num">06</div><h3>Hujan &amp; Bakwan Goreng</h3><p>Setiap hujan deras, Ibu langsung masuk dapur. Keluar 20 menit kemudian dengan bakwan panas dan teh manis.</p><span class="mc-tag">Musim Hujan</span></div>
+    <div class="mc reveal"><div class="mc-num">01</div><h3>Sarapan Sabtu Pagi</h3><p>Nasi goreng Ibu dengan telur ceplok, kecap, dan kerupuk.</p><span class="mc-tag">Rutinitas</span></div>
+    <div class="mc reveal d1"><div class="mc-num">02</div><h3>Perjalanan ke Jogja</h3><p>Setiap mudik ke keluarga Bapak. Macet di Klaten sudah jadi ritual wajib.</p><span class="mc-tag">Tradisi</span></div>
+    <div class="mc reveal d2"><div class="mc-num">03</div><h3>Mati Lampu Bersama</h3><p>PLN mati jam 7 malam. Lilin dinyalakan. Ngobrol tanpa HP.</p><span class="mc-tag">Tak Terduga</span></div>
+    <div class="mc reveal"><div class="mc-num">04</div><h3>Lebaran di Sragen</h3><p>Baju baru yang terlalu formal. Ketupat Ibu yang paling enak sedunia.</p><span class="mc-tag">Tahunan</span></div>
+    <div class="mc reveal d1"><div class="mc-num">05</div><h3>Drama Remote TV</h3><p>Bapak mau nonton berita. Adik mau kartun. Ibu yang menang.</p><span class="mc-tag">Setiap Malam</span></div>
+    <div class="mc reveal d2"><div class="mc-num">06</div><h3>Hujan & Bakwan Goreng</h3><p>Setiap hujan deras, Ibu langsung masuk dapur. Keluar dengan bakwan panas.</p><span class="mc-tag">Musim Hujan</span></div>
   </div>
 </section>
 
-<!-- DOWNLOAD SECTION - WHATSAPP -->
+<!-- DOWNLOAD SECTION -->
 <section id="download-section">
   <div class="dl-tag">✦ Chat via WhatsApp ✦</div>
   <div class="dl-title reveal">Hubungi <em>Keluarga</em></div>
-  <p class="dl-sub reveal d1">Klik langsung chat dengan anggota keluarga via WhatsApp Web</p>
+  <p class="dl-sub reveal d1">Klik langsung chat dengan anggota keluarga</p>
   <div class="dl-grid">
-    <a class="dl-card reveal" href="https://wa.me/6285311360759" target="_blank"><span class="dl-icon">👨</span><div class="dl-name">Bapak</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
-    <a class="dl-card reveal d1" href="https://wa.me/6282122483362" target="_blank"><span class="dl-icon">👩</span><div class="dl-name">Ibu</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
-    <a class="dl-card reveal d2" href="https://wa.me/6282111095385" target="_blank"><span class="dl-icon">🧑</span><div class="dl-name">Saya</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
+    <a class="dl-card reveal" href="https://wa.me/6285311360759" target="_blank"><span class="dl-icon">👨</span><div class="dl-name">Bapak</div><span class="dl-btn">💬 Chat Sekarang</span></a>
+    <a class="dl-card reveal d1" href="https://wa.me/6282122483362" target="_blank"><span class="dl-icon">👩</span><div class="dl-name">Ibu</div><span class="dl-btn">💬 Chat Sekarang</span></a>
+    <a class="dl-card reveal d2" href="https://wa.me/6282111095385" target="_blank"><span class="dl-icon">🧑</span><div class="dl-name">Saya</div><span class="dl-btn">💬 Chat Sekarang</span></a>
   </div>
-  <p class="dl-note">Klik tombol di atas untuk langsung chat di WhatsApp</p>
 </section>
 
 <footer>
   <div class="ft-orn">✦ &nbsp; ✦ &nbsp; ✦</div>
   <div class="ft-name">Keluarga Kita</div>
-  <div class="ft-sub">Sragen &nbsp;·&nbsp; Yogyakarta &nbsp;·&nbsp; Tangerang &nbsp;·&nbsp; Selalu Bersama</div>
-  <div class="ft-orn">✦</div>
+  <div class="ft-sub">Sragen · Yogyakarta · Tangerang · Selalu Bersama</div>
   <div class="ft-note">Dibuat dengan cinta · 2025</div>
 </footer>
 
 <script>
-/* ========== JAVASCRIPT DENGAN COUNTDOWN FIX DAN MUSIK LINK ========== */
+/* ========== JAVASCRIPT ========== */
 const audioEl = document.getElementById('audio-el');
-let tracks = [
-  { name: 'Bintang Kecil', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-  { name: 'Pelangi', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
-  { name: 'Naik Delman', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' }
-];
-let currentTrack = -1;
 
 // LOADER
 const ldFill = document.getElementById('ld-fill');
@@ -611,9 +618,9 @@ const MONS=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','
 function tick(){
   const n=new Date();
   const t=`${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}:${String(n.getSeconds()).padStart(2,'0')}`;
-  const lc=document.getElementById('live-clock'); if(lc) lc.textContent=t+' WIB';
-  const ic=document.getElementById('ib-clk'); if(ic) ic.textContent=t;
-  const id2=document.getElementById('ib-date'); if(id2) id2.textContent=`${DAYS[n.getDay()]}, ${n.getDate()} ${MONS[n.getMonth()]} ${n.getFullYear()}`;
+  document.getElementById('live-clock') && (document.getElementById('live-clock').textContent=t+' WIB');
+  document.getElementById('ib-clk') && (document.getElementById('ib-clk').textContent=t);
+  document.getElementById('ib-date') && (document.getElementById('ib-date').textContent=`${DAYS[n.getDay()]}, ${n.getDate()} ${MONS[n.getMonth()]} ${n.getFullYear()}`);
 }
 setInterval(tick,1000);tick();
 
@@ -627,7 +634,7 @@ window.addEventListener('scroll',()=>{
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08,rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// AGE (DIPERBAIKI)
+// AGE
 function calcAge(y,m,d){
   const n=new Date(),b=new Date(y,m-1,d);
   let a=n.getFullYear()-b.getFullYear();
@@ -641,25 +648,23 @@ function daysUntil(m,d){
   return Math.ceil((nx-n)/86400000);
 }
 
-// DATA ULANG TAHUN
+// UPDATE AGES
 const birthdays = [
-  {id:'age-bapak', y:1980, m:9, d:17, name:'Bapak'},
-  {id:'age-ibu', y:1981, m:10, d:1, name:'Ibu'},
-  {id:'age-saya', y:2005, m:6, d:15, name:'Saya'},
-  {id:'age-adik', y:2016, m:4, d:21, name:'Adik'}
+  {id:'age-bapak', y:1980, m:9, d:17},
+  {id:'age-ibu', y:1981, m:10, d:1},
+  {id:'age-saya', y:2005, m:6, d:15},
+  {id:'age-adik', y:2016, m:4, d:21}
 ];
 
-birthdays.forEach(({id,y,m,d,name}) => {
+birthdays.forEach(({id,y,m,d}) => {
   const el = document.getElementById(id);
   if(!el) return;
   const age = calcAge(y,m,d);
   const soon = daysUntil(m,d);
   el.textContent = age + ' thn';
-  
   if(soon === 0){
     el.innerHTML = age + ' thn 🎉';
     el.style.background = 'rgba(155,58,30,.2)';
-    showToast(`🎉 Selamat Ulang Tahun ${name}!`);
   }
   else if(soon <= 30){
     el.innerHTML = age + ' thn 🎂';
@@ -671,7 +676,7 @@ birthdays.forEach(({id,y,m,d,name}) => {
 // STATS
 const sd=document.getElementById('stat-days');
 if(sd){
-  const start = new Date(2016,3,21); // 21 April 2016
+  const start = new Date(2016,3,21);
   const today = new Date();
   const diff = Math.floor((today - start) / 86400000);
   let c = 0, step = Math.ceil(diff/70);
@@ -682,141 +687,20 @@ if(sd){
   }, 20);
 }
 
-/* ========== FUNGSI MUSIK DENGAN LINK ========== */
-function addMusicFromLink() {
-  const linkInput = document.getElementById('music-link-input');
-  const nameInput = document.getElementById('music-name-input');
-  
-  let url = linkInput.value.trim();
-  let name = nameInput.value.trim();
-  
-  if(!url) {
-    showToast('⚠ Masukkan link MP3');
-    return;
-  }
-  
-  // Cek apakah link valid (sederhana)
-  if(!url.match(/\.(mp3|m4a|ogg)(\?.*)?$/i) && !url.includes('soundhelix')) {
-    showToast('⚠ Link harus mengarah ke file audio');
-    return;
-  }
-  
-  if(!name) {
-    // Ambil nama dari URL
-    const parts = url.split('/');
-    name = parts[parts.length-1].split('?')[0].replace(/\.mp3/i,'') || 'Lagu ' + (tracks.length+1);
-  }
-  
-  tracks.push({ name, url });
-  
-  // Tampilkan di playlist
-  const playlist = document.getElementById('playlist');
-  const idx = tracks.length - 1;
-  const div = document.createElement('div');
-  div.className = 'song-card reveal';
-  div.onclick = () => playTrack(idx);
-  div.innerHTML = `
-    <div class="song-num">${String(idx+1).padStart(2,'0')}</div>
-    <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-    <div class="song-disc">🎵</div>
-    <div class="song-info">
-      <div class="song-title">${name}</div>
-      <div class="song-artist">Playlist Keluarga</div>
-    </div>
-  `;
-  playlist.appendChild(div);
-  setTimeout(() => div.classList.add('visible'), 60);
-  
-  linkInput.value = '';
-  nameInput.value = '';
-  showToast(`✅ "${name}" ditambahkan!`);
-}
-
-function playTrack(idx) {
-  if(idx < 0 || idx >= tracks.length) return;
-  
-  currentTrack = idx;
-  const t = tracks[idx];
-  audioEl.src = t.url;
-  audioEl.volume = 0.8;
-  
-  audioEl.play().then(() => {
-    document.getElementById('pc-title').textContent = t.name;
-    document.getElementById('pc-play-btn').textContent = '⏸';
-    document.getElementById('pc-thumb').classList.add('spin');
-    document.getElementById('player-ctrl').classList.add('show');
-    
-    document.querySelectorAll('.song-card').forEach((c,i) => {
-      c.classList.toggle('playing', i===idx);
-    });
-  }).catch(e => {
-    showToast('❌ Gagal memutar: Pastikan link MP3 valid');
-  });
-}
-
-audioEl.addEventListener('timeupdate', () => {
-  if(!audioEl.duration) return;
-  const p = (audioEl.currentTime/audioEl.duration)*100;
-  document.getElementById('pc-prog-fill').style.width = p+'%';
-  document.getElementById('pc-cur').textContent = fmt(audioEl.currentTime);
-  document.getElementById('pc-dur').textContent = fmt(audioEl.duration);
-});
-
-audioEl.addEventListener('ended', () => nextTrack());
-audioEl.addEventListener('pause', () => {
-  document.getElementById('pc-play-btn').textContent = '▶';
-  document.getElementById('pc-thumb').classList.remove('spin');
-});
-
-function togglePlay() {
-  if(currentTrack < 0) {
-    if(tracks.length) playTrack(0);
-    return;
-  }
-  audioEl.paused ? audioEl.play() : audioEl.pause();
-}
-
-function nextTrack() {
-  playTrack((currentTrack + 1) % tracks.length);
-}
-
-function prevTrack() {
-  playTrack((currentTrack - 1 + tracks.length) % tracks.length);
-}
-
-function seekTrack(e) {
-  if(!audioEl.duration) return;
-  const r = e.currentTarget.getBoundingClientRect();
-  const pos = (e.clientX - r.left) / r.width;
-  audioEl.currentTime = pos * audioEl.duration;
-}
-
-function fmt(s) {
-  if(isNaN(s)) return '0:00';
-  const mins = Math.floor(s / 60);
-  const secs = Math.floor(s % 60);
-  return mins + ':' + String(secs).padStart(2,'0');
-}
-
-/* ========== COUNTDOWN (DIPERBAIKI) ========== */
+// COUNTDOWN
 const cdData = {
   bapak: { m:9, d:17, name:'Bapak', emoji:'👨' },
   ibu:   { m:10, d:1, name:'Ibu', emoji:'👩' },
   saya:  { m:6, d:15, name:'Saya', emoji:'🧑' },
   adik:  { m:4, d:21, name:'Adik', emoji:'👦' }
 };
-
 let currentCD = 'bapak';
 let cdInterval;
 
 function setCDTarget(who, btn) {
   currentCD = who;
-  
-  // Update active class
   document.querySelectorAll('.cd-who').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  
-  // Clear interval lama, buat baru
   if(cdInterval) clearInterval(cdInterval);
   updateCountdown();
   cdInterval = setInterval(updateCountdown, 1000);
@@ -825,38 +709,22 @@ function setCDTarget(who, btn) {
 function updateCountdown() {
   const t = cdData[currentCD];
   if(!t) return;
-  
   const now = new Date();
-  let nextBirthday = new Date(now.getFullYear(), t.m-1, t.d);
+  let next = new Date(now.getFullYear(), t.m-1, t.d);
+  if(next <= now) next.setFullYear(next.getFullYear() + 1);
+  const diff = next - now;
   
-  // Jika sudah lewat, hitung tahun depan
-  if(nextBirthday <= now) {
-    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
-  }
-  
-  const diff = nextBirthday - now;
+  document.getElementById('cd-days').textContent = String(Math.floor(diff / 86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
   
   const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
-  
-  document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cd-mins').textContent = String(minutes).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(seconds).padStart(2,'0');
-  
-  const msgEl = document.getElementById('cd-msg');
-  if(days === 0) {
-    msgEl.textContent = `${t.emoji} Besok ultah ${t.name}! Siapkan kado!`;
-  } else if(days <= 7) {
-    msgEl.textContent = `${t.emoji} Tinggal ${days} hari lagi! Jangan lupa!`;
-  } else {
-    msgEl.textContent = `${t.emoji} ${days} hari lagi ulang tahun ${t.name}`;
-  }
+  const msg = document.getElementById('cd-msg');
+  if(days === 0) msg.textContent = `${t.emoji} Besok ultah ${t.name}!`;
+  else if(days <= 7) msg.textContent = `${t.emoji} Tinggal ${days} hari lagi!`;
+  else msg.textContent = `${t.emoji} ${days} hari lagi ultah ${t.name}`;
 }
-
-// Inisialisasi countdown
 setCDTarget('bapak', document.querySelector('.cd-who.active'));
 
 // FLOAT WA
@@ -870,21 +738,6 @@ document.addEventListener('click', (e) => {
     fwaOpen = false;
     document.getElementById('fwa-list').classList.remove('open');
   }
-});
-
-// CARD TILT
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    card.style.transform = `translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`;
-    card.style.transition = 'box-shadow .4s';
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-    card.style.transition = 'transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s';
-  });
 });
 
 // TOAST
