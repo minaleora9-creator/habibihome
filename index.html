@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-/* ========== CSS SAMA PERSIS DENGAN SEBELUMNYA ========== */
+/* ========== CSS SAMA PERSIS ========== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --cream:#F8F0DC;--ivory:#FDF6E8;--paper:#EFE3C2;
@@ -144,40 +144,13 @@ nav a:hover::after{width:100%;}
 .song-del{background:none;border:none;cursor:pointer;font-size:.85rem;opacity:.3;transition:opacity .2s;padding:.2rem;}
 .song-del:hover{opacity:.8;}
 .song-tag-lbl{font-family:var(--ff-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;background:rgba(184,137,42,.15);color:var(--gold);border:1px solid rgba(184,137,42,.25);}
-/* upload music area */
-.music-upload-area{max-width:780px;margin:2rem auto 0;border:1.5px dashed rgba(184,137,42,.3);padding:1.5rem 2rem;text-align:center;transition:border-color .3s,background .3s;cursor:pointer;}
-.music-upload-area:hover{border-color:var(--gold);background:rgba(184,137,42,.06);}
-.mua-icon{font-size:1.8rem;margin-bottom:.5rem;display:block;line-height:1;}
-.mua-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.25rem;}
-.mua-sub{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.mua-note{font-family:var(--ff-m);font-size:.52rem;color:var(--sepia);opacity:.4;margin-top:.5rem;}
-/* upload progress for music */
-#music-upload-prog{max-width:780px;margin:.8rem auto 0;display:none;}
-#music-upload-prog.show{display:block;}
-.mup-bar-wrap{height:3px;background:rgba(255,255,255,.08);border-radius:2px;}
-.mup-bar-fill{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width .2s;}
-.mup-label{font-family:var(--ff-m);font-size:.55rem;color:var(--sepia);margin-top:.4rem;text-align:center;letter-spacing:.08em;}
-/* player controls */
-.player-controls{max-width:780px;margin:1.5rem auto 0;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.2);padding:1.2rem 1.5rem;display:none;}
-.player-controls.show{display:block;}
-.pc-now{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
-.pc-thumb{width:42px;height:42px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:animation .3s;}
-.pc-thumb.spin{animation:spinDisc 4s linear infinite;}
-.pc-info{flex:1;min-width:0;}
-.pc-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.pc-artist{font-family:var(--ff-m);font-size:.55rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.pc-btns{display:flex;align-items:center;gap:.8rem;}
-.pc-btn{background:none;border:1px solid rgba(184,137,42,.3);color:var(--gold);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;}
-.pc-btn:hover{background:rgba(184,137,42,.2);transform:scale(1.1);}
-.pc-btn.main{width:46px;height:46px;font-size:1.3rem;background:rgba(184,137,42,.15);}
-.pc-prog-wrap{margin-top:.8rem;}
-.pc-prog-bar{width:100%;height:4px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative;}
-.pc-prog-fill{height:100%;background:var(--gold);border-radius:2px;width:0;}
-.pc-times{display:flex;justify-content:space-between;margin-top:.35rem;}
-.pc-time{font-family:var(--ff-m);font-size:.5rem;color:var(--sepia);opacity:.5;}
-.pc-vol-row{display:flex;align-items:center;gap:.7rem;margin-top:.8rem;}
-.pc-vol-lbl{font-family:var(--ff-m);font-size:.52rem;color:var(--warm);opacity:.45;white-space:nowrap;}
-input[type=range]{accent-color:var(--gold);}
+/* music input link area */
+.music-link-area{max-width:780px;margin:2rem auto 0;border:1.5px dashed rgba(184,137,42,.3);padding:1.5rem 2rem;text-align:center;transition:border-color .3s,background .3s;}
+.music-link-area:hover{border-color:var(--gold);background:rgba(184,137,42,.06);}
+.mla-input{width:100%;padding:.8rem;background:rgba(255,255,255,.05);border:1px solid rgba(184,137,42,.2);color:var(--cream);font-family:var(--ff-m);font-size:.8rem;margin-bottom:1rem;border-radius:2px;}
+.mla-input:focus{outline:none;border-color:var(--gold);}
+.mla-btn{background:var(--gold);color:var(--dark);border:none;padding:.6rem 1.5rem;font-family:var(--ff-m);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:background .2s;}
+.mla-btn:hover{background:var(--warm);}
 #motto{background:var(--paper);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;z-index:2;border-top:1px solid var(--warm);}
 #motto::before{content:'"';position:absolute;top:-3rem;left:50%;transform:translateX(-50%);font-family:var(--ff-s);font-size:24rem;color:var(--dark);opacity:.04;font-style:italic;pointer-events:none;line-height:1;}
 .motto-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.4rem;}
@@ -343,12 +316,8 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- CARA PASANG FOTO YANG BENAR: 
-             1. Upload foto ke https://imgur.com
-             2. Klik kanan foto → Copy image address
-             3. Paste link yang berakhiran .jpg atau .png
-             Contoh link benar: https://i.imgur.com/ABCD123.jpg -->
-        <img id="img-bapak" src="https://i.imgur.com/qDrKi9K.jpeg" alt="Foto Bapak" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A8%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <!-- GANTI DENGAN LINK FOTO BAPAK -->
+        <img id="img-bapak" src="https://i.imgur.com/qDrKi9K.jpeg" alt="Foto Bapak">
       </div>
       <div class="card-body">
         <div class="card-role">Kepala Keluarga</div>
@@ -358,7 +327,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">17 Sep 1980</span>
           <span class="card-age" id="age-bapak"></span>
         </div>
-        <div class="editable">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi.</div>
+        <div class="editable">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai.</div>
         <div class="card-traits"><span class="trait">☕ Kopi Tubruk</span><span class="trait">📺 Jagoan Berita</span><span class="trait">🌱 Tangan Hijau</span></div>
       </div>
       <div class="card-actions">
@@ -367,7 +336,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           Chat Bapak
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi. Katanya "nggak enak anginnya." Dan selalu benar.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi.</span></div>
     </div>
 
     <!-- IBU -->
@@ -376,7 +345,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <!-- GANTI DENGAN LINK FOTO IBU -->
-        <img id="img-ibu" src="https://i.imgur.com/GMuMTqS.jpeg" alt="Foto Ibu" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A9%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <img id="img-ibu" src="https://i.imgur.com/GMuMTqS.jpeg" alt="Foto Ibu">
       </div>
       <div class="card-body">
         <div class="card-role">Cahaya Keluarga</div>
@@ -386,7 +355,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">1 Okt 1981</span>
           <span class="card-age" id="age-ibu"></span>
         </div>
-        <div class="editable">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh. Hafal jadwal semua orang lebih akurat dari Google Calendar. Punya radar pendeteksi kebohongan — akurasi 99.9%.</div>
+        <div class="editable">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh.</div>
         <div class="card-traits"><span class="trait">🍳 Chef Keluarga</span><span class="trait">🌺 Ibu RT Teladan</span><span class="trait">📱 Ratu WA Grup</span></div>
       </div>
       <div class="card-actions">
@@ -395,7 +364,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           Chat Ibu
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Ibu bisa masak nasi goreng sambil nelpon, ngawasin adik belajar, sambil nonton sinetron. Multitasking level dewa.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Multitasking level dewa, bisa masak sambil ngatur semuanya.</span></div>
     </div>
 
     <!-- SAYA -->
@@ -404,7 +373,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <!-- GANTI DENGAN LINK FOTO SAYA -->
-        <img id="img-saya" src="https://i.imgur.com/CLOXLE0.jpeg" alt="Foto Saya" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%A7%91%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <img id="img-saya" src="https://i.imgur.com/CLOXLE0.jpeg" alt="Foto Saya">
       </div>
       <div class="card-body">
         <div class="card-role">Anak Sulung</div>
@@ -414,7 +383,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">15 Jun 2005</span>
           <span class="card-age" id="age-saya"></span>
         </div>
-        <div class="editable">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede tapi masih disuruh ibu beli kecap. Sedang dalam proses membuktikan bahwa orang Sragen juga bisa buat hal-hal keren.</div>
+        <div class="editable">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede.</div>
         <div class="card-traits"><span class="trait">💻 Tech Enthusiast</span><span class="trait">🎨 Kreatif Dadakan</span><span class="trait">💤 Tidur Siang Pro</span></div>
       </div>
       <div class="card-actions">
@@ -423,7 +392,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           Chat Saya
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Sering kasih solusi canggih untuk masalah rumah. Sayangnya solusinya selalu butuh WiFi kencang dan sering ditolak Bapak.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Sering kasih solusi canggih yang ditolak Bapak.</span></div>
     </div>
 
     <!-- ADIK -->
@@ -432,7 +401,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <!-- GANTI DENGAN LINK FOTO ADIK -->
-        <img id="img-adik" src="https://i.imgur.com/sWwblqc.jpeg" alt="Foto Adik" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <img id="img-adik" src="https://i.imgur.com/sWwblqc.jpeg" alt="Foto Adik">
       </div>
       <div class="card-body">
         <div class="card-role">Bungsu Kesayangan</div>
@@ -442,7 +411,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">21 Apr 2016</span>
           <span class="card-age" id="age-adik"></span>
         </div>
-        <div class="editable">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Hidupnya penuh privilege tapi selalu pura-pura tidak tahu. Ahli menghilangkan snack dalam 0.3 detik lalu menyalahkan orang lain.</div>
+        <div class="editable">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Ahli menghilangkan snack.</div>
         <div class="card-traits"><span class="trait">🎮 Gamer Sejati</span><span class="trait">📚 Pelajar (Katanya)</span><span class="trait">🍪 Snack Destroyer</span></div>
       </div>
       <div class="card-actions">
@@ -451,7 +420,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           Adik masih kecil 🔒
         </div>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Lahir di Tangerang tapi ngomongnya sudah ngapak. Punya sonar khusus kata "makan" — dengar dari 3 kamar.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Punya sonar khusus kata "makan" — dengar dari 3 kamar.</span></div>
     </div>
 
   </div>
@@ -465,29 +434,49 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="reveal d3"><div class="stat-num">∞</div><div class="stat-label">Kenangan Tercipta</div></div>
 </div>
 
-<!-- ═══ MUSIK ═══ (SEKARANG SUDAH ADA LAGI) -->
+<!-- ═══ MUSIK DENGAN LINK PUBLIK ═══ -->
 <section id="music-section">
   <div class="ms-tag">✦ Playlist Keluarga ✦</div>
   <div class="ms-title reveal">Lagu <em>Pengiring Kenangan</em></div>
-  <div class="ms-sub reveal d1">Upload MP3 · Putar langsung di browser</div>
+  <div class="ms-sub reveal d1">Putar langsung dari link MP3 publik</div>
 
   <div class="playlist" id="playlist">
-    <div id="playlist-empty" style="text-align:center;padding:2.5rem;font-family:var(--ff-b);font-style:italic;color:var(--warm);opacity:.4;font-size:.95rem;">
-      Belum ada lagu. Upload MP3 pertamamu di bawah! 🎵
+    <!-- Contoh lagu dengan link publik -->
+    <div class="song-card reveal" onclick="playTrack(0)">
+      <div class="song-num">01</div>
+      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+      <div class="song-disc">🎵</div>
+      <div class="song-info">
+        <div class="song-title">Bintang Kecil</div>
+        <div class="song-artist">Lagu Keluarga</div>
+      </div>
+    </div>
+    <div class="song-card reveal" onclick="playTrack(1)">
+      <div class="song-num">02</div>
+      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+      <div class="song-disc">🎵</div>
+      <div class="song-info">
+        <div class="song-title">Pelangi</div>
+        <div class="song-artist">Lagu Anak</div>
+      </div>
+    </div>
+    <div class="song-card reveal" onclick="playTrack(2)">
+      <div class="song-num">03</div>
+      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+      <div class="song-disc">🎵</div>
+      <div class="song-info">
+        <div class="song-title">Naik Delman</div>
+        <div class="song-artist">Lagu Anak</div>
+      </div>
     </div>
   </div>
 
-  <div class="music-upload-area" onclick="document.getElementById('music-fi').click()">
-    <span class="mua-icon">🎵</span>
-    <div class="mua-title">Upload Lagu MP3</div>
-    <div class="mua-sub">Klik untuk pilih file MP3</div>
-    <div class="mua-note">Format MP3 · Maks 10MB</div>
-  </div>
-  <input type="file" id="music-fi" accept=".mp3,audio/mpeg" style="display:none" onchange="uploadMusic(this)">
-
-  <div id="music-upload-prog">
-    <div class="mup-bar-wrap"><div class="mup-bar-fill" id="mup-fill"></div></div>
-    <div class="mup-label" id="mup-lbl">Mengupload...</div>
+  <!-- Area untuk tambah lagu via link -->
+  <div class="music-link-area">
+    <input type="text" id="music-link-input" class="mla-input" placeholder="https://... (link MP3 publik)" value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+    <input type="text" id="music-name-input" class="mla-input" placeholder="Nama lagu (opsional)" value="Contoh Lagu">
+    <button class="mla-btn" onclick="addMusicFromLink()">➕ Tambah Lagu dari Link</button>
+    <p style="color:var(--sepia);font-size:.6rem;margin-top:.8rem;opacity:.6;">Gunakan link MP3 publik (SoundHelix, Pixabay, dll)</p>
   </div>
 
   <div class="player-controls" id="player-ctrl">
@@ -529,7 +518,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- COUNTDOWN (SUDAH DIPERBAIKI) -->
 <section id="countdown-section">
   <div class="cd-title">Hitung Mundur <em>Ulang Tahun</em></div>
   <div class="cd-sub">Siapa yang paling ditunggu-tunggu?</div>
@@ -556,16 +545,16 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="divider"><div class="div-in">✦ &nbsp; Momen Tak Terlupakan &nbsp; ✦</div></div>
   <div class="sec-intro"><h2>Cerita <em>Kecil</em> yang Besar</h2><p>Hal-hal biasa yang ternyata paling dirindukan.</p></div>
   <div class="moments-grid">
-    <div class="mc reveal"><div class="mc-num">01</div><h3>Sarapan Sabtu Pagi</h3><p>Nasi goreng Ibu dengan telur ceplok, kecap, dan kerupuk. Bapak baca koran. Adik masih ngantuk. Kamu duduk nunggu kopi jadi. Nggak ada yang spesial — tapi selalu jadi momen paling hangat sepanjang minggu.</p><span class="mc-tag">Rutinitas</span></div>
-    <div class="mc reveal d1"><div class="mc-num">02</div><h3>Perjalanan ke Jogja</h3><p>Setiap mudik ke keluarga Bapak. Macet di Klaten sudah jadi ritual wajib. Adik mabuk darat separuh jalan. Tapi sampai di sana, ada sate klathak dan gudeg yang bikin lupa semua lelah.</p><span class="mc-tag">Tradisi</span></div>
-    <div class="mc reveal d2"><div class="mc-num">03</div><h3>Mati Lampu Bersama</h3><p>PLN mati jam 7 malam. Lilin dinyalakan. Tiba-tiba semua orang ngumpul di ruang tengah. Ngobrol tanpa HP. Bapak cerita masa muda. Ibu ketawa-ketawa. Ternyata mati lampu lebih berharga dari WiFi 100 Mbps.</p><span class="mc-tag">Tak Terduga</span></div>
-    <div class="mc reveal"><div class="mc-num">04</div><h3>Lebaran di Sragen</h3><p>Baju baru yang terlalu formal. Salam tempel dari pakde yang berbau minyak angin. Ketupat Ibu yang paling enak sedunia. Dan foto keluarga yang nggak pernah bagus karena adik selalu bergerak.</p><span class="mc-tag">Tahunan</span></div>
-    <div class="mc reveal d1"><div class="mc-num">05</div><h3>Drama Remote TV</h3><p>Bapak mau nonton berita. Adik mau kartun. Kamu mau film. Ibu mau sinetron. Solusinya: Ibu yang menang. Selalu. Tanpa negosiasi. Sudah seperti hukum alam.</p><span class="mc-tag">Setiap Malam</span></div>
-    <div class="mc reveal d2"><div class="mc-num">06</div><h3>Hujan &amp; Bakwan Goreng</h3><p>Setiap hujan deras, Ibu langsung masuk dapur. Keluar 20 menit kemudian dengan bakwan panas dan teh manis. Tidak pernah diminta. Tidak pernah gagal. Ibu tahu yang kita butuhkan sebelum kita sendiri tahu.</p><span class="mc-tag">Musim Hujan</span></div>
+    <div class="mc reveal"><div class="mc-num">01</div><h3>Sarapan Sabtu Pagi</h3><p>Nasi goreng Ibu dengan telur ceplok, kecap, dan kerupuk. Bapak baca koran. Adik masih ngantuk. Kamu duduk nunggu kopi jadi.</p><span class="mc-tag">Rutinitas</span></div>
+    <div class="mc reveal d1"><div class="mc-num">02</div><h3>Perjalanan ke Jogja</h3><p>Setiap mudik ke keluarga Bapak. Macet di Klaten sudah jadi ritual wajib. Adik mabuk darat separuh jalan.</p><span class="mc-tag">Tradisi</span></div>
+    <div class="mc reveal d2"><div class="mc-num">03</div><h3>Mati Lampu Bersama</h3><p>PLN mati jam 7 malam. Lilin dinyalakan. Tiba-tiba semua orang ngumpul di ruang tengah. Ngobrol tanpa HP.</p><span class="mc-tag">Tak Terduga</span></div>
+    <div class="mc reveal"><div class="mc-num">04</div><h3>Lebaran di Sragen</h3><p>Baju baru yang terlalu formal. Salam tempel dari pakde yang berbau minyak angin. Ketupat Ibu yang paling enak sedunia.</p><span class="mc-tag">Tahunan</span></div>
+    <div class="mc reveal d1"><div class="mc-num">05</div><h3>Drama Remote TV</h3><p>Bapak mau nonton berita. Adik mau kartun. Kamu mau film. Ibu mau sinetron. Solusinya: Ibu yang menang.</p><span class="mc-tag">Setiap Malam</span></div>
+    <div class="mc reveal d2"><div class="mc-num">06</div><h3>Hujan &amp; Bakwan Goreng</h3><p>Setiap hujan deras, Ibu langsung masuk dapur. Keluar 20 menit kemudian dengan bakwan panas dan teh manis.</p><span class="mc-tag">Musim Hujan</span></div>
   </div>
 </section>
 
-<!-- DOWNLOAD SECTION - SEKARANG UNTUK WHATSAPP WEB -->
+<!-- DOWNLOAD SECTION - WHATSAPP -->
 <section id="download-section">
   <div class="dl-tag">✦ Chat via WhatsApp ✦</div>
   <div class="dl-title reveal">Hubungi <em>Keluarga</em></div>
@@ -575,7 +564,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
     <a class="dl-card reveal d1" href="https://wa.me/6282122483362" target="_blank"><span class="dl-icon">👩</span><div class="dl-name">Ibu</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
     <a class="dl-card reveal d2" href="https://wa.me/6282111095385" target="_blank"><span class="dl-icon">🧑</span><div class="dl-name">Saya</div><div class="dl-desc">Chat via WhatsApp</div><span class="dl-btn">💬 Chat Sekarang</span></a>
   </div>
-  <p class="dl-note">Klik tombol di atas untuk langsung chat di WhatsApp (buka di HP atau WhatsApp Web)</p>
+  <p class="dl-note">Klik tombol di atas untuk langsung chat di WhatsApp</p>
 </section>
 
 <footer>
@@ -587,9 +576,13 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 </footer>
 
 <script>
-/* ========== JAVASCRIPT DENGAN FUNGSI MUSIK LENGKAP ========== */
+/* ========== JAVASCRIPT DENGAN COUNTDOWN FIX DAN MUSIK LINK ========== */
 const audioEl = document.getElementById('audio-el');
-let tracks = [];
+let tracks = [
+  { name: 'Bintang Kecil', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+  { name: 'Pelangi', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+  { name: 'Naik Delman', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' }
+];
 let currentTrack = -1;
 
 // LOADER
@@ -634,72 +627,91 @@ window.addEventListener('scroll',()=>{
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08,rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// AGE
-function calcAge(y,m,d){const n=new Date(),b=new Date(y,m-1,d);let a=n.getFullYear()-b.getFullYear();if(n.getMonth()-b.getMonth()<0||(n.getMonth()===b.getMonth()&&n.getDate()<b.getDate()))a--;return a;}
-function daysUntil(m,d){const n=new Date();let nx=new Date(n.getFullYear(),m-1,d);if(nx<=n)nx.setFullYear(n.getFullYear()+1);return Math.ceil((nx-n)/864e5);}
-[{id:'age-bapak',y:1980,m:9,d:17},{id:'age-ibu',y:1981,m:10,d:1},{id:'age-saya',y:2005,m:6,d:15},{id:'age-adik',y:2016,m:4,d:21}].forEach(({id,y,m,d})=>{
-  const el=document.getElementById(id);if(!el)return;
-  const age=calcAge(y,m,d),soon=daysUntil(m,d);
-  el.textContent=age+' thn';
-  if(soon===0){el.textContent=age+' thn 🎉';el.style.background='rgba(155,58,30,.2)';showToast('🎉 Selamat Ulang Tahun hari ini!');}
-  else if(soon<=30){el.textContent=age+' thn 🎂';el.title=`${soon} hari lagi!`;el.style.background='rgba(184,137,42,.15)';}
+// AGE (DIPERBAIKI)
+function calcAge(y,m,d){
+  const n=new Date(),b=new Date(y,m-1,d);
+  let a=n.getFullYear()-b.getFullYear();
+  if(n.getMonth()<b.getMonth() || (n.getMonth()===b.getMonth() && n.getDate()<b.getDate())) a--;
+  return a;
+}
+function daysUntil(m,d){
+  const n=new Date();
+  let nx=new Date(n.getFullYear(),m-1,d);
+  if(nx<=n) nx.setFullYear(n.getFullYear()+1);
+  return Math.ceil((nx-n)/86400000);
+}
+
+// DATA ULANG TAHUN
+const birthdays = [
+  {id:'age-bapak', y:1980, m:9, d:17, name:'Bapak'},
+  {id:'age-ibu', y:1981, m:10, d:1, name:'Ibu'},
+  {id:'age-saya', y:2005, m:6, d:15, name:'Saya'},
+  {id:'age-adik', y:2016, m:4, d:21, name:'Adik'}
+];
+
+birthdays.forEach(({id,y,m,d,name}) => {
+  const el = document.getElementById(id);
+  if(!el) return;
+  const age = calcAge(y,m,d);
+  const soon = daysUntil(m,d);
+  el.textContent = age + ' thn';
+  
+  if(soon === 0){
+    el.innerHTML = age + ' thn 🎉';
+    el.style.background = 'rgba(155,58,30,.2)';
+    showToast(`🎉 Selamat Ulang Tahun ${name}!`);
+  }
+  else if(soon <= 30){
+    el.innerHTML = age + ' thn 🎂';
+    el.title = `${soon} hari lagi!`;
+    el.style.background = 'rgba(184,137,42,.15)';
+  }
 });
 
 // STATS
 const sd=document.getElementById('stat-days');
-if(sd){const td=Math.floor((new Date()-new Date(2016,3,21))/864e5);let c=0,step=Math.ceil(td/70);const ct=setInterval(()=>{c=Math.min(c+step,td);sd.textContent=c.toLocaleString('id');if(c>=td)clearInterval(ct);},20);}
-
-/* ========== FUNGSI MUSIK ========== */
-async function uploadMusic(input) {
-  const file = input.files[0];
-  if (!file) return;
-
-  if (!file.type.includes('audio')) {
-    showToast('⚠ Harus file audio MP3');
-    return;
-  }
-  if (file.size > 10 * 1024 * 1024) {
-    showToast('⚠ File terlalu besar. Maks 10MB.');
-    return;
-  }
-
-  const name = file.name.replace(/\.mp3$/i,'').replace(/_/g,' ');
-  const prog = document.getElementById('music-upload-prog');
-  const fill = document.getElementById('mup-fill');
-  const lbl  = document.getElementById('mup-lbl');
-  prog.classList.add('show');
-  lbl.textContent = 'Memproses "'+name+'"...';
-
-  const reader = new FileReader();
-  reader.onprogress = (e) => {
-    if (e.lengthComputable) {
-      fill.style.width = Math.round((e.loaded/e.total)*100)+'%';
-    }
-  };
-  
-  reader.onload = () => {
-    const url = reader.result;
-    tracks.push({ name, url });
-    addTrackUI({ name, url }, tracks.length-1);
-    
-    prog.classList.remove('show');
-    fill.style.width = '0';
-    input.value = '';
-    showToast('✅ "'+name+'" siap diputar!');
-  };
-  
-  reader.onerror = () => {
-    prog.classList.remove('show');
-    showToast('❌ Gagal membaca file');
-  };
-  
-  reader.readAsDataURL(file);
+if(sd){
+  const start = new Date(2016,3,21); // 21 April 2016
+  const today = new Date();
+  const diff = Math.floor((today - start) / 86400000);
+  let c = 0, step = Math.ceil(diff/70);
+  const ct = setInterval(() => {
+    c = Math.min(c + step, diff);
+    sd.textContent = c.toLocaleString('id');
+    if(c >= diff) clearInterval(ct);
+  }, 20);
 }
 
-function addTrackUI(track, idx) {
-  const empty = document.getElementById('playlist-empty');
-  if (empty) empty.style.display = 'none';
-
+/* ========== FUNGSI MUSIK DENGAN LINK ========== */
+function addMusicFromLink() {
+  const linkInput = document.getElementById('music-link-input');
+  const nameInput = document.getElementById('music-name-input');
+  
+  let url = linkInput.value.trim();
+  let name = nameInput.value.trim();
+  
+  if(!url) {
+    showToast('⚠ Masukkan link MP3');
+    return;
+  }
+  
+  // Cek apakah link valid (sederhana)
+  if(!url.match(/\.(mp3|m4a|ogg)(\?.*)?$/i) && !url.includes('soundhelix')) {
+    showToast('⚠ Link harus mengarah ke file audio');
+    return;
+  }
+  
+  if(!name) {
+    // Ambil nama dari URL
+    const parts = url.split('/');
+    name = parts[parts.length-1].split('?')[0].replace(/\.mp3/i,'') || 'Lagu ' + (tracks.length+1);
+  }
+  
+  tracks.push({ name, url });
+  
+  // Tampilkan di playlist
+  const playlist = document.getElementById('playlist');
+  const idx = tracks.length - 1;
   const div = document.createElement('div');
   div.className = 'song-card reveal';
   div.onclick = () => playTrack(idx);
@@ -708,39 +720,48 @@ function addTrackUI(track, idx) {
     <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
     <div class="song-disc">🎵</div>
     <div class="song-info">
-      <div class="song-title">${track.name}</div>
+      <div class="song-title">${name}</div>
       <div class="song-artist">Playlist Keluarga</div>
     </div>
-    <div class="song-actions">
-      <span class="song-tag-lbl">MP3</span>
-    </div>
   `;
-  document.getElementById('playlist').appendChild(div);
+  playlist.appendChild(div);
   setTimeout(() => div.classList.add('visible'), 60);
+  
+  linkInput.value = '';
+  nameInput.value = '';
+  showToast(`✅ "${name}" ditambahkan!`);
 }
 
 function playTrack(idx) {
-  if (idx < 0 || idx >= tracks.length) return;
+  if(idx < 0 || idx >= tracks.length) return;
+  
   currentTrack = idx;
   const t = tracks[idx];
   audioEl.src = t.url;
   audioEl.volume = 0.8;
+  
   audioEl.play().then(() => {
     document.getElementById('pc-title').textContent = t.name;
     document.getElementById('pc-play-btn').textContent = '⏸';
     document.getElementById('pc-thumb').classList.add('spin');
     document.getElementById('player-ctrl').classList.add('show');
-    document.querySelectorAll('.song-card').forEach((c,i) => c.classList.toggle('playing', i===idx));
-  }).catch(e => showToast('❌ Gagal memutar: '+e.message));
+    
+    document.querySelectorAll('.song-card').forEach((c,i) => {
+      c.classList.toggle('playing', i===idx);
+    });
+  }).catch(e => {
+    showToast('❌ Gagal memutar: Pastikan link MP3 valid');
+  });
 }
 
 audioEl.addEventListener('timeupdate', () => {
-  if (!audioEl.duration) return;
+  if(!audioEl.duration) return;
   const p = (audioEl.currentTime/audioEl.duration)*100;
   document.getElementById('pc-prog-fill').style.width = p+'%';
   document.getElementById('pc-cur').textContent = fmt(audioEl.currentTime);
   document.getElementById('pc-dur').textContent = fmt(audioEl.duration);
 });
+
 audioEl.addEventListener('ended', () => nextTrack());
 audioEl.addEventListener('pause', () => {
   document.getElementById('pc-play-btn').textContent = '▶';
@@ -748,54 +769,133 @@ audioEl.addEventListener('pause', () => {
 });
 
 function togglePlay() {
-  if (currentTrack < 0) { if (tracks.length) playTrack(0); return; }
+  if(currentTrack < 0) {
+    if(tracks.length) playTrack(0);
+    return;
+  }
   audioEl.paused ? audioEl.play() : audioEl.pause();
 }
-function nextTrack() { playTrack((currentTrack+1) % tracks.length); }
-function prevTrack() { playTrack((currentTrack-1+tracks.length) % tracks.length); }
-function seekTrack(e) {
-  if (!audioEl.duration) return;
-  const r = e.currentTarget.getBoundingClientRect();
-  audioEl.currentTime = ((e.clientX-r.left)/r.width) * audioEl.duration;
-}
-function fmt(s) { 
-  if (isNaN(s)) return '0:00';
-  return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); 
+
+function nextTrack() {
+  playTrack((currentTrack + 1) % tracks.length);
 }
 
-// COUNTDOWN
-const cdT = {bapak:{m:9,d:17,name:'Bapak',e:'👨'},ibu:{m:10,d:1,name:'Ibu',e:'👩'},saya:{m:6,d:15,name:'Saya',e:'🧑'},adik:{m:4,d:21,name:'Adik',e:'👦'}};
-let cdC='bapak', cdIv;
-function setCDTarget(who,btn) { cdC=who; document.querySelectorAll('.cd-who').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); clearInterval(cdIv); cdIv=setInterval(updateCD,1000); updateCD(); }
-function updateCD() {
-  const t=cdT[cdC],n=new Date();
-  let nx=new Date(n.getFullYear(),t.m-1,t.d); if(nx<=n)nx.setFullYear(n.getFullYear()+1);
-  const diff=nx-n;
-  const vals=[Math.floor(diff/864e5),Math.floor((diff%864e5)/36e5),Math.floor((diff%36e5)/6e4),Math.floor((diff%6e4)/1e3)];
-  ['cd-days','cd-hours','cd-mins','cd-secs'].forEach((id,i)=>document.getElementById(id).textContent=String(vals[i]).padStart(2,'0'));
-  const d=vals[0];
-  document.getElementById('cd-msg').textContent=d===0?`${t.e} Besok ultah ${t.name}! Siapkan kado!`:d<=7?`${t.e} Tinggal ${d} hari! Jangan lupa!`:`${t.e} ${d} hari lagi ulang tahun ${t.name}`;
+function prevTrack() {
+  playTrack((currentTrack - 1 + tracks.length) % tracks.length);
 }
-cdIv=setInterval(updateCD,1000);updateCD();
+
+function seekTrack(e) {
+  if(!audioEl.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  const pos = (e.clientX - r.left) / r.width;
+  audioEl.currentTime = pos * audioEl.duration;
+}
+
+function fmt(s) {
+  if(isNaN(s)) return '0:00';
+  const mins = Math.floor(s / 60);
+  const secs = Math.floor(s % 60);
+  return mins + ':' + String(secs).padStart(2,'0');
+}
+
+/* ========== COUNTDOWN (DIPERBAIKI) ========== */
+const cdData = {
+  bapak: { m:9, d:17, name:'Bapak', emoji:'👨' },
+  ibu:   { m:10, d:1, name:'Ibu', emoji:'👩' },
+  saya:  { m:6, d:15, name:'Saya', emoji:'🧑' },
+  adik:  { m:4, d:21, name:'Adik', emoji:'👦' }
+};
+
+let currentCD = 'bapak';
+let cdInterval;
+
+function setCDTarget(who, btn) {
+  currentCD = who;
+  
+  // Update active class
+  document.querySelectorAll('.cd-who').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  // Clear interval lama, buat baru
+  if(cdInterval) clearInterval(cdInterval);
+  updateCountdown();
+  cdInterval = setInterval(updateCountdown, 1000);
+}
+
+function updateCountdown() {
+  const t = cdData[currentCD];
+  if(!t) return;
+  
+  const now = new Date();
+  let nextBirthday = new Date(now.getFullYear(), t.m-1, t.d);
+  
+  // Jika sudah lewat, hitung tahun depan
+  if(nextBirthday <= now) {
+    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+  }
+  
+  const diff = nextBirthday - now;
+  
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+  
+  document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(minutes).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(seconds).padStart(2,'0');
+  
+  const msgEl = document.getElementById('cd-msg');
+  if(days === 0) {
+    msgEl.textContent = `${t.emoji} Besok ultah ${t.name}! Siapkan kado!`;
+  } else if(days <= 7) {
+    msgEl.textContent = `${t.emoji} Tinggal ${days} hari lagi! Jangan lupa!`;
+  } else {
+    msgEl.textContent = `${t.emoji} ${days} hari lagi ulang tahun ${t.name}`;
+  }
+}
+
+// Inisialisasi countdown
+setCDTarget('bapak', document.querySelector('.cd-who.active'));
 
 // FLOAT WA
-let fwaOpen=false;
-function toggleFWA(){fwaOpen=!fwaOpen;document.getElementById('fwa-list').classList.toggle('open',fwaOpen);}
-document.addEventListener('click',e=>{if(fwaOpen&&!e.target.closest('#float-wa')){fwaOpen=false;document.getElementById('fwa-list').classList.remove('open');}});
+let fwaOpen = false;
+function toggleFWA() {
+  fwaOpen = !fwaOpen;
+  document.getElementById('fwa-list').classList.toggle('open', fwaOpen);
+}
+document.addEventListener('click', (e) => {
+  if(fwaOpen && !e.target.closest('#float-wa')) {
+    fwaOpen = false;
+    document.getElementById('fwa-list').classList.remove('open');
+  }
+});
 
 // CARD TILT
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`;card.style.transition='box-shadow .4s';
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*4}deg)`;
+    card.style.transition = 'box-shadow .4s';
   });
-  card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s';});
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s';
+  });
 });
 
 // TOAST
 let tt;
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),3500);}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(tt);
+  tt = setTimeout(() => t.classList.remove('show'), 3500);
+}
 </script>
 </body>
 </html>
