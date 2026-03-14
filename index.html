@@ -118,14 +118,66 @@ nav a:hover::after{width:100%;}
 .ms-title em{font-style:italic;color:var(--sepia);}
 .ms-sub{font-family:var(--ff-b);font-size:.95rem;font-style:italic;color:var(--warm);opacity:.55;text-align:center;margin-bottom:3rem;}
 .playlist{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem;}
-.song-card{display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.18);padding:1rem 1.4rem;}
+.song-card{display:flex;align-items:center;gap:1.2rem;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.18);padding:1rem 1.4rem;cursor:pointer;transition:background .25s,border-color .25s,transform .2s;position:relative;overflow:hidden;}
+.song-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
+.song-card:hover::before,.song-card.playing::before{transform:scaleY(1);}
+.song-card:hover{background:rgba(184,137,42,.08);border-color:rgba(184,137,42,.35);transform:translateX(4px);}
+.song-card.playing{background:rgba(184,137,42,.12);border-color:rgba(184,137,42,.4);}
+.song-num{font-family:var(--ff-m);font-size:.7rem;color:var(--sepia);opacity:.4;width:22px;text-align:center;flex-shrink:0;}
+.song-card.playing .song-num{opacity:0;}
+.song-wave{display:none;align-items:flex-end;gap:2px;height:18px;width:22px;flex-shrink:0;}
+.song-card.playing .song-wave{display:flex;}
+.sw-b{width:3px;background:var(--gold);border-radius:2px;}
+.song-card.playing .sw-b:nth-child(1){animation:sw .7s ease-in-out infinite;}
+.song-card.playing .sw-b:nth-child(2){animation:sw .7s ease-in-out infinite .18s;}
+.song-card.playing .sw-b:nth-child(3){animation:sw .7s ease-in-out infinite .36s;}
+.song-card.playing .sw-b:nth-child(4){animation:sw .7s ease-in-out infinite .54s;}
+@keyframes sw{0%,100%{height:4px;}50%{height:16px;}}
 .song-disc{width:44px;height:44px;border-radius:50%;background:var(--brown);border:2px solid rgba(184,137,42,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;overflow:hidden;}
 .song-disc::after{content:'';position:absolute;width:10px;height:10px;background:var(--dark);border-radius:50%;border:1px solid rgba(184,137,42,.3);}
+.song-card.playing .song-disc{animation:spinDisc 4s linear infinite;}
+@keyframes spinDisc{to{transform:rotate(360deg);}}
 .song-info{flex:1;min-width:0;}
 .song-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:.2rem;}
 .song-artist{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
-.song-num{font-family:var(--ff-m);font-size:.7rem;color:var(--sepia);opacity:.4;width:22px;}
+.song-actions{display:flex;align-items:center;gap:.5rem;}
+.song-del{background:none;border:none;cursor:pointer;font-size:.85rem;opacity:.3;transition:opacity .2s;padding:.2rem;}
+.song-del:hover{opacity:.8;}
 .song-tag-lbl{font-family:var(--ff-m);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;padding:.18rem .55rem;border-radius:2px;background:rgba(184,137,42,.15);color:var(--gold);border:1px solid rgba(184,137,42,.25);}
+/* upload music area */
+.music-upload-area{max-width:780px;margin:2rem auto 0;border:1.5px dashed rgba(184,137,42,.3);padding:1.5rem 2rem;text-align:center;transition:border-color .3s,background .3s;cursor:pointer;}
+.music-upload-area:hover{border-color:var(--gold);background:rgba(184,137,42,.06);}
+.mua-icon{font-size:1.8rem;margin-bottom:.5rem;display:block;line-height:1;}
+.mua-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.25rem;}
+.mua-sub{font-family:var(--ff-m);font-size:.58rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
+.mua-note{font-family:var(--ff-m);font-size:.52rem;color:var(--sepia);opacity:.4;margin-top:.5rem;}
+/* upload progress for music */
+#music-upload-prog{max-width:780px;margin:.8rem auto 0;display:none;}
+#music-upload-prog.show{display:block;}
+.mup-bar-wrap{height:3px;background:rgba(255,255,255,.08);border-radius:2px;}
+.mup-bar-fill{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width .2s;}
+.mup-label{font-family:var(--ff-m);font-size:.55rem;color:var(--sepia);margin-top:.4rem;text-align:center;letter-spacing:.08em;}
+/* player controls */
+.player-controls{max-width:780px;margin:1.5rem auto 0;background:rgba(255,255,255,.04);border:1px solid rgba(184,137,42,.2);padding:1.2rem 1.5rem;display:none;}
+.player-controls.show{display:block;}
+.pc-now{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.pc-thumb{width:42px;height:42px;border-radius:50%;background:var(--brown);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:animation .3s;}
+.pc-thumb.spin{animation:spinDisc 4s linear infinite;}
+.pc-info{flex:1;min-width:0;}
+.pc-title{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pc-artist{font-family:var(--ff-m);font-size:.55rem;color:var(--warm);opacity:.5;letter-spacing:.08em;}
+.pc-btns{display:flex;align-items:center;gap:.8rem;}
+.pc-btn{background:none;border:1px solid rgba(184,137,42,.3);color:var(--gold);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;}
+.pc-btn:hover{background:rgba(184,137,42,.2);transform:scale(1.1);}
+.pc-btn.main{width:46px;height:46px;font-size:1.3rem;background:rgba(184,137,42,.15);}
+.pc-prog-wrap{margin-top:.8rem;}
+.pc-prog-bar{width:100%;height:4px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative;}
+.pc-prog-fill{height:100%;background:var(--gold);border-radius:2px;width:0;}
+.pc-times{display:flex;justify-content:space-between;margin-top:.35rem;}
+.pc-time{font-family:var(--ff-m);font-size:.5rem;color:var(--sepia);opacity:.5;}
+.pc-vol-row{display:flex;align-items:center;gap:.7rem;margin-top:.8rem;}
+.pc-vol-lbl{font-family:var(--ff-m);font-size:.52rem;color:var(--warm);opacity:.45;white-space:nowrap;}
+input[type=range]{accent-color:var(--gold);}
 #motto{background:var(--paper);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;z-index:2;border-top:1px solid var(--warm);}
 #motto::before{content:'"';position:absolute;top:-3rem;left:50%;transform:translateX(-50%);font-family:var(--ff-s);font-size:24rem;color:var(--dark);opacity:.04;font-style:italic;pointer-events:none;line-height:1;}
 .motto-tag{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:1.4rem;}
@@ -183,7 +235,7 @@ nav a:hover::after{width:100%;}
 .fwa-list.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
 .fwa-item{display:flex;align-items:center;gap:.7rem;justify-content:flex-end;}
 .fwa-label{font-family:var(--ff-m);font-size:.6rem;letter-spacing:.08em;background:var(--dark);color:var(--warm);padding:.3rem .7rem;border-radius:2px;white-space:nowrap;}
-.fwa-btn{width:40px;height:40px;background:var(--wa);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 3px 12px rgba(37,211,102,.35);transition:transform .2s;text-decoration:none;}
+.fwa-btn{width:40px;height:40px;background:var(--wa);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 3px 12px rgba(37,211,102,.35);transition:transform .2s;text-decoration:none;color:white;line-height:1;}
 .fwa-btn:hover{transform:scale(1.1);}
 .wa-pulse{position:absolute;width:50px;height:50px;border-radius:50%;border:2px solid var(--wa);animation:wap 2s ease-out infinite;pointer-events:none;}
 @keyframes wap{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.8);opacity:0;}}
@@ -263,6 +315,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 
 <nav>
   <a href="#keluarga">Anggota</a>
+  <a href="#music-section">Musik</a>
   <a href="#countdown-section">Ulang Tahun</a>
   <a href="#motto">Motto</a>
   <a href="#momen">Momen</a>
@@ -281,7 +334,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="divider"><div class="div-in">✦ &nbsp; Anggota Keluarga &nbsp; ✦</div></div>
   <div class="sec-intro">
     <h2>Empat <em>Jiwa</em>, Satu Rumah</h2>
-    <p>Foto menggunakan link Imgur — bisa dilihat semua orang</p>
+    <p>Foto menggunakan link Imgur — ganti dengan link foto asli Anda</p>
   </div>
   <div class="family-grid">
 
@@ -290,8 +343,12 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI LINK FOTO DISINI -->
-        <img id="img-bapak" src="https://imgur.com/W4EZ0k5" alt="Foto Bapak" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A8%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <!-- CARA PASANG FOTO YANG BENAR: 
+             1. Upload foto ke https://imgur.com
+             2. Klik kanan foto → Copy image address
+             3. Paste link yang berakhiran .jpg atau .png
+             Contoh link benar: https://i.imgur.com/ABCD123.jpg -->
+        <img id="img-bapak" src="https://i.imgur.com/placeholder.jpg" alt="Foto Bapak" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A8%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
       <div class="card-body">
         <div class="card-role">Kepala Keluarga</div>
@@ -301,7 +358,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">17 Sep 1980</span>
           <span class="card-age" id="age-bapak"></span>
         </div>
-        <div class="editable" id="desc-bapak">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi. Selalu bilang "jangan boros" tapi diam-diam beliin es krim pas hujan.</div>
+        <div class="editable">Lahir dari tanah Mataram yang adiluhung. Bicara pelan, tapi kalau sudah bilang "ya sudah, piye" — itu artinya diskusi sudah selesai. Ahli nasi kucing, pawang remote TV sejati, dan filosof dadakan di warung kopi.</div>
         <div class="card-traits"><span class="trait">☕ Kopi Tubruk</span><span class="trait">📺 Jagoan Berita</span><span class="trait">🌱 Tangan Hijau</span></div>
       </div>
       <div class="card-actions">
@@ -310,7 +367,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           Chat Bapak
         </a>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi. Katanya "nggak enak anginnya." Dan entah kenapa selalu benar.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Bapak selalu tahu cuaca besok tanpa buka aplikasi. Katanya "nggak enak anginnya." Dan selalu benar.</span></div>
     </div>
 
     <!-- IBU -->
@@ -318,7 +375,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI LINK FOTO DISINI -->
+        <!-- GANTI DENGAN LINK FOTO IBU -->
         <img id="img-ibu" src="https://i.imgur.com/placeholder.jpg" alt="Foto Ibu" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A9%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
       <div class="card-body">
@@ -329,7 +386,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">1 Okt 1981</span>
           <span class="card-age" id="age-ibu"></span>
         </div>
-        <div class="editable" id="desc-ibu">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh. Hafal jadwal semua orang lebih akurat dari Google Calendar. Marah paling 5 menit, habis itu sudah masak lagi sambil nyanyi. Punya radar pendeteksi kebohongan — akurasi 99.9%.</div>
+        <div class="editable">Perempuan Sragen tulen yang tangannya bisa mengubah bahan seadanya jadi makanan yang bikin kangen sampai jauh. Hafal jadwal semua orang lebih akurat dari Google Calendar. Punya radar pendeteksi kebohongan — akurasi 99.9%.</div>
         <div class="card-traits"><span class="trait">🍳 Chef Keluarga</span><span class="trait">🌺 Ibu RT Teladan</span><span class="trait">📱 Ratu WA Grup</span></div>
       </div>
       <div class="card-actions">
@@ -346,7 +403,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI LINK FOTO DISINI -->
+        <!-- GANTI DENGAN LINK FOTO SAYA -->
         <img id="img-saya" src="https://i.imgur.com/placeholder.jpg" alt="Foto Saya" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%A7%91%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
       <div class="card-body">
@@ -357,7 +414,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">15 Jun 2005</span>
           <span class="card-age" id="age-saya"></span>
         </div>
-        <div class="editable" id="desc-saya">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede tapi masih disuruh ibu beli kecap. Sedang dalam proses membuktikan bahwa orang Sragen juga bisa buat hal-hal keren. Buktinya: website ini. Penggemar kopi hitam dan tidur siang yang terlalu lama.</div>
+        <div class="editable">Lahir, besar, dan tetap cinta Sragen — meskipun nggak ada MRT-nya. Tipe yang punya mimpi gede tapi masih disuruh ibu beli kecap. Sedang dalam proses membuktikan bahwa orang Sragen juga bisa buat hal-hal keren.</div>
         <div class="card-traits"><span class="trait">💻 Tech Enthusiast</span><span class="trait">🎨 Kreatif Dadakan</span><span class="trait">💤 Tidur Siang Pro</span></div>
       </div>
       <div class="card-actions">
@@ -374,7 +431,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <!-- GANTI LINK FOTO DISINI -->
+        <!-- GANTI DENGAN LINK FOTO ADIK -->
         <img id="img-adik" src="https://i.imgur.com/placeholder.jpg" alt="Foto Adik" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%20viewBox%3D%270%200%20300%20300%27%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20fill%3D%27%23C9A96E%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20text-anchor%3D%27middle%27%20dy%3D%27.3em%27%20fill%3D%27%236B3D2E%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%3E%F0%9F%91%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
       </div>
       <div class="card-body">
@@ -385,7 +442,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           <span class="card-bday">21 Apr 2016</span>
           <span class="card-age" id="age-adik"></span>
         </div>
-        <div class="editable" id="desc-adik">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Hidupnya penuh privilege tapi selalu pura-pura tidak tahu. Ahli menghilangkan snack dalam 0.3 detik lalu menyalahkan orang lain. Tapi di balik semua kenakalan itu — ada adik yang selalu cerita ke kakak kalau lagi sedih. Dan itu yang paling berharga.</div>
+        <div class="editable">Si bungsu yang lahir di Tangerang tapi besar di Sragen — hybrid sejati. Hidupnya penuh privilege tapi selalu pura-pura tidak tahu. Ahli menghilangkan snack dalam 0.3 detik lalu menyalahkan orang lain.</div>
         <div class="card-traits"><span class="trait">🎮 Gamer Sejati</span><span class="trait">📚 Pelajar (Katanya)</span><span class="trait">🍪 Snack Destroyer</span></div>
       </div>
       <div class="card-actions">
@@ -394,7 +451,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
           Adik masih kecil 🔒
         </div>
       </div>
-      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Lahir di Tangerang tapi ngomongnya sudah ngapak. Punya sonar khusus kata "makan" — dengar dari 3 kamar, bahkan saat headphone full volume.</span></div>
+      <div class="fun-fact"><span class="ff-ic">💡</span><span class="ff-tx">Fun fact: Lahir di Tangerang tapi ngomongnya sudah ngapak. Punya sonar khusus kata "makan" — dengar dari 3 kamar.</span></div>
     </div>
 
   </div>
@@ -407,6 +464,57 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="reveal d2"><div class="stat-num">3</div><div class="stat-label">Kota Asal</div></div>
   <div class="reveal d3"><div class="stat-num">∞</div><div class="stat-label">Kenangan Tercipta</div></div>
 </div>
+
+<!-- ═══ MUSIK ═══ (SEKARANG SUDAH ADA LAGI) -->
+<section id="music-section">
+  <div class="ms-tag">✦ Playlist Keluarga ✦</div>
+  <div class="ms-title reveal">Lagu <em>Pengiring Kenangan</em></div>
+  <div class="ms-sub reveal d1">Upload MP3 · Putar langsung di browser</div>
+
+  <div class="playlist" id="playlist">
+    <div id="playlist-empty" style="text-align:center;padding:2.5rem;font-family:var(--ff-b);font-style:italic;color:var(--warm);opacity:.4;font-size:.95rem;">
+      Belum ada lagu. Upload MP3 pertamamu di bawah! 🎵
+    </div>
+  </div>
+
+  <div class="music-upload-area" onclick="document.getElementById('music-fi').click()">
+    <span class="mua-icon">🎵</span>
+    <div class="mua-title">Upload Lagu MP3</div>
+    <div class="mua-sub">Klik untuk pilih file MP3</div>
+    <div class="mua-note">Format MP3 · Maks 10MB</div>
+  </div>
+  <input type="file" id="music-fi" accept=".mp3,audio/mpeg" style="display:none" onchange="uploadMusic(this)">
+
+  <div id="music-upload-prog">
+    <div class="mup-bar-wrap"><div class="mup-bar-fill" id="mup-fill"></div></div>
+    <div class="mup-label" id="mup-lbl">Mengupload...</div>
+  </div>
+
+  <div class="player-controls" id="player-ctrl">
+    <div class="pc-now">
+      <div class="pc-thumb" id="pc-thumb">🎵</div>
+      <div class="pc-info">
+        <div class="pc-title" id="pc-title">—</div>
+        <div class="pc-artist">Playlist Keluarga</div>
+      </div>
+    </div>
+    <div class="pc-btns">
+      <button class="pc-btn" onclick="prevTrack()">⏮</button>
+      <button class="pc-btn main" id="pc-play-btn" onclick="togglePlay()">▶</button>
+      <button class="pc-btn" onclick="nextTrack()">⏭</button>
+    </div>
+    <div class="pc-prog-wrap">
+      <div class="pc-prog-bar" onclick="seekTrack(event)">
+        <div class="pc-prog-fill" id="pc-prog-fill"></div>
+      </div>
+      <div class="pc-times"><span class="pc-time" id="pc-cur">0:00</span><span class="pc-time" id="pc-dur">—</span></div>
+    </div>
+    <div class="pc-vol-row">
+      <span class="pc-vol-lbl">🔊</span>
+      <input type="range" min="0" max="1" step="0.01" value="0.8" oninput="audioEl.volume=this.value">
+    </div>
+  </div>
+</section>
 
 <!-- MOTTO -->
 <section id="motto">
@@ -479,8 +587,10 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 </footer>
 
 <script>
-/* ========== JAVASCRIPT ========== */
+/* ========== JAVASCRIPT DENGAN FUNGSI MUSIK LENGKAP ========== */
 const audioEl = document.getElementById('audio-el');
+let tracks = [];
+let currentTrack = -1;
 
 // LOADER
 const ldFill = document.getElementById('ld-fill');
@@ -538,6 +648,120 @@ function daysUntil(m,d){const n=new Date();let nx=new Date(n.getFullYear(),m-1,d
 // STATS
 const sd=document.getElementById('stat-days');
 if(sd){const td=Math.floor((new Date()-new Date(2016,3,21))/864e5);let c=0,step=Math.ceil(td/70);const ct=setInterval(()=>{c=Math.min(c+step,td);sd.textContent=c.toLocaleString('id');if(c>=td)clearInterval(ct);},20);}
+
+/* ========== FUNGSI MUSIK ========== */
+async function uploadMusic(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  if (!file.type.includes('audio')) {
+    showToast('⚠ Harus file audio MP3');
+    return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    showToast('⚠ File terlalu besar. Maks 10MB.');
+    return;
+  }
+
+  const name = file.name.replace(/\.mp3$/i,'').replace(/_/g,' ');
+  const prog = document.getElementById('music-upload-prog');
+  const fill = document.getElementById('mup-fill');
+  const lbl  = document.getElementById('mup-lbl');
+  prog.classList.add('show');
+  lbl.textContent = 'Memproses "'+name+'"...';
+
+  const reader = new FileReader();
+  reader.onprogress = (e) => {
+    if (e.lengthComputable) {
+      fill.style.width = Math.round((e.loaded/e.total)*100)+'%';
+    }
+  };
+  
+  reader.onload = () => {
+    const url = reader.result;
+    tracks.push({ name, url });
+    addTrackUI({ name, url }, tracks.length-1);
+    
+    prog.classList.remove('show');
+    fill.style.width = '0';
+    input.value = '';
+    showToast('✅ "'+name+'" siap diputar!');
+  };
+  
+  reader.onerror = () => {
+    prog.classList.remove('show');
+    showToast('❌ Gagal membaca file');
+  };
+  
+  reader.readAsDataURL(file);
+}
+
+function addTrackUI(track, idx) {
+  const empty = document.getElementById('playlist-empty');
+  if (empty) empty.style.display = 'none';
+
+  const div = document.createElement('div');
+  div.className = 'song-card reveal';
+  div.onclick = () => playTrack(idx);
+  div.innerHTML = `
+    <div class="song-num">${String(idx+1).padStart(2,'0')}</div>
+    <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+    <div class="song-disc">🎵</div>
+    <div class="song-info">
+      <div class="song-title">${track.name}</div>
+      <div class="song-artist">Playlist Keluarga</div>
+    </div>
+    <div class="song-actions">
+      <span class="song-tag-lbl">MP3</span>
+    </div>
+  `;
+  document.getElementById('playlist').appendChild(div);
+  setTimeout(() => div.classList.add('visible'), 60);
+}
+
+function playTrack(idx) {
+  if (idx < 0 || idx >= tracks.length) return;
+  currentTrack = idx;
+  const t = tracks[idx];
+  audioEl.src = t.url;
+  audioEl.volume = 0.8;
+  audioEl.play().then(() => {
+    document.getElementById('pc-title').textContent = t.name;
+    document.getElementById('pc-play-btn').textContent = '⏸';
+    document.getElementById('pc-thumb').classList.add('spin');
+    document.getElementById('player-ctrl').classList.add('show');
+    document.querySelectorAll('.song-card').forEach((c,i) => c.classList.toggle('playing', i===idx));
+  }).catch(e => showToast('❌ Gagal memutar: '+e.message));
+}
+
+audioEl.addEventListener('timeupdate', () => {
+  if (!audioEl.duration) return;
+  const p = (audioEl.currentTime/audioEl.duration)*100;
+  document.getElementById('pc-prog-fill').style.width = p+'%';
+  document.getElementById('pc-cur').textContent = fmt(audioEl.currentTime);
+  document.getElementById('pc-dur').textContent = fmt(audioEl.duration);
+});
+audioEl.addEventListener('ended', () => nextTrack());
+audioEl.addEventListener('pause', () => {
+  document.getElementById('pc-play-btn').textContent = '▶';
+  document.getElementById('pc-thumb').classList.remove('spin');
+});
+
+function togglePlay() {
+  if (currentTrack < 0) { if (tracks.length) playTrack(0); return; }
+  audioEl.paused ? audioEl.play() : audioEl.pause();
+}
+function nextTrack() { playTrack((currentTrack+1) % tracks.length); }
+function prevTrack() { playTrack((currentTrack-1+tracks.length) % tracks.length); }
+function seekTrack(e) {
+  if (!audioEl.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  audioEl.currentTime = ((e.clientX-r.left)/r.width) * audioEl.duration;
+}
+function fmt(s) { 
+  if (isNaN(s)) return '0:00';
+  return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); 
+}
 
 // COUNTDOWN
 const cdT = {bapak:{m:9,d:17,name:'Bapak',e:'👨'},ibu:{m:10,d:1,name:'Ibu',e:'👩'},saya:{m:6,d:15,name:'Saya',e:'🧑'},adik:{m:4,d:21,name:'Adik',e:'👦'}};
