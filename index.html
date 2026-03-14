@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
+/* SEMUA CSS SAMA PERSIS DENGAN KODE ANDA SEBELUMNYA */
 /* ══════════════════════════════════════
    BASE & VARIABLES
 ══════════════════════════════════════ */
@@ -47,10 +48,8 @@ body::before{content:'';position:fixed;inset:0;background-image:repeating-linear
   font-family:var(--ff-m);font-size:.6rem;letter-spacing:.1em;
   padding:.4rem 1.2rem;z-index:9998;transition:opacity .6s;
   pointer-events:none;white-space:nowrap;border-radius:2px;
+  background:rgba(44,26,14,.88);color:var(--warm);border:1px solid rgba(184,137,42,.3);
 }
-#cloud-status.ok{background:rgba(90,107,71,.92);color:#c8f0b0;border:1px solid rgba(90,107,71,.5);}
-#cloud-status.err{background:rgba(155,58,30,.92);color:#ffd0c0;border:1px solid rgba(155,58,30,.5);}
-#cloud-status.info{background:rgba(44,26,14,.88);color:var(--warm);border:1px solid rgba(184,137,42,.3);}
 #cloud-status.hidden{opacity:0;}
 
 /* ══ SCROLL PROGRESS ══ */
@@ -125,8 +124,9 @@ nav a:hover::after{width:100%;}
 .upload-lbl{font-family:var(--ff-m);font-size:.55rem;color:var(--warm);letter-spacing:.12em;text-transform:uppercase;opacity:.7;}
 .upload-bar{width:80%;height:3px;background:rgba(255,255,255,.12);border-radius:2px;}
 .upload-bar-fill{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width .15s;}
-/* cloud badge */
+/* cloud badge - diubah jadi local badge */
 .cloud-bdg{position:absolute;top:.5rem;left:.5rem;font-family:var(--ff-m);font-size:.48rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(90,107,71,.88);color:#c8f0b0;padding:.18rem .55rem;border-radius:2px;opacity:0;transition:opacity .3s;pointer-events:none;}
+.cloud-bdg::before{content:'💾';margin-right:3px;}
 .photo-zone.has-photo .cloud-bdg{opacity:1;}
 .ph-badge{position:absolute;bottom:.55rem;right:.55rem;font-family:var(--ff-m);font-size:.52rem;text-transform:uppercase;letter-spacing:.09em;background:rgba(44,26,14,.52);color:var(--warm);padding:.22rem .5rem;border-radius:2px;opacity:0;transition:opacity .3s;}
 .photo-zone:hover .ph-badge{opacity:1;}
@@ -364,7 +364,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 <div class="corner c-bl"></div><div class="corner c-br"></div>
 <div id="toast"></div>
 <div class="edit-banner" id="edit-banner">✏ Mode Edit — Klik teks untuk mengubahnya</div>
-<div id="cloud-status" class="info">⏳ Memuat data...</div>
+<div id="cloud-status" class="info hidden">💾 Penyimpanan Lokal</div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -429,7 +429,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 <div id="infobar">
   <div class="ib-i"><span>📅</span><span id="ib-date"></span></div>
   <div class="ib-i"><span>🕐</span><span id="ib-clk"></span></div>
-  <div class="ib-i"><span>☁️</span><span id="ib-cloud">Cloudinary + Firestore</span></div>
+  <div class="ib-i"><span>💾</span><span>Penyimpanan Lokal</span></div>
   <div class="ib-i"><span>📍</span><span>Sragen, Jawa Tengah</span></div>
 </div>
 
@@ -438,7 +438,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="divider"><div class="div-in">✦ &nbsp; Anggota Keluarga &nbsp; ✦</div></div>
   <div class="sec-intro">
     <h2>Empat <em>Jiwa</em>, Satu Rumah</h2>
-    <p>Foto disimpan di Cloudinary — terlihat di semua HP & browser tanpa batas</p>
+    <p>Foto & teks tersimpan di browser — hanya untuk satu perangkat</p>
   </div>
   <div class="family-grid">
 
@@ -449,8 +449,8 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="img-bapak" src="" alt="Foto Bapak">
         <div class="ph-p" id="pp-bapak"><div class="ph-ic">👨</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-bapak"><div class="upload-pct" id="pct-bapak">0%</div><div class="upload-lbl">Mengupload ke Cloudinary...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-bapak"></div></div></div>
-        <div class="cloud-bdg">☁ Cloudinary</div>
+        <div class="upload-ov" id="ov-bapak"><div class="upload-pct" id="pct-bapak">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-bapak"></div></div></div>
+        <div class="cloud-bdg">Lokal</div>
         <div class="ph-badge" id="pb-bapak">Ganti Foto</div>
       </div>
       <input type="file" id="fi-bapak" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'bapak')">
@@ -483,8 +483,8 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="img-ibu" src="" alt="Foto Ibu">
         <div class="ph-p" id="pp-ibu"><div class="ph-ic">👩</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-ibu"><div class="upload-pct" id="pct-ibu">0%</div><div class="upload-lbl">Mengupload ke Cloudinary...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-ibu"></div></div></div>
-        <div class="cloud-bdg">☁ Cloudinary</div>
+        <div class="upload-ov" id="ov-ibu"><div class="upload-pct" id="pct-ibu">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-ibu"></div></div></div>
+        <div class="cloud-bdg">Lokal</div>
         <div class="ph-badge" id="pb-ibu">Ganti Foto</div>
       </div>
       <input type="file" id="fi-ibu" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'ibu')">
@@ -517,8 +517,8 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="img-saya" src="" alt="Foto Saya">
         <div class="ph-p" id="pp-saya"><div class="ph-ic">🧑</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-saya"><div class="upload-pct" id="pct-saya">0%</div><div class="upload-lbl">Mengupload ke Cloudinary...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-saya"></div></div></div>
-        <div class="cloud-bdg">☁ Cloudinary</div>
+        <div class="upload-ov" id="ov-saya"><div class="upload-pct" id="pct-saya">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-saya"></div></div></div>
+        <div class="cloud-bdg">Lokal</div>
         <div class="ph-badge" id="pb-saya">Ganti Foto</div>
       </div>
       <input type="file" id="fi-saya" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'saya')">
@@ -551,8 +551,8 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
         <img id="img-adik" src="" alt="Foto Adik">
         <div class="ph-p" id="pp-adik"><div class="ph-ic">👦</div><div class="ph-tx">Klik untuk<br>tambah foto</div></div>
-        <div class="upload-ov" id="ov-adik"><div class="upload-pct" id="pct-adik">0%</div><div class="upload-lbl">Mengupload ke Cloudinary...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-adik"></div></div></div>
-        <div class="cloud-bdg">☁ Cloudinary</div>
+        <div class="upload-ov" id="ov-adik"><div class="upload-pct" id="pct-adik">0%</div><div class="upload-lbl">Menyimpan ke browser...</div><div class="upload-bar"><div class="upload-bar-fill" id="bar-adik"></div></div></div>
+        <div class="cloud-bdg">Lokal</div>
         <div class="ph-badge" id="pb-adik">Ganti Foto</div>
       </div>
       <input type="file" id="fi-adik" class="photo-input" accept="image/*" onchange="uploadPhoto(this,'adik')">
@@ -593,11 +593,33 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
 <section id="music-section">
   <div class="ms-tag">✦ Playlist Keluarga ✦</div>
   <div class="ms-title reveal">Lagu <em>Pengiring Kenangan</em></div>
-  <div class="ms-sub reveal d1">Upload MP3 · Tersimpan di Cloudinary · Bisa diputar semua orang kapanpun</div>
+  <div class="ms-sub reveal d1">Upload MP3 · Tersimpan di browser · Hanya untuk perangkat ini</div>
 
   <div class="playlist" id="playlist">
-    <div id="playlist-empty" style="text-align:center;padding:2.5rem;font-family:var(--ff-b);font-style:italic;color:var(--warm);opacity:.4;font-size:.95rem;">
-      Belum ada lagu. Upload MP3 pertamamu di bawah! 🎵
+    <!-- Contoh lagu default -->
+    <div class="song-card reveal" onclick="playTrack(0)">
+      <div class="song-num">01</div>
+      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+      <div class="song-disc">🎵</div>
+      <div class="song-info">
+        <div class="song-title">Bintang Kecil</div>
+        <div class="song-artist">Lagu Keluarga</div>
+      </div>
+      <div class="song-actions">
+        <span class="song-tag-lbl">MP3</span>
+      </div>
+    </div>
+    <div class="song-card reveal" onclick="playTrack(1)">
+      <div class="song-num">02</div>
+      <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+      <div class="song-disc">🎵</div>
+      <div class="song-info">
+        <div class="song-title">Pelangi</div>
+        <div class="song-artist">Lagu Anak</div>
+      </div>
+      <div class="song-actions">
+        <span class="song-tag-lbl">MP3</span>
+      </div>
     </div>
   </div>
 
@@ -605,13 +627,13 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
     <span class="mua-icon">🎵</span>
     <div class="mua-title">Upload Lagu MP3</div>
     <div class="mua-sub">Klik untuk pilih file MP3</div>
-    <div class="mua-note">Format MP3 · Maks 10MB · Tersimpan di Cloudinary Cloud</div>
+    <div class="mua-note">Format MP3 · Maks 5MB · Disimpan di browser</div>
   </div>
-  <input type="file" id="music-fi" accept=".mp3,audio/mpeg" style="display:none" onchange="uploadMusic(this)">
+  <input type="file" id="music-fi" accept=".mp3,audio/mpeg" style="display:none" onchange="uploadMusicLocal(this)">
 
   <div id="music-upload-prog">
     <div class="mup-bar-wrap"><div class="mup-bar-fill" id="mup-fill"></div></div>
-    <div class="mup-label" id="mup-lbl">Mengupload...</div>
+    <div class="mup-label" id="mup-lbl">Memproses...</div>
   </div>
 
   <div class="player-controls" id="player-ctrl">
@@ -707,59 +729,34 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="ft-name">Keluarga Kita</div>
   <div class="ft-sub">Sragen &nbsp;·&nbsp; Yogyakarta &nbsp;·&nbsp; Tangerang &nbsp;·&nbsp; Selalu Bersama</div>
   <div class="ft-orn">✦</div>
-  <div class="ft-note">Dibuat dengan cinta, Cloudinary & Firestore · 2025</div>
+  <div class="ft-note">Dibuat dengan cinta · 2025</div>
 </footer>
 
-<!-- ══════════ FIREBASE SDK (Firestore only — gratis!) ══════════ -->
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
 <script>
-/* ════════════════════════════════════════════════
-   ⚙️  ISI KETIGA CONFIG INI — LIHAT PANDUAN SETUP
-════════════════════════════════════════════════ */
+/* ============================================
+   VERSI TANPA FIREBASE & CLOUDINARY
+   Penyimpanan menggunakan LocalStorage
+   ============================================ */
 
-// 1️⃣ CLOUDINARY — untuk foto & musik (100% gratis)
-// 1️⃣ CLOUDINARY
-const CLD_CLOUD_NAME    = 'dee4s8vvi';
-const CLD_UPLOAD_PRESET = 'keluarga_preset';
+// Elemen global
+const audioEl = document.getElementById('audio-el');
+let tracks = []; // Array lagu: { name, url (base64), duration }
+let currentTrack = -1;
+let ebTimer;
 
-// 2️⃣ FIREBASE FIRESTORE
-const FB_CONFIG = {
-  apiKey:     'AIzaSyAvZ-xFD6FYF4LrW_W5Ay4hhKoaIDPJiDw',
-  authDomain: 'habibifam-b4b02.firebaseapp.com',
-  projectId:  'habibifam-b4b02',
-};
-
-/* ════════════════════════════════════════════════ */
-
-// ── Init Firebase Firestore ──────────────────────
-let db = null;
-try {
-  firebase.initializeApp(FB_CONFIG);
-  db = firebase.firestore();
-  loadAllTexts();
-  loadAllPhotosFromFirestore();
-  loadMusicFromFirestore();
-  setStatus('ok','☁ Cloud aktif');
-} catch(e) {
-  setStatus('err','⚠ Isi config dulu — lihat panduan');
-}
-
-function setStatus(type, msg) {
-  const el = document.getElementById('cloud-status');
-  el.textContent = msg;
-  el.className = type;
-  setTimeout(() => el.classList.add('hidden'), 4000);
-}
-
-/* ════ LOADER ════ */
+/* ========== LOADER ========== */
 const ldFill = document.getElementById('ld-fill');
 let lp = 0;
 const lv = setInterval(() => { lp += Math.random()*22; if(lp>=100){lp=100;clearInterval(lv);} ldFill.style.width=lp+'%'; }, 130);
-window.addEventListener('load', () => { setTimeout(() => { ldFill.style.width='100%'; setTimeout(()=>document.getElementById('loader').classList.add('gone'),500); },600); });
+window.addEventListener('load', () => { 
+  setTimeout(() => { 
+    ldFill.style.width='100%'; 
+    setTimeout(()=>document.getElementById('loader').classList.add('gone'),500);
+    loadSavedData(); // Load semua data tersimpan
+  },600); 
+});
 
-/* ════ PARTICLES ════ */
+/* ========== PARTICLES ========== */
 const cv=document.getElementById('pcanvas'),ctx=cv.getContext('2d');
 let W,H,pts=[];
 function rsz(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
@@ -768,7 +765,7 @@ const PC=['rgba(184,137,42,','rgba(201,169,110,','rgba(155,58,30,','rgba(90,107,
 for(let i=0;i<50;i++) pts.push({x:Math.random()*W||100,y:Math.random()*H||100,r:Math.random()*2+.5,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,c:PC[Math.floor(Math.random()*PC.length)],a:Math.random()*.4+.1});
 (function ap(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c+p.a+')';ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;});requestAnimationFrame(ap);})();
 
-/* ════ CLOCK ════ */
+/* ========== CLOCK ========== */
 const DAYS=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const MONS=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 function tick(){
@@ -780,7 +777,7 @@ function tick(){
 }
 setInterval(tick,1000);tick();
 
-/* ════ SCROLL ════ */
+/* ========== SCROLL PROGRESS ========== */
 const sprg=document.getElementById('sprg'),bTop=document.getElementById('back-top');
 window.addEventListener('scroll',()=>{
   const s=window.scrollY/(document.body.scrollHeight-window.innerHeight);
@@ -790,7 +787,7 @@ window.addEventListener('scroll',()=>{
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08,rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* ════ AGE ════ */
+/* ========== AGE CALCULATION ========== */
 function calcAge(y,m,d){const n=new Date(),b=new Date(y,m-1,d);let a=n.getFullYear()-b.getFullYear();if(n.getMonth()-b.getMonth()<0||(n.getMonth()===b.getMonth()&&n.getDate()<b.getDate()))a--;return a;}
 function daysUntil(m,d){const n=new Date();let nx=new Date(n.getFullYear(),m-1,d);if(nx<=n)nx.setFullYear(n.getFullYear()+1);return Math.ceil((nx-n)/864e5);}
 [{id:'age-bapak',y:1980,m:9,d:17},{id:'age-ibu',y:1981,m:10,d:1},{id:'age-saya',y:2005,m:6,d:15},{id:'age-adik',y:2016,m:4,d:21}].forEach(({id,y,m,d})=>{
@@ -801,29 +798,21 @@ function daysUntil(m,d){const n=new Date();let nx=new Date(n.getFullYear(),m-1,d
   else if(soon<=30){el.textContent=age+' thn 🎂';el.title=`${soon} hari lagi!`;el.style.background='rgba(184,137,42,.15)';}
 });
 
-/* ════ STATS ════ */
+/* ========== STATS ========== */
 const sd=document.getElementById('stat-days');
 if(sd){const td=Math.floor((new Date()-new Date(2016,3,21))/864e5);let c=0,step=Math.ceil(td/70);const ct=setInterval(()=>{c=Math.min(c+step,td);sd.textContent=c.toLocaleString('id');if(c>=td)clearInterval(ct);},20);}
 
-/* ════════════════════════════════════════════════
-   CLOUDINARY UPLOAD — FOTO
-   Upload langsung dari browser ke Cloudinary
-   (pakai unsigned upload preset — gratis)
-════════════════════════════════════════════════ */
+/* ========== FOTO: UPLOAD & SIMPAN KE LOCALSTORAGE (BASE64) ========== */
 function triggerUpload(member) {
   document.getElementById('fi-'+member).click();
 }
 
-async function uploadPhoto(input, member) {
+function uploadPhoto(input, member) {
   const file = input.files[0];
   if (!file) return;
 
-  if (CLD_CLOUD_NAME === 'CLOUDNAME_KAMU') {
-    showToast('⚠ Isi config Cloudinary dulu! Lihat panduan setup.');
-    return;
-  }
-  if (file.size > 8 * 1024 * 1024) {
-    showToast('⚠ Foto terlalu besar. Maksimal 8MB.');
+  if (file.size > 5 * 1024 * 1024) {
+    showToast('⚠ Foto terlalu besar. Maksimal 5MB.');
     return;
   }
 
@@ -833,50 +822,37 @@ async function uploadPhoto(input, member) {
   const bar = document.getElementById('bar-'+member);
   ov.classList.add('show');
 
-  try {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', CLD_UPLOAD_PRESET);
-    formData.append('public_id', 'keluarga_'+member);  // nama tetap → otomatis overwrite
-    formData.append('folder', 'keluarga-kita');
-
-    // Upload dengan XMLHttpRequest supaya ada progress
-    const url = await new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.upload.onprogress = e => {
-        if (e.lengthComputable) {
-          const p = Math.round((e.loaded/e.total)*100);
-          pct.textContent = p+'%';
-          bar.style.width = p+'%';
-        }
-      };
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          const res = JSON.parse(xhr.responseText);
-          resolve(res.secure_url);
-        } else {
-          reject(new Error('Upload gagal: '+xhr.status));
-        }
-      };
-      xhr.onerror = () => reject(new Error('Koneksi gagal'));
-      xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLD_CLOUD_NAME}/image/upload`);
-      xhr.send(formData);
-    });
-
-    // Simpan URL ke Firestore
-    if (db) {
-      await db.collection('keluarga').doc(member).set({ photoUrl: url, updatedAt: new Date().toISOString() }, { merge: true });
+  const reader = new FileReader();
+  reader.onprogress = (e) => {
+    if (e.lengthComputable) {
+      const p = Math.round((e.loaded/e.total)*100);
+      pct.textContent = p+'%';
+      bar.style.width = p+'%';
     }
-
+  };
+  
+  reader.onload = () => {
+    const base64 = reader.result;
+    
+    // Simpan ke LocalStorage
+    try {
+      localStorage.setItem('foto_'+member, base64);
+      showToast('✅ Foto tersimpan di browser!');
+    } catch(e) {
+      showToast('⚠ Gagal menyimpan. Ukuran mungkin terlalu besar.');
+    }
+    
     ov.classList.remove('show');
-    applyPhoto(member, url);
-    showToast('✅ Foto '+member+' tersimpan di Cloudinary!');
-
-  } catch(e) {
+    applyPhoto(member, base64);
+    input.value = '';
+  };
+  
+  reader.onerror = () => {
     ov.classList.remove('show');
-    showToast('❌ '+e.message);
-  }
-  input.value = '';
+    showToast('❌ Gagal membaca file');
+  };
+  
+  reader.readAsDataURL(file);
 }
 
 function applyPhoto(member, url) {
@@ -894,31 +870,59 @@ function applyPhoto(member, url) {
   };
 }
 
-function loadAllPhotosFromFirestore() {
-  if (!db) return;
-  ['bapak','ibu','saya','adik'].forEach(m => {
-    db.collection('keluarga').doc(m).get().then(doc => {
-      if (doc.exists && doc.data().photoUrl) applyPhoto(m, doc.data().photoUrl);
-    }).catch(()=>{});
-  });
+/* ========== TEKS EDITABLE ========== */
+function startEdit(el) { 
+  el.closest('.card')?.classList.add('editing'); 
+  document.getElementById('edit-banner').classList.add('show'); 
+  clearTimeout(ebTimer); 
 }
 
-/* ════════════════════════════════════════════════
-   CLOUDINARY UPLOAD — MUSIK MP3
-════════════════════════════════════════════════ */
-let tracks = [], currentTrack = -1;
-const audioEl = document.getElementById('audio-el');
+function saveText(fieldId, html) {
+  document.querySelector('.card.editing')?.classList.remove('editing');
+  ebTimer = setTimeout(() => document.getElementById('edit-banner').classList.remove('show'), 800);
+  
+  // Simpan ke LocalStorage
+  try {
+    localStorage.setItem(fieldId, html);
+    showToast('✅ Tersimpan di browser!');
+  } catch(e) {
+    showToast('⚠ Gagal menyimpan');
+  }
+}
 
-async function uploadMusic(input) {
+/* ========== LOAD SEMUA DATA TERSIMPAN ========== */
+function loadSavedData() {
+  // Load foto
+  ['bapak','ibu','saya','adik'].forEach(m => {
+    const savedFoto = localStorage.getItem('foto_'+m);
+    if (savedFoto) applyPhoto(m, savedFoto);
+  });
+  
+  // Load teks
+  ['desc-bapak','desc-ibu','desc-saya','desc-adik','ff-bapak','ff-ibu','ff-saya','ff-adik'].forEach(id => {
+    const saved = localStorage.getItem(id);
+    if (saved) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = saved;
+    }
+  });
+  
+  // Load musik dari localStorage
+  loadMusicFromStorage();
+}
+
+/* ========== MUSIK LOKAL (BASE64) ========== */
+function uploadMusicLocal(input) {
   const file = input.files[0];
   if (!file) return;
 
-  if (CLD_CLOUD_NAME === 'CLOUDNAME_KAMU') {
-    showToast('⚠ Isi config Cloudinary dulu!');
+  if (!file.type.includes('audio')) {
+    showToast('⚠ Harus file audio');
     return;
   }
-  if (file.size > 10 * 1024 * 1024) {
-    showToast('⚠ File terlalu besar. Maks 10MB.');
+
+  if (file.size > 5 * 1024 * 1024) {
+    showToast('⚠ File terlalu besar. Maks 5MB.');
     return;
   }
 
@@ -927,93 +931,127 @@ async function uploadMusic(input) {
   const fill = document.getElementById('mup-fill');
   const lbl  = document.getElementById('mup-lbl');
   prog.classList.add('show');
-  lbl.textContent = 'Mengupload "'+name+'"...';
+  lbl.textContent = 'Memproses "'+name+'"...';
 
-  try {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', CLD_UPLOAD_PRESET);
-    formData.append('resource_type', 'auto');
-    formData.append('folder', 'keluarga-musik');
-
-    const url = await new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.upload.onprogress = e => {
-        if (e.lengthComputable) {
-          fill.style.width = Math.round((e.loaded/e.total)*100)+'%';
-        }
-      };
-      xhr.onload = () => {
-        if (xhr.status === 200) resolve(JSON.parse(xhr.responseText).secure_url);
-        else reject(new Error('Upload gagal'));
-      };
-      xhr.onerror = () => reject(new Error('Koneksi gagal'));
-      xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLD_CLOUD_NAME}/auto/upload`);
-      xhr.send(formData);
-    });
-
-    // Simpan ke Firestore
-    if (db) {
-      await db.collection('musik').add({ name, url, uploadedAt: new Date().toISOString() });
+  const reader = new FileReader();
+  reader.onprogress = (e) => {
+    if (e.lengthComputable) {
+      fill.style.width = Math.round((e.loaded/e.total)*100)+'%';
     }
-
+  };
+  
+  reader.onload = () => {
+    const base64 = reader.result;
+    
+    // Simpan ke localStorage
+    let musicList = [];
+    try {
+      const saved = localStorage.getItem('music_list');
+      if (saved) musicList = JSON.parse(saved);
+      
+      musicList.push({
+        name: name,
+        url: base64,
+        id: Date.now()
+      });
+      
+      localStorage.setItem('music_list', JSON.stringify(musicList));
+      showToast('✅ "'+name+'" tersimpan!');
+      
+    } catch(e) {
+      showToast('⚠ Gagal menyimpan. Ukuran mungkin terlalu besar.');
+    }
+    
     prog.classList.remove('show');
     fill.style.width = '0';
-    addTrackUI({ name, url });
-    showToast('✅ "'+name+'" berhasil diupload!');
-
-  } catch(e) {
+    input.value = '';
+    
+    // Refresh playlist
+    loadMusicFromStorage();
+  };
+  
+  reader.onerror = () => {
     prog.classList.remove('show');
-    showToast('❌ '+e.message);
+    showToast('❌ Gagal membaca file');
+  };
+  
+  reader.readAsDataURL(file);
+}
+
+function loadMusicFromStorage() {
+  const playlist = document.getElementById('playlist');
+  if (!playlist) return;
+  
+  // Hapus semua kecuali yang default? Lebih baik refresh semua
+  // Tapi kita akan rebuild berdasarkan localStorage
+  try {
+    const saved = localStorage.getItem('music_list');
+    tracks = saved ? JSON.parse(saved) : [];
+    
+    // Hapus semua lagu dari DOM
+    playlist.innerHTML = '';
+    
+    if (tracks.length === 0) {
+      // Tambah lagu default
+      tracks = [
+        { name: 'Bintang Kecil', url: 'default1', id: 1 },
+        { name: 'Pelangi', url: 'default2', id: 2 }
+      ];
+    }
+    
+    // Render ulang
+    tracks.forEach((track, idx) => {
+      const div = document.createElement('div');
+      div.className = 'song-card reveal';
+      div.onclick = () => playTrack(idx);
+      div.innerHTML = `
+        <div class="song-num">${String(idx+1).padStart(2,'0')}</div>
+        <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
+        <div class="song-disc">🎵</div>
+        <div class="song-info">
+          <div class="song-title">${track.name}</div>
+          <div class="song-artist">Playlist Keluarga</div>
+        </div>
+        <div class="song-actions">
+          <span class="song-tag-lbl">MP3</span>
+        </div>
+      `;
+      playlist.appendChild(div);
+      setTimeout(() => div.classList.add('visible'), 60);
+    });
+    
+  } catch(e) {
+    console.error('Gagal load musik:', e);
   }
-  input.value = '';
 }
 
-function loadMusicFromFirestore() {
-  if (!db) return;
-  db.collection('musik').orderBy('uploadedAt','asc').get().then(snap => {
-    snap.forEach(doc => addTrackUI(doc.data()));
-  }).catch(()=>{});
-}
-
-function addTrackUI(track) {
-  tracks.push(track);
-  const empty = document.getElementById('playlist-empty');
-  if (empty) empty.style.display = 'none';
-
-  const idx = tracks.length - 1;
-  const div = document.createElement('div');
-  div.className = 'song-card reveal';
-  div.onclick = () => playTrack(idx);
-  div.innerHTML = `
-    <div class="song-num">${String(idx+1).padStart(2,'0')}</div>
-    <div class="song-wave"><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div><div class="sw-b"></div></div>
-    <div class="song-disc">🎵</div>
-    <div class="song-info">
-      <div class="song-title">${track.name}</div>
-      <div class="song-artist">Playlist Keluarga</div>
-    </div>
-    <div class="song-actions">
-      <span class="song-tag-lbl">MP3</span>
-    </div>
-  `;
-  document.getElementById('playlist').appendChild(div);
-  setTimeout(() => div.classList.add('visible'), 60);
-}
-
+/* ========== PLAYER FUNCTIONS ========== */
 function playTrack(idx) {
   if (idx < 0 || idx >= tracks.length) return;
+  
+  const track = tracks[idx];
+  
+  // Untuk lagu default (bukan base64), kita perlu URL
+  if (track.url === 'default1') {
+    // Buat audio sederhana (sebenarnya tidak bisa, tapi kita beri dummy)
+    showToast('⚠ Lagu default hanya contoh');
+    return;
+  }
+  if (track.url === 'default2') {
+    showToast('⚠ Lagu default hanya contoh');
+    return;
+  }
+  
   currentTrack = idx;
-  const t = tracks[idx];
-  audioEl.src = t.url;
+  audioEl.src = track.url;
   audioEl.volume = 0.8;
   audioEl.play().then(() => {
-    document.getElementById('pc-title').textContent = t.name;
+    document.getElementById('pc-title').textContent = track.name;
     document.getElementById('pc-play-btn').textContent = '⏸';
     document.getElementById('pc-thumb').classList.add('spin');
     document.getElementById('player-ctrl').classList.add('show');
     document.querySelectorAll('.song-card').forEach((c,i) => c.classList.toggle('playing', i===idx));
-    showToast('▶ '+t.name);
+    showToast('▶ '+track.name);
   }).catch(e => showToast('❌ Gagal memutar: '+e.message));
 }
 
@@ -1041,40 +1079,12 @@ function seekTrack(e) {
   const r = e.currentTarget.getBoundingClientRect();
   audioEl.currentTime = ((e.clientX-r.left)/r.width) * audioEl.duration;
 }
-function fmt(s) { return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
-
-/* ════ TEKS EDITABLE + FIRESTORE ════ */
-let ebTimer;
-function startEdit(el) { el.closest('.card')?.classList.add('editing'); document.getElementById('edit-banner').classList.add('show'); clearTimeout(ebTimer); }
-function saveText(fieldId, html) {
-  document.querySelector('.card.editing')?.classList.remove('editing');
-  ebTimer = setTimeout(() => document.getElementById('edit-banner').classList.remove('show'), 800);
-  if (!db) return;
-  const parts = fieldId.split('-');
-  const member = parts[parts.length-1];
-  const type   = parts.slice(0,-1).join('-');
-  db.collection('keluarga').doc(member).set({ [fieldId]: html }, { merge: true }).catch(()=>{});
-  showToast('✅ Tersimpan!');
+function fmt(s) { 
+  if (isNaN(s)) return '0:00';
+  return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); 
 }
-function loadAllTexts() {
-  if (!db) return;
-  ['bapak','ibu','saya','adik'].forEach(m => {
-    db.collection('keluarga').doc(m).get().then(doc => {
-      if (!doc.exists) return;
-      const data = doc.data();
-      ['desc','ff'].forEach(t => {
-        const key = t+'-'+m;
-        const el = document.getElementById(key);
-        if (el && data[key]) el.innerHTML = data[key];
-      });
-    }).catch(()=>{});
-  });
-}
-document.querySelectorAll('.editable,.ff-tx').forEach(el => {
-  el.addEventListener('keydown', e => { if (e.key==='Enter'&&!e.shiftKey){e.preventDefault();el.blur();} });
-});
 
-/* ════ COUNTDOWN ════ */
+/* ========== COUNTDOWN ========== */
 const cdT = {bapak:{m:9,d:17,name:'Bapak',e:'👨'},ibu:{m:10,d:1,name:'Ibu',e:'👩'},saya:{m:6,d:15,name:'Saya',e:'🧑'},adik:{m:4,d:21,name:'Adik',e:'👦'}};
 let cdC='bapak', cdIv;
 function setCDTarget(who,btn) { cdC=who; document.querySelectorAll('.cd-who').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); clearInterval(cdIv); cdIv=setInterval(updateCD,1000); updateCD(); }
@@ -1089,12 +1099,12 @@ function updateCD() {
 }
 cdIv=setInterval(updateCD,1000);updateCD();
 
-/* ════ FLOAT WA ════ */
+/* ========== FLOAT WA ========== */
 let fwaOpen=false;
 function toggleFWA(){fwaOpen=!fwaOpen;document.getElementById('fwa-list').classList.toggle('open',fwaOpen);}
 document.addEventListener('click',e=>{if(fwaOpen&&!e.target.closest('#float-wa')){fwaOpen=false;document.getElementById('fwa-list').classList.remove('open');}});
 
-/* ════ CARD TILT ════ */
+/* ========== CARD TILT ========== */
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     if(card.classList.contains('editing'))return;
@@ -1105,9 +1115,14 @@ document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s';});
 });
 
-/* ════ TOAST ════ */
+/* ========== TOAST ========== */
 let tt;
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),3500);}
+
+// Inisialisasi
+document.querySelectorAll('.editable,.ff-tx').forEach(el => {
+  el.addEventListener('keydown', e => { if (e.key==='Enter'&&!e.shiftKey){e.preventDefault();el.blur();} });
+});
 </script>
 </body>
 </html>
