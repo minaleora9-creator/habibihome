@@ -118,13 +118,10 @@ nav a:hover::after{width:100%;}
 .ms-title em{font-style:italic;color:var(--sepia);}
 .ms-sub{font-family:var(--ff-b);font-size:.95rem;font-style:italic;color:var(--warm);opacity:.55;text-align:center;margin-bottom:3rem;}
 
-/* SOUNDCLOUD PLAYLIST */
-.soundcloud-playlist {
+/* SOUNDCLOUD SINGLE */
+.soundcloud-single {
   max-width: 780px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 .soundcloud-card {
@@ -132,13 +129,6 @@ nav a:hover::after{width:100%;}
   border: 1px solid rgba(184,137,42,.2);
   padding: 1.5rem;
   border-radius: 4px;
-  transition: all .3s;
-}
-
-.soundcloud-card:hover {
-  border-color: var(--gold);
-  background: rgba(184,137,42,.06);
-  transform: translateX(4px);
 }
 
 .soundcloud-info {
@@ -161,10 +151,6 @@ nav a:hover::after{width:100%;}
   flex-shrink: 0;
 }
 
-.soundcloud-title {
-  flex: 1;
-}
-
 .soundcloud-title h3 {
   font-family: var(--ff-s);
   font-size: 1.1rem;
@@ -180,19 +166,19 @@ nav a:hover::after{width:100%;}
   letter-spacing: .08em;
 }
 
-.soundcloud-embed {
-  width: 100%;
-  height: 300px;
-  border: none;
-  border-radius: 4px;
-  background: rgba(0,0,0,.2);
-}
-
-.soundcloud-embed iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 4px;
+.loop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--ff-m);
+  font-size: .55rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(184,137,42,.35);
+  padding: .2rem .6rem;
+  border-radius: 2px;
+  margin-top: .4rem;
 }
 
 /* ===== SISA CSS SAMA ===== */
@@ -384,7 +370,7 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
       <div class="tape"></div>
       <div class="photo-zone">
         <div class="pco tl"></div><div class="pco tr"></div><div class="pco bl"></div><div class="pco br"></div>
-        <img src="https://i.imgur.com/GMuMTqS.jpeg" alt="Foto Ibu">
+        <img src="https://img.sanishtech.com/u/e095dca2820bacbe33a86735b78b606b.jpeg" alt="Foto Ibu">
       </div>
       <div class="card-body">
         <div class="card-role">Cahaya Keluarga</div>
@@ -459,50 +445,37 @@ footer{background:var(--ivory);border-top:2px solid var(--warm);padding:3rem 2re
   <div class="reveal d3"><div class="stat-num">∞</div><div class="stat-label">Kenangan Tercipta</div></div>
 </div>
 
-<!-- ═══ MUSIK DENGAN SOUNDCLOUD - 2 LAGU ═══ -->
+<!-- ═══ MUSIK - SATU LAGU LOOP ═══ -->
 <section id="music-section">
-  <div class="ms-tag">✦ Playlist Keluarga ✦</div>
+  <div class="ms-tag">✦ Lagu Keluarga ✦</div>
   <div class="ms-title reveal">Lagu <em>Pengiring Kenangan</em></div>
-  <div class="ms-sub reveal d1">Putar langsung dari SoundCloud</div>
+  <div class="ms-sub reveal d1">Diputar otomatis & terus berulang</div>
 
-  <div class="soundcloud-playlist">
-
-    <!-- Lagu 1: Tulus - 1000 Tahun Lamanya (AKAN PLAY OTOMATIS) -->
+  <div class="soundcloud-single">
     <div class="soundcloud-card reveal">
       <div class="soundcloud-info">
         <div class="soundcloud-icon">🎵</div>
         <div class="soundcloud-title">
-          <h3>Tulus - 1000 Tahun Lamanya</h3>
+          <h3>Tulus — 1000 Tahun Lamanya</h3>
           <p>SoundCloud · Agam Satria</p>
+          <div class="loop-badge">🔁 Loop Aktif · Auto Play</div>
         </div>
       </div>
-      <div class="soundcloud-embed">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/173133017&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-        </iframe>
-      </div>
+      <!-- auto_play=true + loop=true -->
+      <iframe
+        id="sc-player"
+        width="100%"
+        height="300"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/173133017&color=%23b8892a&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
+      </iframe>
     </div>
-
-    <!-- Lagu 2: Sal Priadi - Kita Usahakan Rumah -->
-    <div class="soundcloud-card reveal d1">
-      <div class="soundcloud-info">
-        <div class="soundcloud-icon">🎵</div>
-        <div class="soundcloud-title">
-          <h3>Sal Priadi - Kita Usahakan Rumah</h3>
-          <p>SoundCloud · Fera Dwica18</p>
-        </div>
-      </div>
-      <div class="soundcloud-embed">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1241380777&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-        </iframe>
-      </div>
-    </div>
-
   </div>
 
-  <p style="text-align:center;color:var(--sepia);font-size:.7rem;margin-top:2rem;opacity:.5;">
-    🎧 Lagu pertama "1000 Tahun Lamanya" akan mulai otomatis
+  <p style="text-align:center;color:var(--sepia);font-family:var(--ff-m);font-size:.62rem;margin-top:1.8rem;opacity:.45;letter-spacing:.1em;">
+    🎧 Lagu akan mulai otomatis dan diputar ulang terus-menerus
   </p>
 </section>
 
@@ -587,6 +560,24 @@ window.addEventListener('load', () => {
   },600); 
 });
 
+// ═══ SOUNDCLOUD LOOP via Widget API ═══
+window.addEventListener('load', () => {
+  const iframe = document.getElementById('sc-player');
+  if (!iframe) return;
+
+  // Tunggu iframe siap lalu pasang listener finish → play ulang
+  const widget = SC.Widget(iframe);
+  widget.bind(SC.Widget.Events.FINISH, () => {
+    widget.seekTo(0);
+    widget.play();
+  });
+});
+</script>
+
+<!-- SoundCloud Widget API -->
+<script src="https://w.soundcloud.com/player/api.js"></script>
+
+<script>
 // PARTICLES
 const cv=document.getElementById('pcanvas'),ctx=cv.getContext('2d');
 let W,H,pts=[];
@@ -632,7 +623,6 @@ function daysUntil(m,d){
   return Math.ceil((nx-n)/86400000);
 }
 
-// UPDATE AGES
 const birthdays = [
   {id:'age-bapak', y:1980, m:9, d:17},
   {id:'age-ibu', y:1981, m:10, d:1},
